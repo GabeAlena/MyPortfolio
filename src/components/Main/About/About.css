@@ -1,0 +1,41 @@
+.about__section {
+  margin: 0;
+  padding: 0;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 63px;
+}
+
+.about__description-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.about__description {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  max-width: 668px;
+}
+
+.about__image {
+  width: 526px;
+  height: 320px;
+}
+
+.about__note {
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  max-width: 668px;    
+}

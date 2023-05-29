@@ -1,0 +1,19 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+@import url(./components/App/App.css);
+/*@import url(./blocks/page/page.css);
+
+@import url(./blocks/content/content.css);*/
+
+@import url(./components/Header/Header.css);
+
+@import url(./components/Main/Main.css);
+@import url(./components/Main/Search/Search.css);
+@import url(./components/Main/About/About.css);
+
+@import url(./components/Footer/Footer.css);
+
+@import url(./components/Login/Login.css);
+
+@import url(./components/Register/Register.css);

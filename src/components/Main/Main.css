@@ -1,0 +1,4 @@
+.content {
+  margin-top: 34px;
+  height: calc(100vh - 34px - 60px - 60px);
+}
