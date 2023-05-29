@@ -6,6 +6,8 @@ function About() {
         <section className="about__section">
             <div className="about__description-image">
                 <p className="about__description">
+                    Test!
+                    
                     What can you see? Here is a site-portfolio where you can post information about you,
                     your life, education, hobbies, career, various awards, any interesting news. Or you
                     can look through the profiles.
