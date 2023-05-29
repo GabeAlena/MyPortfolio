@@ -21,7 +21,6 @@ function App() {
                 <Register />
               }/>
           </Routes>
-          <Footer />
       </div>  
   );
 }
