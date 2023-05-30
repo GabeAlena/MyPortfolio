@@ -106,14 +106,12 @@
 @media screen and (max-width: 650px){
   .login {
     max-width: 250px;
-    padding-top: 120px;
   }
 }
 
 @media screen and (max-width: 320px){
   .login {
     max-width: 250px;
-    padding-top: 100px;
   }
 }
 
