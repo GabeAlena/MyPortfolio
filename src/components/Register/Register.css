@@ -122,6 +122,60 @@
   }
 }
 
+@media screen and (max-height: 1368px){
+  .register {
+    padding-top: 370px;
+  }
+}
+
+@media screen and (max-height: 1180px){
+  .register {
+    padding-top: 300px;
+  }
+}
+
+@media screen and (max-height: 1024px){
+  .register {
+    padding-top: 250px;
+  }
+}
+
+@media screen and (max-height: 915px){
+  .register {
+    padding-top: 200px;
+  }
+}
+
+@media screen and (max-height: 860px){
+  .register {
+    padding-top: 160px;
+  }
+}
+
+@media screen and (max-height: 800px){
+  .register {
+    padding-top: 130px;
+  }
+}
+
+@media screen and (max-height: 750px){
+  .register {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (max-height: 700px){
+  .register {
+    padding-top: 70px;
+  }
+}
+
+@media screen and (max-height: 600px){
+  .register {
+    padding-top: 10px;
+  }
+}
+
 .register__input {
   margin: 0;
   padding: 0;
