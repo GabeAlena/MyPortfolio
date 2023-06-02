@@ -6,6 +6,14 @@
   margin-top: 63px;
 }
 
+@media screen and (max-width: 768px){
+  .about__section {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 24px;
+  }
+}
+
 .about__description-image {
   display: flex;
   flex-direction: row;
@@ -23,9 +31,23 @@
   max-width: 668px;
 }
 
+@media screen and (max-width: 950px){
+  .about__description {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+
 .about__image {
   width: 526px;
   height: 320px;
+}
+
+@media screen and (max-width: 950px){
+  .about__image {
+    width: 450px;
+    height: 270px;
+  }
 }
 
 .about__note {
@@ -38,4 +60,73 @@
   font-size: 32px;
   line-height: 39px;
   max-width: 668px;    
+}
+
+@media screen and (max-width: 950px){
+  .about__note {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+
+.about__description_profile-link {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 950px){
+  .about__description_profile-link {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+
+.about__description_profile-link p {
+  margin: 0;
+  padding: 0;
+}
+
+.about__description_link {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  color: red;
+  font-size: 32px;
+  line-height: 39px;
+  padding-left: 8px;
+}
+
+@media screen and (max-width: 950px){
+  .about__description_link {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+
+.about__description_job-sites {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__description_job-site {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  text-decoration: none;
+  margin-left: 30px;
+  color: yellowgreen;
+  cursor: pointer;
+}
+
+.about__description_job-site:hover {
+  opacity: 0.6;
 }

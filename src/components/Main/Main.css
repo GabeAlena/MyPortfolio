@@ -1,4 +1,12 @@
 .content {
   margin-top: 34px;
-  height: calc(100vh - 34px - 60px - 60px);
+  margin-bottom: auto;
+  /*height: calc(100vh - 34px - 60px - 60px);*/
+}
+
+@media screen and (max-width: 768px){
+  .content {
+    margin-top: 24px;
+    /*height: calc(100vh - 24px - 48px - 50px);*/
+  }
 }

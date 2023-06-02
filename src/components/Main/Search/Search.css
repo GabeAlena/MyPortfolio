@@ -5,6 +5,13 @@
   margin-right: 30px;
 }
 
+@media screen and (max-width: 768px){
+  .search__section {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
 .search__form {
   margin: 0;
   padding: 0;

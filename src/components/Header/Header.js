@@ -10,7 +10,7 @@ function Header() {
             <Route exact path="/" element={
                 <>
                     <header className="header">
-                        <Link to="/" className="header__link-logo">
+                        <Link to="/" className="header__logo-link">
                             <img src={headerLogo} className="header__logo" alt="logo" />
                         </Link>    
                         <div className="header__nav">
@@ -23,7 +23,7 @@ function Header() {
             <Route path="/portfolio" element={
                 <>
                     <header className="header">
-                        <Link to="/">
+                        <Link to="/" className="header__logo-link">
                             <img  src={headerLogo} className="header__logo" alt="logo" />
                         </Link>
                         <div className="header__nav">
@@ -37,7 +37,7 @@ function Header() {
             <Route path="/account" element={
                 <>
                     <header className="header">
-                        <Link to="/">
+                        <Link to="/" className="header__logo-link">
                             <img src={headerLogo} className="header__logo" alt="logo" />
                         </Link>    
                         <div className="header__nav">
