@@ -8,7 +8,7 @@ function Search() {
                     required 
                     className="search__window"
                     type="text"
-                    placeholder="Please enter first name/family name/occupation"
+                    placeholder="&#128269; Please enter first name/family name/occupation"
                     id="search-input"
                     name="search-input"
                 />
