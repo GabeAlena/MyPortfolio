@@ -1,7 +1,8 @@
 .content {
   margin-top: 34px;
   margin-bottom: auto;
-  height: calc(100vh - 34px - 60px - 60px);
+  /*height: calc(100vh - 34px - 60px - 60px);*/
+  height: auto;
 }
 
 @media screen and (max-width: 920px){
