@@ -8,7 +8,7 @@ function About() {
             <div className="about__description-image">
                 <img className="about__image" src={catMain} alt='here you could see the working cat'></img>
                 <p className="about__description">
-                    &#8226; What can you see? Here is a site-portfolio where you can post information about you,
+                    &#128161; What can you see? Here is a site-portfolio where you can post information about you,
                     your life, education, hobbies, career, various awards, any interesting news. Or you
                     can look through the profiles because my site is not ready yet.
                 </p>
