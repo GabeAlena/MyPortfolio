@@ -12,6 +12,13 @@
   }
 }
 
+@media screen and (max-width: 340px){
+  .search__section {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 .search__form {
   margin: 0;
   padding: 0;
