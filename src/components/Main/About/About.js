@@ -14,7 +14,10 @@ function About() {
                 </p>
             </div>
             <div className="about__description_profile-link">
-                <p>&#128101; One of them you can see right</p>
+                <div className="about__description_profile-text">
+                    <div>&#128101;</div>
+                    <p>One of them you can see right</p>
+                </div>
                 <Link className="about__description_link" to="/portfolio">HERE.</Link>
             </div>
             <p className="about__description_job">

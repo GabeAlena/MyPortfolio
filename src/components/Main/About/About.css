@@ -463,3 +463,17 @@
 .about__description_job-site:hover {
   opacity: 0.6;
 }
+
+.about__description_profile-text {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+}
+
+.about__description_profile-text div {
+  padding-right: 6px;
+  padding-bottom: 4px;
+}
