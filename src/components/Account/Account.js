@@ -5,6 +5,11 @@ import editPicture from "../../images/cat-stretching.jpeg";
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
 function Account({ isLoggenIn }) {
+    function handleSubmit(e) {
+        //reset the standart form sending 
+        e.preventDefault();
+    }
+
     return (
         <section className="account">
             {  isLoggenIn ?
@@ -19,7 +24,7 @@ function Account({ isLoggenIn }) {
                                 <div className="account__photo_text">Click here to change the photo!</div>
                             </div>
                         </div>
-                        <form className="account__form">
+                        <form className="account__form" onSubmit={handleSubmit}>
                             <div className="account__items">
                                 <label className="account__label">First name:</label>
                                 <input 
@@ -102,14 +107,14 @@ function Account({ isLoggenIn }) {
                             </div>
                             <div className="account__edit-items">
                                 <div className="account__btns">
-                                    <button className="account__redact-btn"></button>
-                                    <button type="submit" className="account__accept-btn"></button>
+                                    <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                    <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                                 </div>    
                                 <img className="account__edit-picture" src={editPicture} alt="here might be a cat"></img>
                             </div>
                         </form>    
                     </div>
-                <form className="account__forms">
+                <form className="account__forms" onSubmit={handleSubmit}>
                     <div className="account__section">
                         <label className="account__label">Life:</label>
                         <textarea 
@@ -130,17 +135,17 @@ function Account({ isLoggenIn }) {
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" className="account__redact-btn"></button>
-                                <button type="submit" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
-                            <button type="reset" className="account__delete-btn"></button>
+                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
 
                         </div>
-                        <button type="button" className="account__plus-btn"></button>
+                        <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>     
                 </form>
 
-                <form className="account__forms">
+                <form className="account__forms" onSubmit={handleSubmit}>
                     <div className="account__section">
                         <label className="account__label">Education:</label>
                         <textarea 
@@ -159,17 +164,17 @@ function Account({ isLoggenIn }) {
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" className="account__redact-btn"></button>
-                                <button type="submit" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
-                            <button type="reset" className="account__delete-btn"></button>
+                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
 
                         </div>
-                        <button type="button" className="account__plus-btn"></button>
-                    </div>     
+                        <button type="button" aria-label="plus data" className="account__plus-btn"></button>
+                    </div>   
                 </form>
 
-                <form className="account__forms">
+                <form className="account__forms" onSubmit={handleSubmit}>
                     <div className="account__section">
                         <label className="account__label">Career:</label>
                         <textarea 
@@ -189,17 +194,17 @@ function Account({ isLoggenIn }) {
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" className="account__redact-btn"></button>
-                                <button type="submit" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
-                            <button type="reset" className="account__delete-btn"></button>
+                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
 
                         </div>
-                        <button type="button" className="account__plus-btn"></button>
-                    </div>     
+                        <button type="button" aria-label="plus data" className="account__plus-btn"></button>
+                    </div>      
                 </form>
 
-                <form className="account__forms">
+                <form className="account__forms" onSubmit={handleSubmit}>
                     <div className="account__section">
                         <label className="account__label">Competences:</label>
                         <textarea 
@@ -219,17 +224,17 @@ function Account({ isLoggenIn }) {
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" className="account__redact-btn"></button>
-                                <button type="submit" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
-                            <button type="reset" className="account__delete-btn"></button>
+                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
 
                         </div>
-                        <button type="button" className="account__plus-btn"></button>
-                    </div>     
+                        <button type="button" aria-label="plus data" className="account__plus-btn"></button>
+                    </div>      
                 </form>
 
-                <form className="account__forms">
+                <form className="account__forms" onSubmit={handleSubmit}>
                     <div className="account__section">
                         <label className="account__label">Hobbies:</label>
                         <textarea 
@@ -249,17 +254,17 @@ function Account({ isLoggenIn }) {
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" className="account__redact-btn"></button>
-                                <button type="submit" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
-                            <button type="reset" className="account__delete-btn"></button>
+                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
 
                         </div>
-                        <button type="button" className="account__plus-btn"></button>
-                    </div>     
+                        <button type="button" aria-label="plus data" className="account__plus-btn"></button>
+                    </div>        
                 </form>
 
-                <form className="account__forms">
+                <form className="account__forms" onSubmit={handleSubmit}>
                     <div className="account__section">
                         <label className="account__label">News:</label>
                         <textarea 
@@ -279,13 +284,13 @@ function Account({ isLoggenIn }) {
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" className="account__redact-btn"></button>
-                                <button type="submit" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
-                            <button type="reset" className="account__delete-btn"></button>
+                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
 
                         </div>
-                        <button type="button" className="account__plus-btn"></button>
+                        <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>     
                 </form>
                 </div>    
