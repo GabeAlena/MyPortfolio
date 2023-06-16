@@ -1,0 +1,283 @@
+.account {
+  margin: 27px auto 155px;
+  padding: 0;
+  max-width: 1076px;
+}
+
+.account__photo-items {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.account_photos {
+  margin-right: 84px;
+}
+
+.account__photo {
+  width: 408px;
+  height: 536px;
+  /*background-image: url(../../images/no\ photo.jpeg);
+  background-position: center;
+  background-size: 408px 460px;
+  background-repeat: no-repeat;*/
+  border: 1px solid #000000;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.account__photo:hover {
+  opacity: 0.4;
+}
+
+.account__photo_under {
+  width: 408px;
+  height: 538px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.account__photo-text_under {
+  position: relative;
+  height: 538px;
+}
+
+.account__photo_text {
+  margin-left: 100px;
+  width: 204px;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #000000;
+  position: absolute;
+  top: 220px;
+}
+
+.account__form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  height: 538px;
+  box-decoration-break: inherit;
+}
+
+.account__items {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+}
+
+.account__label {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.account__input {
+  margin: 0 auto;  
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  width: 500px;
+  height: 46px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #000000;
+  text-overflow: ellipsis;
+}
+
+.account__input::placeholder {
+  color: #e0e0e0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.account__input:focus::placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.account__error {
+  margin: 0;
+  padding: 0;
+  margin-top: 6px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+  text-decoration: none;
+  min-height: 10px;
+}
+
+.account__error:last-of-type {
+  border-bottom: 2px solid #000000;
+}
+
+.account__edit-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.account__btns {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.account__redact-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/edit\ sign.webp);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 36px 36px;
+  cursor: pointer;
+}
+
+.account__redact-btn:hover {
+  opacity: 0.6;
+}
+
+.account__accept-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/checkmark\ sign.png);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 34px 34px;
+  cursor: pointer;
+}
+
+.account__accept-btn:hover {
+  opacity: 0.6;
+}
+
+.account__edit-picture {
+  width: 54px;
+  height: 200px;
+}
+
+.account__forms {
+  margin-top: 55px;  
+  display: flex;
+  flex-direction: row;
+}
+
+.account__section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+}
+
+.account__section_input {
+  margin: 0 auto;
+  padding: 14px 20px;
+  width: 984px;
+  min-width: 984px;
+  height: 214px;
+  min-height: 214px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+  text-overflow: ellipsis;
+  background-color: transparent;
+}
+
+.account__section_input::placeholder {
+  color: #e0e0e0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  align-content: center;
+}
+
+.account__section_input:focus::placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.account__redact-accept {
+  display: flex;
+  flex-direction: row;
+}
+
+.account__delete-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/delete\ sign.png);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 28px 28px;
+  cursor: pointer;
+}
+
+.account__plus-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/add\ sign.png);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 30px 30px;
+  cursor: pointer;
+}
+
+.account__btns_forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+}

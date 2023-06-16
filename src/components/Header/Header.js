@@ -64,7 +64,7 @@ function Header({ isLoggedIn, handleOpenMenu }) {
                     </header>
                 </>
             }/>
-            {["register", "login"].map((path, index) => 
+            {["register", "login", "*"].map((path, index) => 
                 <Route path={path} key={index} element={
                     <>
                         <header className="header">
