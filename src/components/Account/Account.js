@@ -2,6 +2,7 @@ import NotFound from "../NotFound/NotFound";
 import profilePhoto from "../../images/cat in clothes.jpeg"
 import noPhoto from "../../images/no photo.jpeg";
 import editPicture from "../../images/cat-stretching.jpeg";
+import editPictureTurned from "../../images/cat-stretching-turned.jpeg";
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
 function Account({ isLoggenIn }) {
@@ -17,7 +18,7 @@ function Account({ isLoggenIn }) {
             :
                 <div className="account__logined-users">
                     <div className="account__photo-items">
-                        <div className="account_photos">
+                        <div className="account__photos">
                             <img className="account__photo" src={profilePhoto} alt="it's could be my photo"></img>
                             <div className="account__photo-text_under">
                                 <img className="account__photo_under" src={noPhoto} alt="no photo"></img>
@@ -34,11 +35,11 @@ function Account({ isLoggenIn }) {
                                     name="first-name" 
                                     type="text"
                                     minLength="2"
-                                    maxLength="10"
+                                    maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Aleksandr"
                                 />
-                                <span className="account__error">{''}</span>
+                                <span className="account__error">{'error'}</span>
                                 <label className="account__label">Family name:</label>
                                 <input 
                                     className="account__input"
@@ -47,7 +48,7 @@ function Account({ isLoggenIn }) {
                                     name="family-name" 
                                     type="text"
                                     minLength="2"
-                                    maxLength="10"
+                                    maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Bazhukov"
                                 />
@@ -73,7 +74,7 @@ function Account({ isLoggenIn }) {
                                     name="country" 
                                     type="text"
                                     minLength="2"
-                                    maxLength="20"
+                                    maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Russia"
                                 />
@@ -86,7 +87,7 @@ function Account({ isLoggenIn }) {
                                     name="occupation" 
                                     type="text"
                                     minLength="2"
-                                    maxLength="20"
+                                    maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Engineer"
                                 />
@@ -104,6 +105,22 @@ function Account({ isLoggenIn }) {
                                     placeholder="e.g.: +79876543210"
                                 />
                                 <span className="account__error">{''}</span>
+                            </div>
+                            <div className="account__photos-edit-items">
+                                <div className="account__photos account__photos_another-view">
+                                    <img className="account__photo" src={profilePhoto} alt="it's could be my photo"></img>
+                                    <div className="account__photo-text_under">
+                                        <img className="account__photo_under" src={noPhoto} alt="no photo"></img>
+                                        <div className="account__photo_text">Click here to change the photo!</div>
+                                    </div>
+                                </div>
+                                <div className="account__edit-items account__edit-items_another-view">
+                                    <div className="account__btns">
+                                        <button type="button" aria-label="redact data" className="account__redact-btn"></button>
+                                        <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                    </div>    
+                                    <img className="account__edit-picture" src={editPictureTurned} alt="here might be a turned cat"></img>
+                                </div>
                             </div>
                             <div className="account__edit-items">
                                 <div className="account__btns">
@@ -139,7 +156,6 @@ function Account({ isLoggenIn }) {
                                 <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
-
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>     
@@ -168,7 +184,6 @@ function Account({ isLoggenIn }) {
                                 <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
-
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>   
@@ -198,7 +213,6 @@ function Account({ isLoggenIn }) {
                                 <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
-
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>      
@@ -228,7 +242,6 @@ function Account({ isLoggenIn }) {
                                 <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
-
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>      
@@ -258,7 +271,6 @@ function Account({ isLoggenIn }) {
                                 <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
-
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>        
@@ -288,7 +300,6 @@ function Account({ isLoggenIn }) {
                                 <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
-
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>     
