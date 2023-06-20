@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.f58b68c6.css",
-    "main.js": "./static/js/main.6591475e.js",
+    "main.css": "./static/css/main.69df7b23.css",
+    "main.js": "./static/js/main.94667ed2.js",
     "static/js/787.1f11dfe9.chunk.js": "./static/js/787.1f11dfe9.chunk.js",
     "static/media/Inter-Black.ttf": "./static/media/Inter-Black.5bc9c4d5770576fe98af.ttf",
     "static/media/Inter-Medium.ttf": "./static/media/Inter-Medium.9cbff87dc577185b8630.ttf",
@@ -22,6 +22,7 @@
     "static/media/bulb.jpeg": "./static/media/bulb.dc5a1947eeda207485ae.jpeg",
     "static/media/cat-stretching.jpeg": "./static/media/cat-stretching.8f462a7b8543943851ad.jpeg",
     "static/media/cat login without face.png": "./static/media/cat login without face.b40bf775302debe822b4.png",
+    "static/media/cat-stretching-turned.jpeg": "./static/media/cat-stretching-turned.0ebfae9811da15da8a5b.jpeg",
     "static/media/cat register without eye.png": "./static/media/cat register without eye.66feeff0b76fc9bfd9b7.png",
     "static/media/delete sign.png": "./static/media/delete sign.a48aa313f64c865f8800.png",
     "static/media/checkmark sign.png": "./static/media/checkmark sign.a77c4408b8313d16063f.png",
@@ -30,12 +31,12 @@
     "static/media/edit sign.webp": "./static/media/edit sign.efcc5a7a6ab791eb134f.webp",
     "index.html": "./index.html",
     "static/media/cross.svg": "./static/media/cross.80dfd5bd01b8fe0a895e.svg",
-    "main.f58b68c6.css.map": "./static/css/main.f58b68c6.css.map",
-    "main.6591475e.js.map": "./static/js/main.6591475e.js.map",
+    "main.69df7b23.css.map": "./static/css/main.69df7b23.css.map",
+    "main.94667ed2.js.map": "./static/js/main.94667ed2.js.map",
     "787.1f11dfe9.chunk.js.map": "./static/js/787.1f11dfe9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f58b68c6.css",
-    "static/js/main.6591475e.js"
+    "static/css/main.69df7b23.css",
+    "static/js/main.94667ed2.js"
   ]
 }
