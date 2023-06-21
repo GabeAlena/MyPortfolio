@@ -445,6 +445,7 @@
 .about__description_job-sites {
   display: flex;
   flex-direction: column;
+  list-style-type: disc;
 }
 
 .about__description_job-site {

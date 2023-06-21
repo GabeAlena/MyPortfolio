@@ -9,6 +9,7 @@ import Register from '../Register/Register';
 import NavigationSidebar from '../Navigation/NavigationSidebar/NavigationSidebar';
 import NotFound from '../NotFound/NotFound';
 import Account from '../Account/Account';
+import Portfolio from '../Portfolio/Portfolio';
 
 function App() {
     const [sidebar, setSidebar] = useState(false);
@@ -41,6 +42,9 @@ function App() {
                 } />
                 <Route path="/account" element={
                   <Account />
+                }/>
+                <Route path="/portfolio" element={
+                  <Portfolio />
                 }/>
             </Routes>
             <Footer />
