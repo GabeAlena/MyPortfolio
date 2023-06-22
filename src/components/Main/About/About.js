@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import catMain from '../../../images/cat write with laptop.jpeg';
 
 function About() {
@@ -21,19 +21,19 @@ function About() {
                 &#128161; What else? Here you can see popular job search sites:
 
                 <ul className="about__description_job-sites">
-                    <li><a href="https://hh.kz" target="_blank" className="about__description_job-site">
+                    <li><a rel="noopener noreferrer" href="https://hh.kz" target="_blank" className="about__description_job-site">
                         HeadHunter (for post-Soviet countries)
                     </a></li>
-                    <li><a href="https://suberjob.kz" target="_blank" className="about__description_job-site">
+                    <li><a rel="noopener noreferrer" href="https://suberjob.kz" target="_blank" className="about__description_job-site">
                         SuperJob (for post-Soviet countries)
                     </a></li>
-                    <li><a href="https://layboard.com" target="_blank" className="about__description_job-site">
+                    <li><a rel="noopener noreferrer" href="https://layboard.com" target="_blank" className="about__description_job-site">
                         LAYBOARD (for all countries)
                     </a></li>
-                    <li><a href="https://indeed.com" target="_blank" className="about__description_job-site">
+                    <li><a rel="noopener noreferrer" href="https://indeed.com" target="_blank" className="about__description_job-site">
                         Indeed (for all countries)
                     </a></li>
-                    <li><a href="https://idealist.org" target="_blank" className="about__description_job-site">
+                    <li><a rel="noopener noreferrer" href="https://idealist.org" target="_blank" className="about__description_job-site">
                         idealist (for all countries)
                     </a></li>
                 </ul>

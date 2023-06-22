@@ -5,7 +5,7 @@ function Portfolio() {
     return (
         <section className="portfolio">
             <div className="portfolio__photo-info">
-                <img className="portfolio__photo" src={profilePhoto} alt="it's could be photo of this guy"></img>
+                <img className="portfolio__photo" src={profilePhoto} alt="it's could be this guy"></img>
                 <div className="portfolio__items">
                     <ul className="portfolio__main-info">
                         <li className="portfolio__info"><strong>First name: </strong>Aleksandr</li>

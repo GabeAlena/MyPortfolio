@@ -19,9 +19,9 @@ function Account({ isLoggenIn }) {
                 <div className="account__logined-users">
                     <div className="account__photo-items">
                         <div className="account__photos">
-                            <img className="account__photo" src={profilePhoto} alt="it's could be my photo"></img>
+                            <img className="account__photo" src={profilePhoto} alt="it's could be me"></img>
                             <div className="account__photo-text_under">
-                                <img className="account__photo_under" src={noPhoto} alt="no photo"></img>
+                                <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                 <div className="account__photo_text">Click here to change the photo!</div>
                             </div>
                         </div>
@@ -108,9 +108,9 @@ function Account({ isLoggenIn }) {
                             </div>
                             <div className="account__photos-edit-items">
                                 <div className="account__photos account__photos_another-view">
-                                    <img className="account__photo" src={profilePhoto} alt="it's could be my photo"></img>
+                                    <img className="account__photo" src={profilePhoto} alt="it's could be me"></img>
                                     <div className="account__photo-text_under">
-                                        <img className="account__photo_under" src={noPhoto} alt="no photo"></img>
+                                        <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                         <div className="account__photo_text">Click here to change the photo!</div>
                                     </div>
                                 </div>
