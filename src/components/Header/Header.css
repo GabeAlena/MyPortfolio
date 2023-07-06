@@ -256,3 +256,9 @@
   content: '';
   margin-top: 7px;
 }
+
+@media screen and (max-width: 581px){
+  .header__nav-button {
+    padding: 2px 3px;
+  }
+}

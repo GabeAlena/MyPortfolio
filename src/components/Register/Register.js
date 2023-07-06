@@ -55,8 +55,8 @@ function Register() {
                             className="register__input"
                             required
                             placeholder="password"
-                            id="password-register-input" 
-                            name="password" 
+                            id="password-first-register-input" 
+                            name="password first" 
                             type="password"
                             minLength="2"
                             maxLength="40"
@@ -67,8 +67,8 @@ function Register() {
                             className="register__input"
                             required
                             placeholder="password"
-                            id="password-register-input" 
-                            name="password" 
+                            id="password-second-register-input" 
+                            name="password second" 
                             type="password"
                             minLength="2"
                             maxLength="40"

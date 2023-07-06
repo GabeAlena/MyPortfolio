@@ -28,7 +28,7 @@ function Header({ isLoggedIn, handleOpenMenu }) {
                             <img  src={headerLogo} className="header__logo" alt="logo" />
                         </Link>
                         <div className="header__nav">
-                            <div className={`header__portfolio ${location.pathname === '/portfolio' ? 'header__portfolio_active' : ''}`}>User profile: Alexandr</div>
+                            <div className={`header__portfolio ${location.pathname === '/portfolio' ? 'header__portfolio_active' : ''}`}>User profile: Aleksandr</div>
                             { isLoggedIn ?
                                 <>
                                     <Link to="/account" className="header__account">Account</Link>
