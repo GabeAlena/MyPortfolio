@@ -455,7 +455,6 @@
   font-size: 32px;
   line-height: 39px;
   text-decoration: none;
-  margin-left: 30px;
   color: yellowgreen;
   cursor: pointer;
 }
@@ -478,7 +477,6 @@
   .about__description_job-site {
     font-size: 22px;
     line-height: 26px;
-    margin-left: 10px;
   }
 }
 
