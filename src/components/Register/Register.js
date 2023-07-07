@@ -3,6 +3,11 @@ import noteBulb from '../../images/bulb.jpeg';
 import registerPicture from '../../images/cat register without eye.png';
 
 function Register() {
+    function handleSubmit(e) {
+        //reset the standart form sending 
+        e.preventDefault();
+    }
+
     return ( 
         <div className="register-page">
             <div className="register-page__note">
@@ -13,7 +18,7 @@ function Register() {
                 <h1 className="register__signup">Register</h1>
                 <div className="register__form-picture">
                     <img src={registerPicture} alt="it might be a cat" className="register__picture" />
-                    <form className="register__form">
+                    <form className="register__form" onSubmit={handleSubmit}>
                         <input 
                             className="register__input"
                             required

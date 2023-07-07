@@ -3,6 +3,10 @@ import loginPicture from '../../images/cat login without face.png';
 import noteBulb from '../../images/bulb.jpeg';
 
 function Login() {
+    function handleSubmit(e) {
+        //reset the standart form sending 
+        e.preventDefault();
+    }
 
     return (
         <div className="login-page">
@@ -13,7 +17,7 @@ function Login() {
             <div className="login">
                 <h1 className="login__signin">Authorization</h1>
                 <div className="login__form-picture">
-                    <form className="login__form">
+                    <form className="login__form" onSubmit={handleSubmit}>
                         <input 
                             className="login__input"
                             required
