@@ -1,11 +1,19 @@
 /*import profilePhoto from "../../images/cat in clothes.jpeg";*/
 import portfolioPhoto from "../../images/alex.jpeg";
+import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
 function Portfolio() {
+    const location = useLocation();
+
     return (
         <section className="portfolio">
+            <div className="portfolio__page">
+                <Link to="/portfolio" className={`portfolio__page-about ${location.pathname === '/portfolio' ? 'portfolio__page-about_checked' : ''}`}>About Me</Link>
+                <div className="portfolio__page-slash">/</div>
+                <Link to="/news" className={`portfolio__page-news ${location.pathname === '/news' ? 'portfolio__page-news_checked' : ''}`}> News</Link>
+            </div>
             <div className="portfolio__photo-info">
                 <div className="portfolio__laptop">
                     <img className="portfolio__photo" src={portfolioPhoto} alt="it's could be this guy"></img>
@@ -26,8 +34,7 @@ function Portfolio() {
                             <li className="portfolio__category"><HashLink to="#education">education,</HashLink></li>
                             <li className="portfolio__category"><HashLink to="#career">career,</HashLink></li>
                             <li className="portfolio__category"><HashLink to="#competences">competences,</HashLink></li>
-                            <li className="portfolio__category"><HashLink to="#hobbies">hobbies,</HashLink></li>
-                            <li className="portfolio__category"><HashLink to="#news">news.</HashLink></li>
+                            <li className="portfolio__category"><HashLink to="#hobbies">hobbies.</HashLink></li>
                         </ul>
                         <p className="portfolio__note">Or just scroll down &#8595;</p>
                     </div>
@@ -42,8 +49,7 @@ function Portfolio() {
                             <li className="portfolio__category"><HashLink to="#education">education,</HashLink></li>
                             <li className="portfolio__category"><HashLink to="#career">career,</HashLink></li>
                             <li className="portfolio__category"><HashLink to="#competences">competences,</HashLink></li>
-                            <li className="portfolio__category"><HashLink to="#hobbies">hobbies,</HashLink></li>
-                            <li className="portfolio__category"><HashLink to="#news">news.</HashLink></li>
+                            <li className="portfolio__category"><HashLink to="#hobbies">hobbies.</HashLink></li>
                         </ul>
                         <p className="portfolio__note">Or just scroll down &#8595;</p>
                     </div>
@@ -80,8 +86,7 @@ function Portfolio() {
                             <li className="portfolio__category"><HashLink to="#education">education,</HashLink></li>
                             <li className="portfolio__category"><HashLink to="#career">career,</HashLink></li>
                             <li className="portfolio__category"><HashLink to="#competences">competences,</HashLink></li>
-                            <li className="portfolio__category"><HashLink to="#hobbies">hobbies,</HashLink></li>
-                            <li className="portfolio__category"><HashLink to="#news">news.</HashLink></li>
+                            <li className="portfolio__category"><HashLink to="#hobbies">hobbies.</HashLink></li>
                         </ul>
                         <p className="portfolio__note">Or just scroll down &#8595;</p>
                     </div>
@@ -121,12 +126,6 @@ function Portfolio() {
                     <h3 className="portfolio__label">Hobbies:</h3>
                     <div className="portfolio__section_data">
                         I love playing video games in my spare time.
-                    </div>
-                </div>
-                <div className="portfolio__section" id="news">
-                    <h3 className="portfolio__label">News:</h3>
-                    <div className="portfolio__section_data">
-                        Nothing interesting.
                     </div>
                 </div>
             </div>

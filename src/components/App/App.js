@@ -10,6 +10,7 @@ import NavigationSidebar from '../Navigation/NavigationSidebar/NavigationSidebar
 import NotFound from '../NotFound/NotFound';
 import Account from '../Account/Account';
 import Portfolio from '../Portfolio/Portfolio';
+import News from '../News/News';
 
 function App() {
     const [sidebar, setSidebar] = useState(false);
@@ -45,6 +46,9 @@ function App() {
                 }/>
                 <Route path="/portfolio" element={
                   <Portfolio />
+                }/>
+                <Route path="/news" element={
+                  <News />
                 }/>
             </Routes>
             <Footer />
