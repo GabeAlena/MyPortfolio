@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "./static/css/main.4f0f189b.css",
-    "main.js": "./static/js/main.34988b2c.js",
+    "main.css": "./static/css/main.2d325dbd.css",
+    "main.js": "./static/js/main.d492570a.js",
     "static/js/787.1f11dfe9.chunk.js": "./static/js/787.1f11dfe9.chunk.js",
     "static/media/Inter-Black.ttf": "./static/media/Inter-Black.5bc9c4d5770576fe98af.ttf",
     "static/media/Inter-Medium.ttf": "./static/media/Inter-Medium.9cbff87dc577185b8630.ttf",
     "static/media/Inter-Regular.ttf": "./static/media/Inter-Regular.96ce55e3ba0d6a209090.ttf",
+    "static/media/alex-news.JPG": "./static/media/alex-news.7063d68b9b4595485390.JPG",
     "static/media/Inter-Medium.otf": "./static/media/Inter-Medium.16eda82a3c37a6edda09.otf",
     "static/media/Inter-Black.otf": "./static/media/Inter-Black.b2a2b192860f79c0b89c.otf",
     "static/media/Inter-Black.woff": "./static/media/Inter-Black.fd37f7e052bea1018058.woff",
@@ -32,12 +33,12 @@
     "static/media/edit sign.webp": "./static/media/edit sign.efcc5a7a6ab791eb134f.webp",
     "index.html": "./index.html",
     "static/media/cross.svg": "./static/media/cross.80dfd5bd01b8fe0a895e.svg",
-    "main.4f0f189b.css.map": "./static/css/main.4f0f189b.css.map",
-    "main.34988b2c.js.map": "./static/js/main.34988b2c.js.map",
+    "main.2d325dbd.css.map": "./static/css/main.2d325dbd.css.map",
+    "main.d492570a.js.map": "./static/js/main.d492570a.js.map",
     "787.1f11dfe9.chunk.js.map": "./static/js/787.1f11dfe9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f0f189b.css",
-    "static/js/main.34988b2c.js"
+    "static/css/main.2d325dbd.css",
+    "static/js/main.d492570a.js"
   ]
 }
