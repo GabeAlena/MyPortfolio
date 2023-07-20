@@ -83,7 +83,7 @@ function News() {
             <div className="news__sections">
                 <div className="news__section" id="ansys">
                     <h3 className="news__label">Ansys:</h3>
-                    <h4 className="news__note">Note: What is this video about? I don't know actually.</h4>
+                    <h4 className="news__section-note">Note: What is this video about? I don't know actually.</h4>
                     <iframe className="news__section_video" width="700" height="525" src="https://www.youtube.com/embed/HaI1RgSVpYQ" title="Meeting Key Automotive Challenges with Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                 </div>
             </div>

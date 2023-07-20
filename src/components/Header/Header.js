@@ -21,32 +21,34 @@ function Header({ isLoggedIn, handleOpenMenu }) {
                     </header>
                 </>
             }/>
-            <Route path="/portfolio" element={
-                <>
-                    <header className="header">
-                        <Link to="/" className="header__logo-link">
-                            <img  src={headerLogo} className="header__logo" alt="logo" />
-                        </Link>
-                        <div className="header__nav">
-                            <div className={`header__portfolio ${location.pathname === '/portfolio' ? 'header__portfolio_active' : ''}`}>User profile: Aleksandr</div>
-                            { isLoggedIn ?
-                                <>
-                                    <Link to="/account" className="header__account">Account</Link>
-                                    <Link to="/" className="header__exit">Exit</Link>
-                                </>  
-                            : 
-                                <>
-                                    <Link to="/register" className="header__register">Register</Link>
-                                    <Link to="/login" className="header__login">Login</Link>
-                                </>  
-                            }
-                        </div>
-                        <button type="button" className="header__nav-button" onClick={handleOpenMenu}>
-                            <span></span>
-                        </button>
-                    </header>
-                </>
-            }/>
+            {["portfolio", "news"].map((path, index) => 
+                <Route path={path} key={index} element={
+                    <>
+                        <header className="header">
+                            <Link to="/" className="header__logo-link">
+                                <img  src={headerLogo} className="header__logo" alt="logo" />
+                            </Link>
+                            <div className="header__nav">
+                                <div className={`header__portfolio ${location.pathname === '/portfolio' ? 'header__portfolio_active' : ''} ${location.pathname === '/news' ? 'header__portfolio_active' : ''}`}>User profile: Aleksandr</div>
+                                { isLoggedIn ?
+                                    <>
+                                        <Link to="/account" className="header__account">Account</Link>
+                                        <Link to="/" className="header__exit">Exit</Link>
+                                    </>  
+                                : 
+                                    <>
+                                        <Link to="/register" className="header__register">Register</Link>
+                                        <Link to="/login" className="header__login">Login</Link>
+                                    </>  
+                                }
+                            </div>
+                            <button type="button" className="header__nav-button" onClick={handleOpenMenu}>
+                                <span></span>
+                            </button>
+                        </header>
+                    </>
+                }/>
+            )}          
             <Route path="/account" element={
                 <>
                     <header className="header">

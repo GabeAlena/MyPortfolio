@@ -180,6 +180,10 @@
   cursor: default;
 }
 
+.header__portfolio_active:hover {
+  opacity: 1;
+}
+
 .header__account {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
@@ -200,6 +204,11 @@
 .header__account_active {
   text-decoration: underline;
   font-weight: 500;
+  cursor: default;
+}
+
+.header__account_active:hover {
+  opacity: 1;
 }
 
 .header__exit {
