@@ -32,10 +32,10 @@ function App() {
                 <Route path="/" exact element={
                   <Main />
                 }/>
-                <Route path="/login" element={
+                <Route path="/SignIn" element={
                   <Login />
                 }/>
-                <Route path="/register" element={
+                <Route path="/SignUp" element={
                   <Register />
                 }/>
                 <Route path="/*" element={

@@ -47,7 +47,7 @@ function Login() {
                         <button type="submit" className="login__button">Enter</button>
                         <div className="register__in">
                             <p>Haven't registered yet?</p>
-                            <Link to="/register" className="login__register-link">Click here!</Link>
+                            <Link to="/SignUp" className="login__register-link">Click here!</Link>
                         </div>
                     </form>
                     <img src={loginPicture} alt="it might be a cat" className="login__picture" />

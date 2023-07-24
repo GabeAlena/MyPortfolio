@@ -5,8 +5,8 @@ const Navigation = () => {
     return (
         <div className="navigation">
             <nav className="navigation__nav">
-                <NavLink to="/register" className="navigation__register">Register</NavLink>
-                <NavLink to="/login" className="navigation__login">Login</NavLink>
+                <NavLink to="/SignUp" className="navigation__register">Sign Up</NavLink>
+                <NavLink to="/SignIn" className="navigation__login">Sign In</NavLink>
             </nav>
         </div>
     )

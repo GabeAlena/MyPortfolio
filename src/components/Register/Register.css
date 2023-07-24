@@ -233,7 +233,7 @@
 }
 
 .register__input:focus {
-  border-bottom: 1px solid #3456f3;
+  border-bottom: 1px solid #f4bf1e;
   outline: none;
 }
 
@@ -256,7 +256,8 @@
   padding: 0;
   margin-top: 9px;
   margin-bottom: 34px;
-  background-color: #f5f3f3;
+  /*background-color: #f5f3f3;*/
+  background-color: rgb(251, 216, 171);
   color: #000000;
   max-width: 330px;
   border-radius: 3px;

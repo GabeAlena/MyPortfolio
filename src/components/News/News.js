@@ -30,7 +30,7 @@ function News() {
                             Hi! Oh, you decided to read the news, didn't you? So, let's see what we have:
                         </p>
                         <ul className="news__categories">
-                            <li className="news__category"><HashLink to="#ansys">Ansys</HashLink></li>
+                            <li className="news__category"><HashLink to="#ansys">Ansys.</HashLink></li>
                         </ul>
                         <p className="news__note">Or just scroll down &#8595;</p>
                     </div>
@@ -41,7 +41,7 @@ function News() {
                             Hi! Oh, you decided to read the news, didn't you? So, let's see what we have:
                         </p>
                         <ul className="news__categories">
-                            <li className="news__category"><HashLink to="#ansys">Ansys</HashLink></li>
+                            <li className="news__category"><HashLink to="#ansys">Ansys.</HashLink></li>
                         </ul>
                         <p className="news__note">Or just scroll down &#8595;</p>
                     </div>
@@ -74,7 +74,7 @@ function News() {
                             Hi! Oh, you decided to read the news, didn't you? So, let's see what we have:
                         </p>
                         <ul className="news__categories">
-                            <li className="news__category"><HashLink to="#ansys">Ansys</HashLink></li>
+                            <li className="news__category"><HashLink to="#ansys">Ansys.</HashLink></li>
                         </ul>
                         <p className="news__note">Or just scroll down &#8595;</p>
                     </div>

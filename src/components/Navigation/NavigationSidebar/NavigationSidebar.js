@@ -14,8 +14,8 @@ function NavigationSidebar({ handleOpenMenu, sidebar, isLoggedIn }) {
                             <div className="navigation-sidebar__links-profile">
                                 <nav className="navigation-sidebar__links">
                                     <NavLink to="/" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/' ? 'navigation-sidebar__link_active' : ''}`}>Main page</NavLink>
-                                    <NavLink to="/register" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/register' ? 'navigation-sidebar__link_active' : ''}`}>Register</NavLink>
-                                    <NavLink to="/login" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/login' ? 'navigation-sidebar__link_active' : ''}`}>Login</NavLink>
+                                    <NavLink to="/SignUp" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/SignUp' ? 'navigation-sidebar__link_active' : ''}`}>Sign Up</NavLink>
+                                    <NavLink to="/SignIn" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/SignIn' ? 'navigation-sidebar__link_active' : ''}`}>Sign In</NavLink>
                                 </nav> 
                             </div>      
                         </div>

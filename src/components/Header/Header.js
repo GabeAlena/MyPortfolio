@@ -37,8 +37,8 @@ function Header({ isLoggedIn, handleOpenMenu }) {
                                     </>  
                                 : 
                                     <>
-                                        <Link to="/register" className="header__register">Register</Link>
-                                        <Link to="/login" className="header__login">Login</Link>
+                                        <Link to="/SignUp" className="header__register">Sign Up</Link>
+                                        <Link to="/SignIn" className="header__login">Sign In</Link>
                                     </>  
                                 }
                             </div>

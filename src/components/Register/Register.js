@@ -81,10 +81,10 @@ function Register() {
                         />
                         <span className="register__error">{''}</span>
                 
-                        <button type="submit" className="register__button">Registration</button>
+                        <button type="submit" className="register__button">Sign Up</button>
                         <div className="login__in">
                             <p>Already registered?</p>
-                            <Link to="/login" className="register__login-link">Click here!</Link>
+                            <Link to="/SignIn" className="register__login-link">Click here!</Link>
                         </div>
                     </form>
                 </div>

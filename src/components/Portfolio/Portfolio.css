@@ -220,14 +220,17 @@
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
-  line-height: 36px;
+  /*font-size: 30px;
+  line-height: 36px;*/
+  font-size: 24px;
+  line-height: 30px;
   padding-bottom: 9px;
   margin-bottom: 11px;
-  border-bottom: 3px solid #000000;
+  border-bottom: 3px solid #d88444;
+  color: #d88444;
 }
 
-@media screen and (max-width: 950px){
+/*@media screen and (max-width: 950px){
   .portfolio__label {
     font-size: 26px;
     line-height: 32px;
@@ -239,7 +242,7 @@
     font-size: 24px;
     line-height: 30px;
   }
-}
+}*/
 
 @media screen and (max-width: 775px){
   .portfolio__label {
@@ -273,13 +276,15 @@
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
-  line-height: 36px;
+  /*font-size: 30px;
+  line-height: 36px;*/
+  font-size: 22px;
+  line-height: 28px;
   text-align: justify;
   color: #000000;
 }
 
-@media screen and (max-width: 1200px){
+/*@media screen and (max-width: 1200px){
   .portfolio__section_data {
     font-size: 26px;
     line-height: 32px;
@@ -291,12 +296,12 @@
     font-size: 24px;
     line-height: 30px;
   }
-}
+}*/
 
 @media screen and (max-width: 775px){
   .portfolio__section_data {
-    font-size: 22px;
-    line-height: 28px;
+    /*font-size: 22px;
+    line-height: 28px;*/
     width: calc(100vw - 92px - 30px - 30px);
   }
 }
@@ -323,15 +328,28 @@
   }
 }
 
+.portfolio__category {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.portfolio__category:hover {
+  opacity: 0.6;
+}
+
 .portfolio__category a {
+  color: #000000;
+}
+
+/*.portfolio__category HashLink {
   text-decoration: underline;
   color: black;
   cursor: pointer;
 }
 
-.portfolio__category a::hover {
+.portfolio__category HashLink:hover {
   opacity: 0.6;
-}
+}*/
 
 .portfolio__note {
   margin: 0;
@@ -408,7 +426,6 @@
   font-weight: 500;
   font-size: 30px;
   line-height: 36px;
-  color: #000000;
   cursor: pointer;
 }
 
@@ -439,6 +456,7 @@
 
 .portfolio__page-about_checked {
   text-decoration: underline;
+  color: rgb(251, 191, 145);
   cursor: default;
 }
 
