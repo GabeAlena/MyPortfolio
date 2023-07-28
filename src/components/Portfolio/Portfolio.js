@@ -2,9 +2,11 @@
 import portfolioPhoto from "../../images/alex.jpeg";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import instagram from '../../images/instagram.png';
+import telegram from '../../images/telegram.jpeg';
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
-function Portfolio() {
+function Portfolio(props) {
     const location = useLocation();
 
     return (
@@ -16,7 +18,7 @@ function Portfolio() {
             </div>
             <div className="portfolio__photo-info">
                 <div className="portfolio__laptop">
-                    <img className="portfolio__photo" src={portfolioPhoto} alt="it's could be this guy"></img>
+                    <img className="portfolio__photo" src={portfolioPhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     <div className="portfolio__items">
                         <ul className="portfolio__main-info">
                             <li className="portfolio__info"><strong>First name: </strong>Aleksandr</li>
@@ -25,6 +27,14 @@ function Portfolio() {
                             <li className="portfolio__info"><strong>Country: </strong>Russia</li>
                             <li className="portfolio__info"><strong>Occupation: </strong>Engineer</li>
                             <li className="portfolio__info"><strong>Mob: </strong>+79876543210</li>
+                            <li className="portfolio__info"><strong>Social media: </strong>
+                                <a href="https://instagram.com/aleksandr_bazhukov_" target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href="https://t.me/aleksandr_bazhukov" target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </li>
                         </ul>
                         <p className="portfolio__welcoming">
                             Hi! Welcome to my page. My name is 'Aleksandr Bazhukov'. Here you can read info about me:
@@ -61,13 +71,21 @@ function Portfolio() {
                             <li className="portfolio__info"><strong>Country: </strong>Russia</li>
                             <li className="portfolio__info"><strong>Occupation: </strong>Engineer</li>
                             <li className="portfolio__info"><strong>Mob: </strong>+79876543210</li>
+                            <li className="portfolio__info"><strong>Social media: </strong>
+                                <a href="https://instagram.com/aleksandr_bazhukov_" target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href="https://t.me/aleksandr_bazhukov" target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </li>
                         </ul>
-                        <img className="portfolio__photo" src={portfolioPhoto} alt="it's could be this guy"></img>
+                        <img className="portfolio__photo" src={portfolioPhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     </div>
                 </div>
                 <div className="portfolio__small-screen">
                     <div className="portfolio__items">
-                        <img className="portfolio__photo" src={portfolioPhoto} alt="it's could be this guy"></img>
+                        <img className="portfolio__photo" src={portfolioPhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                         <ul className="portfolio__main-info">
                             <li className="portfolio__info"><strong>First name: </strong>Aleksandr</li>
                             <li className="portfolio__info"><strong>Family name: </strong>Bazhukov</li>
@@ -75,6 +93,14 @@ function Portfolio() {
                             <li className="portfolio__info"><strong>Country: </strong>Russia</li>
                             <li className="portfolio__info"><strong>Occupation: </strong>Engineer</li>
                             <li className="portfolio__info"><strong>Mob: </strong>+79876543210</li>
+                            <li className="portfolio__info"><strong>Social media: </strong>
+                                <a href="https://instagram.com/aleksandr_bazhukov_" target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href="https://t.me/aleksandr_bazhukov" target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div className="portfolio__items portfolio__items_small-screen">

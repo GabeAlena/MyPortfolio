@@ -5,7 +5,7 @@ import editPicture from "../../images/cat-stretching.jpeg";
 import editPictureTurned from "../../images/cat-stretching-turned.jpeg";
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
-function Account({ isLoggenIn }) {
+function Account(props) {
     function handleSubmit(e) {
         //reset the standart form sending 
         e.preventDefault();
@@ -13,13 +13,13 @@ function Account({ isLoggenIn }) {
 
     return (
         <section className="account">
-            {  isLoggenIn ?
+            {  props.isLoggenIn ?
                 <NotFound />
             :
                 <div className="account__logined-users">
                     <div className="account__photo-items">
                         <div className="account__photos">
-                            <img className="account__photo" src={profilePhoto} alt="it's could be me"></img>
+                            <img className="account__photo" src={profilePhoto} alt="it's could be me" onUserPhotoClick={props.onUserPhotoClick}></img>
                             <div className="account__photo-text_under">
                                 <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                 <div className="account__photo_text">Click here to change the photo!</div>

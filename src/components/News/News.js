@@ -2,9 +2,11 @@
 import newsPhoto from "../../images/alex-news.JPG";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import instagram from '../../images/instagram.png';
+import telegram from '../../images/telegram.jpeg';
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
-function News() {
+function News(props) {
     const location = useLocation();
 
     return (
@@ -16,7 +18,7 @@ function News() {
             </div>
             <div className="news__photo-info">
                 <div className="news__laptop">
-                    <img className="news__photo" src={newsPhoto} alt="it's could be this guy"></img>
+                    <img className="news__photo" src={newsPhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     <div className="news__items">
                         <ul className="news__main-info">
                             <li className="news__info"><strong>First name: </strong>Aleksandr</li>
@@ -25,6 +27,14 @@ function News() {
                             <li className="news__info"><strong>Country: </strong>Russia</li>
                             <li className="news__info"><strong>Occupation: </strong>Engineer</li>
                             <li className="news__info"><strong>Mob: </strong>+79876543210</li>
+                            <li className="news__info"><strong>Social media: </strong>
+                                <a href="https://instagram.com/aleksandr_bazhukov_" target="blank" className="news__info-link">
+                                    <img className="news__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href="https://t.me/aleksandr_bazhukov" target="blank" className="news__info-link">
+                                    <img className="news__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </li>
                         </ul>
                         <p className="news__welcoming">
                             Hi! Oh, you decided to read the news, didn't you? So, let's see what we have:
@@ -53,13 +63,21 @@ function News() {
                             <li className="news__info"><strong>Country: </strong>Russia</li>
                             <li className="news__info"><strong>Occupation: </strong>Engineer</li>
                             <li className="news__info"><strong>Mob: </strong>+79876543210</li>
+                            <li className="news__info"><strong>Social media: </strong>
+                                <a href="https://instagram.com/aleksandr_bazhukov_" target="blank" className="news__info-link">
+                                    <img className="news__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href="https://t.me/aleksandr_bazhukov" target="blank" className="news__info-link">
+                                    <img className="news__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </li>
                         </ul>
-                        <img className="news__photo" src={newsPhoto} alt="it's could be this guy"></img>
+                        <img className="news__photo" src={newsPhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     </div>
                 </div>
                 <div className="news__small-screen">
                     <div className="news__items">
-                        <img className="news__photo" src={newsPhoto} alt="it's could be this guy"></img>
+                        <img className="news__photo" src={newsPhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                         <ul className="news__main-info">
                             <li className="news__info"><strong>First name: </strong>Aleksandr</li>
                             <li className="news__info"><strong>Family name: </strong>Bazhukov</li>
@@ -67,6 +85,14 @@ function News() {
                             <li className="news__info"><strong>Country: </strong>Russia</li>
                             <li className="news__info"><strong>Occupation: </strong>Engineer</li>
                             <li className="news__info"><strong>Mob: </strong>+79876543210</li>
+                            <li className="news__info"><strong>Social media: </strong>
+                                <a href="https://instagram.com/aleksandr_bazhukov_" target="blank" className="news__info-link">
+                                    <img className="news__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href="https://t.me/aleksandr_bazhukov" target="blank" className="news__info-link">
+                                    <img className="news__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div className="news__items news__items_small-screen">
