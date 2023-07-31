@@ -86,7 +86,7 @@
   border: 2px solid #000000;
   border-radius: 10px;
   color: #000000;
-  background-color: #c2feac;
+  background-color: rgba(246, 143, 8, .7);
   cursor: pointer;
   font-weight: 500;
 }

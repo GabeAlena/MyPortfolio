@@ -38,14 +38,15 @@ function NavigationSidebar({ handleOpenMenu, sidebar, isLoggedIn }) {
                     </section>
                 </>
             }/>
-            <Route path="/portfolio" element={
+            {["portfolio", "news"].map((path, index) =>
+            <Route path={path} key={index} element={
                 <>
                     <section className={`navigation-sidebar ${sidebar ? 'sidebar_active' : ''}`}>
                         <div className="navigation-sidebar__nav">
                             <button className="navigation-sidebar__btn-exit" onClick={handleOpenMenu}></button>
                             <div className="navigation-sidebar__links-profile">
                                 <nav className="navigation-sidebar__links">
-                                    <div onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/portfolio' ? 'navigation-sidebar__link_active' : ''}`}>User profile: Aleksandr</div>
+                                    <div onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/portfolio' ? 'navigation-sidebar__link_active' : ''} ${location.pathname === '/news' ? 'navigation-sidebar__link_active' : ''}`}>User profile: Aleksandr</div>
                                     { isLoggedIn ?
                                         <>
                                             <NavLink to="/account" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/account' ? 'navigation-sidebar__link_active' : ''}`}>Account</NavLink>
@@ -53,8 +54,8 @@ function NavigationSidebar({ handleOpenMenu, sidebar, isLoggedIn }) {
                                         </>
                                     :
                                         <>
-                                            <NavLink to="/register" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/register' ? 'navigation-sidebar__link_active' : ''}`}>Register</NavLink>
-                                            <NavLink to="/login" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/login' ? 'navigation-sidebar__link_active' : ''}`}>Login</NavLink>
+                                            <NavLink to="/SignUp" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/SignUp' ? 'navigation-sidebar__link_active' : ''}`}>Sign Up</NavLink>
+                                            <NavLink to="/SignIn" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/SignIn' ? 'navigation-sidebar__link_active' : ''}`}>Sign In</NavLink>
                                         </>
                                     }
                                 </nav> 
@@ -63,6 +64,7 @@ function NavigationSidebar({ handleOpenMenu, sidebar, isLoggedIn }) {
                     </section>
                 </>
             }/>
+            )}
         </Routes>
     )
 }

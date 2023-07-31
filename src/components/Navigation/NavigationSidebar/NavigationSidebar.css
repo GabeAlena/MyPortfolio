@@ -103,6 +103,12 @@
 
 .navigation-sidebar__link_active {
   border-bottom: 2px solid;
+  font-weight: 500;
+  cursor: default;
+}
+
+.navigation-sidebar__link_active:hover {
+  opacity: 1;
 }
 
 .navigation-sidebar__profile {
@@ -150,10 +156,16 @@
 
 .navigation-sidebar__links {
   margin-top: 40px;
-  margin-bottom: 40px;
+  /*margin-bottom: 40px;*/
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media screen and (max-width: 630px){
+  .navigation-sidebar__links {
+    margin-bottom: 40px;
+  }
 }
 
 .navigation-sidebar__links-profile {

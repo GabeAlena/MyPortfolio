@@ -332,11 +332,18 @@
 }
 
 .news__category:hover {
-  opacity: 0.6;
+  opacity: 0.8;
+  color: #d88444;
 }
 
 .news__category a {
   color: #000000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.news__category a:hover {
+  color: #d88444;
 }
 
 .news__note {
