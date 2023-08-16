@@ -19,7 +19,7 @@ function ImagePopup(props) {
               <img 
                  className="popup__image-modal" 
                  src={location.pathname === '/portfolio' ? portfolioPhoto : newsPhoto} 
-                 alt="Big user photo" 
+                 alt="Big user" 
               />
               <h2 className="popup__title-modal">Yes, it's my big photo.</h2>
             </div>

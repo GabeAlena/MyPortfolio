@@ -3,13 +3,61 @@ import profilePhoto from "../../images/cat in clothes.jpeg"
 import noPhoto from "../../images/no photo.jpeg";
 import editPicture from "../../images/cat-stretching.jpeg";
 import editPictureTurned from "../../images/cat-stretching-turned.jpeg";
+import React from "react";
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
 function Account(props) {
     function handleSubmit(e) {
-        //reset the standart form sending 
-        e.preventDefault();
+      //reset the standart form sending 
+      e.preventDefault();
     }
+  
+    //надо разобраться как поместить атрибут на все инпуты, а ни на один.
+    //как убрать слушатель по клику если инпуты стали активны
+    /*document.addEventListener('click', function handleClick(evt) {
+        const hasClass = evt.target.classList.contains('account__redact-btn_about');
+        console.log(hasClass);
+
+        if (hasClass) {
+            console.log('click on edit button');
+            document.getElementById('family-name-account-input').disabled = false;
+        } else {
+            console.log('it is not edit button');
+        }
+    })*/
+
+    React.useEffect(() => {
+        function handleClick(evt) {
+            const hasClass = evt.target.classList.contains('account__redact-btn_about');
+            console.log(hasClass);
+
+            if (hasClass) {
+                console.log('click on edit button');
+                document.getElementById('first-name-account-input').disabled = false;
+                document.getElementById('family-name-account-input').disabled = false;
+                document.getElementById('date-of-birth-account-input').disabled = false;
+                document.getElementById('country-account-input').disabled = false;
+                document.getElementById('occupation-account-input').disabled = false;
+                document.getElementById('phone-number-account-input').disabled = false;
+
+
+                const acceptButtonMain = document.getElementById('main-view-account-accept-btn');
+                acceptButtonMain.classList.add('account__accept-btn_active');
+                const acceptButtonTurned = document.getElementById('turned-view-account-accept-btn');
+                acceptButtonTurned.classList.add('account__accept-btn_active');
+
+                document.removeEventListener('click', handleClick);
+            } else {
+                console.log('it is not edit button');            
+            }
+        }
+
+        document.addEventListener('click', handleClick);
+
+        /*return () => {
+            document.removeEventListener('click', handleClick);
+        };*/
+    })
 
     return (
         <section className="account">
@@ -19,7 +67,7 @@ function Account(props) {
                 <div className="account__logined-users">
                     <div className="account__photo-items">
                         <div className="account__photos">
-                            <img className="account__photo" src={profilePhoto} alt="it's could be me" onUserPhotoClick={props.onUserPhotoClick}></img>
+                            <img className="account__photo" src={profilePhoto} alt="it's could be me" onClick={props.onEditAvatar}></img>
                             <div className="account__photo-text_under">
                                 <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                 <div className="account__photo_text">Click here to change the photo!</div>
@@ -38,6 +86,7 @@ function Account(props) {
                                     maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Aleksandr"
+                                    disabled={true}
                                 />
                                 <span className="account__error">{'error'}</span>
                                 <label className="account__label">Family name:</label>
@@ -51,6 +100,7 @@ function Account(props) {
                                     maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Bazhukov"
+                                    disabled={true}
                                 />
                                 <span className="account__error">{''}</span>
                                 <label className="account__label">Date of birth:</label>
@@ -64,6 +114,7 @@ function Account(props) {
                                     maxLength="20"
                                     //value={""}
                                     placeholder="e.g.: 23 June 1993"
+                                    disabled={true}
                                 />
                                 <span className="account__error">{''}</span>
                                 <label className="account__label">Country:</label>
@@ -77,6 +128,7 @@ function Account(props) {
                                     maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Russia"
+                                    disabled={true}
                                 />
                                 <span className="account__error">{''}</span>
                                 <label className="account__label">Occupation:</label>
@@ -90,6 +142,7 @@ function Account(props) {
                                     maxLength="18"
                                     //value={""}
                                     placeholder="e.g.: Engineer"
+                                    disabled={true}
                                 />
                                 <span className="account__error">{''}</span>
                                 <label className="account__label">Phone number:</label>
@@ -103,6 +156,7 @@ function Account(props) {
                                     maxLength="20"
                                     //value={""}
                                     placeholder="e.g.: +79876543210"
+                                    disabled={true}
                                 />
                                 <span className="account__error">{''}</span>
                             </div>
@@ -116,16 +170,16 @@ function Account(props) {
                                 </div>
                                 <div className="account__edit-items account__edit-items_another-view">
                                     <div className="account__btns">
-                                        <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                        <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                        <button type="button" aria-label="redact data" className="account__redact-btn account__redact-btn_about"></button>
+                                        <button type="submit" aria-label="accept data" id="turned-view-account-accept-btn" className="account__accept-btn"></button>
                                     </div>    
                                     <img className="account__edit-picture" src={editPictureTurned} alt="here might be a turned cat"></img>
                                 </div>
                             </div>
                             <div className="account__edit-items">
                                 <div className="account__btns">
-                                    <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                    <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                    <button type="button" aria-label="redact data" className="account__redact-btn account__redact-btn_about"></button>
+                                    <button type="submit" aria-label="accept data" id="main-view-account-accept-btn" className="account__accept-btn"></button>
                                 </div>    
                                 <img className="account__edit-picture" src={editPicture} alt="here might be a cat"></img>
                             </div>

@@ -12,12 +12,14 @@ import Account from '../Account/Account';
 import Portfolio from '../Portfolio/Portfolio';
 import News from '../News/News';
 import ImagePopup from '../ImagePopup/ImagePopup';
+import EditAvatarPopup from '../EditAvatarPopup/EditAvatarPopup';
 
 function App() {
     const [sidebar, setSidebar] = useState(false);
     const [userPhoto, setUserPhoto] = useState(false);
+    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
-    const isOpen = userPhoto;
+    const isOpen = isEditAvatarPopupOpen || userPhoto;
 
     const handleOpenMenu = () => {
         setSidebar(!sidebar);
@@ -56,9 +58,15 @@ function App() {
       }
     }, [isOpen]);
 
+    function handleEditAvatarClick() {
+      console.log('click on photo to change it');
+      setIsEditAvatarPopupOpen(true);
+    };
+
     function closeAllPopups() {
+      setIsEditAvatarPopupOpen(false);
       setUserPhoto(false);
-      console.log('close user photo');
+      console.log('close popup');
     };
 
     return (
@@ -86,7 +94,9 @@ function App() {
                   <NotFound />
                 } />
                 <Route path="/account" element={
-                  <Account />
+                  <Account 
+                    onEditAvatar={handleEditAvatarClick}
+                  />
                 }/>
                 <Route path="/portfolio" element={
                   <Portfolio 
@@ -105,6 +115,11 @@ function App() {
             <ImagePopup 
               isOpen={userPhoto}
               onClose={closeAllPopups}
+            />
+
+            <EditAvatarPopup
+              isOpen={isEditAvatarPopupOpen}
+              onClose={closeAllPopups} 
             />
         </div>  
     );

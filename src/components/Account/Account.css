@@ -682,7 +682,7 @@
   background-color: inherit;
   background-size: 34px 34px;
   cursor: pointer;
-  background-color: #00FA9A;
+  background-color: rgb(222, 222, 222);
 }
 
 @media screen and (max-width: 850px){
@@ -703,6 +703,10 @@
 
 .account__accept-btn:hover {
   opacity: 0.6;
+}
+
+.account__accept-btn_active {
+  background-color: #00FA9A;
 }
 
 .account__edit-picture {
