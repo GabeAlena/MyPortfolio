@@ -36,7 +36,7 @@
   .popup__title {
     font-size: 18px;
     line-height: 22px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 }
 
@@ -101,6 +101,13 @@
   border-radius: 5px;
   object-fit: cover;
   min-height: 27px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 568px){
+  .popup__label {
+    width: 238px;
+  }
 }
 
 .popup__input-error {
@@ -119,4 +126,10 @@
   white-space: nowrap;
   overflow: hidden;
   width: 358px;
+}
+
+@media screen and (max-width: 568px){
+  .popup__input-error {
+    width: 238px;
+  }
 }

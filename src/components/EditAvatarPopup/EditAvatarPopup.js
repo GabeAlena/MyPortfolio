@@ -12,7 +12,7 @@ function PopupWithForm(props) {
                 <button 
                     className="popup__close-btn" 
                     type="button" 
-                    aria-label="закрыть форму" 
+                    aria-label="close popup" 
                     onClick={props.onClose}
                 >
                 </button>
@@ -26,7 +26,7 @@ function PopupWithForm(props) {
                         <label 
                             className="popup__label" 
                             id="avatar-label"
-                            for="avatar-input"
+                            htmlFor="avatar-input"
                         >+</label>
                         <input
                             className="popup__input popup__input_avatar"

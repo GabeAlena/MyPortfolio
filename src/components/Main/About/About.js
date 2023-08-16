@@ -17,7 +17,7 @@ function About() {
                 <p>&#128101; One of them you can see right</p>
                 <Link className="about__description_link" to="/portfolio">HERE.</Link>
             </div>
-            <p className="about__description_job">
+            <div className="about__description_job">
                 &#128161; What else? Here you can see popular job search sites:
 
                 <ul className="about__description_job-sites">
@@ -37,7 +37,7 @@ function About() {
                         idealist (for all countries)
                     </a></li>
                 </ul>
-            </p>
+            </div>
             <p className="about__note">If you want to ask why this site is so gray, the answer is - because.</p>
         </section>
     )

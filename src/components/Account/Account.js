@@ -46,17 +46,16 @@ function Account(props) {
                 const acceptButtonTurned = document.getElementById('turned-view-account-accept-btn');
                 acceptButtonTurned.classList.add('account__accept-btn_active');
 
-                document.removeEventListener('click', handleClick);
+                document.getElementById('main-view-account-redact-btn').removeEventListener('click', handleClick);
+                document.getElementById('turned-view-account-redact-btn').removeEventListener('click', handleClick);
+                
             } else {
                 console.log('it is not edit button');            
             }
         }
 
-        document.addEventListener('click', handleClick);
-
-        /*return () => {
-            document.removeEventListener('click', handleClick);
-        };*/
+        document.getElementById('main-view-account-redact-btn').addEventListener('click', handleClick);
+        document.getElementById('turned-view-account-redact-btn').addEventListener('click', handleClick);
     })
 
     return (
@@ -162,7 +161,7 @@ function Account(props) {
                             </div>
                             <div className="account__photos-edit-items">
                                 <div className="account__photos account__photos_another-view">
-                                    <img className="account__photo" src={profilePhoto} alt="it's could be me"></img>
+                                    <img className="account__photo" src={profilePhoto} alt="it's could be me" onClick={props.onEditAvatar}></img>
                                     <div className="account__photo-text_under">
                                         <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                         <div className="account__photo_text">Click here to change the photo!</div>
@@ -170,7 +169,7 @@ function Account(props) {
                                 </div>
                                 <div className="account__edit-items account__edit-items_another-view">
                                     <div className="account__btns">
-                                        <button type="button" aria-label="redact data" className="account__redact-btn account__redact-btn_about"></button>
+                                        <button type="button" aria-label="redact data" id="turned-view-account-redact-btn" className="account__redact-btn account__redact-btn_about"></button>
                                         <button type="submit" aria-label="accept data" id="turned-view-account-accept-btn" className="account__accept-btn"></button>
                                     </div>    
                                     <img className="account__edit-picture" src={editPictureTurned} alt="here might be a turned cat"></img>
@@ -178,7 +177,7 @@ function Account(props) {
                             </div>
                             <div className="account__edit-items">
                                 <div className="account__btns">
-                                    <button type="button" aria-label="redact data" className="account__redact-btn account__redact-btn_about"></button>
+                                    <button type="button" aria-label="redact data" id="main-view-account-redact-btn" className="account__redact-btn account__redact-btn_about"></button>
                                     <button type="submit" aria-label="accept data" id="main-view-account-accept-btn" className="account__accept-btn"></button>
                                 </div>    
                                 <img className="account__edit-picture" src={editPicture} alt="here might be a cat"></img>
