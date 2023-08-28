@@ -11,23 +11,9 @@ function Account(props) {
       //reset the standart form sending 
       e.preventDefault();
     }
-  
-    //надо разобраться как поместить атрибут на все инпуты, а ни на один.
-    //как убрать слушатель по клику если инпуты стали активны
-    /*document.addEventListener('click', function handleClick(evt) {
-        const hasClass = evt.target.classList.contains('account__redact-btn_about');
-        console.log(hasClass);
-
-        if (hasClass) {
-            console.log('click on edit button');
-            document.getElementById('family-name-account-input').disabled = false;
-        } else {
-            console.log('it is not edit button');
-        }
-    })*/
 
     React.useEffect(() => {
-        function handleClick(evt) {
+        function handleClickRedactBtnAccountForm(evt) {
             const hasClass = evt.target.classList.contains('account__redact-btn_about');
             console.log(hasClass);
 
@@ -40,23 +26,123 @@ function Account(props) {
                 document.getElementById('occupation-account-input').disabled = false;
                 document.getElementById('phone-number-account-input').disabled = false;
 
-
                 const acceptButtonMain = document.getElementById('main-view-account-accept-btn');
                 acceptButtonMain.classList.add('account__accept-btn_active');
                 const acceptButtonTurned = document.getElementById('turned-view-account-accept-btn');
                 acceptButtonTurned.classList.add('account__accept-btn_active');
 
-                document.getElementById('main-view-account-redact-btn').removeEventListener('click', handleClick);
-                document.getElementById('turned-view-account-redact-btn').removeEventListener('click', handleClick);
+                document.getElementById('main-view-account-redact-btn').removeEventListener('click', handleClickRedactBtnAccountForm);
+                document.getElementById('turned-view-account-redact-btn').removeEventListener('click', handleClickRedactBtnAccountForm);
                 
             } else {
                 console.log('it is not edit button');            
             }
         }
+        document.getElementById('main-view-account-redact-btn').addEventListener('click', handleClickRedactBtnAccountForm);
+        document.getElementById('turned-view-account-redact-btn').addEventListener('click', handleClickRedactBtnAccountForm);
+    });
 
-        document.getElementById('main-view-account-redact-btn').addEventListener('click', handleClick);
-        document.getElementById('turned-view-account-redact-btn').addEventListener('click', handleClick);
-    })
+    React.useEffect(() => {
+        function handleClickSectionLifeBtn(evt) {
+            const hasClass = evt.target.classList.contains('account__redact-btn_section-life');
+            console.log(hasClass);
+            if (hasClass) {
+                console.log('click on edit button in life section');
+                document.getElementById('life-account-section-input').disabled = false;
+                const acceptButtonInSectionLife = document.getElementById('account-accept-btn-section-life');
+                acceptButtonInSectionLife.classList.add('account__accept-btn_active');
+                document.getElementById('account-redact-btn-section-life').removeEventListener('click', handleClickSectionLifeBtn);
+            } else {
+                console.log('it is not edit button in life section');            
+            }
+        }
+        document.getElementById('account-redact-btn-section-life').addEventListener('click', handleClickSectionLifeBtn);
+    });
+
+    React.useEffect(() => {
+        function handleClickSectionEducationBtn(evt) {
+            const hasClass = evt.target.classList.contains('account__redact-btn_section-education');
+            console.log(hasClass);
+            if (hasClass) {
+                console.log('click on edit button in education section');
+                document.getElementById('education-account-section-input').disabled = false;
+                const acceptButtonInSectionEducation = document.getElementById('account-accept-btn-section-education');
+                acceptButtonInSectionEducation.classList.add('account__accept-btn_active');
+                document.getElementById('account-redact-btn-section-education').removeEventListener('click', handleClickSectionEducationBtn);
+            } else {
+                console.log('it is not edit button in education section');            
+            }
+        }
+        document.getElementById('account-redact-btn-section-education').addEventListener('click', handleClickSectionEducationBtn);
+    });
+
+    React.useEffect(() => {
+        function handleClickSectionCareerBtn(evt) {
+            const hasClass = evt.target.classList.contains('account__redact-btn_section-career');
+            console.log(hasClass);
+            if (hasClass) {
+                console.log('click on edit button in career section');
+                document.getElementById('career-account-section-input').disabled = false;
+                const acceptButtonInSectionCareer = document.getElementById('account-accept-btn-section-career');
+                acceptButtonInSectionCareer.classList.add('account__accept-btn_active');
+                document.getElementById('account-redact-btn-section-career').removeEventListener('click', handleClickSectionCareerBtn);
+            } else {
+                console.log('it is not edit button in career section');            
+            }
+        }
+        document.getElementById('account-redact-btn-section-career').addEventListener('click', handleClickSectionCareerBtn);
+    });
+
+    React.useEffect(() => {
+        function handleClickSectionCompetencesBtn(evt) {
+            const hasClass = evt.target.classList.contains('account__redact-btn_section-competences');
+            console.log(hasClass);
+            if (hasClass) {
+                console.log('click on edit button in competences section');
+                document.getElementById('competences-account-section-input').disabled = false;
+                const acceptButtonInSectionCompetences = document.getElementById('account-accept-btn-section-competences');
+                acceptButtonInSectionCompetences.classList.add('account__accept-btn_active');
+                document.getElementById('account-redact-btn-section-competences').removeEventListener('click', handleClickSectionCompetencesBtn);
+            } else {
+                console.log('it is not edit button in competences section');            
+            }
+        }
+        document.getElementById('account-redact-btn-section-competences').addEventListener('click', handleClickSectionCompetencesBtn);
+    });
+
+    React.useEffect(() => {
+        function handleClickSectionHobbiesBtn(evt) {
+            const hasClass = evt.target.classList.contains('account__redact-btn_section-hobbies');
+            console.log(hasClass);
+            if (hasClass) {
+                console.log('click on edit button in hobbies section');
+                document.getElementById('hobbies-account-section-input').disabled = false;
+                const acceptButtonInSectionHobbies = document.getElementById('account-accept-btn-section-hobbies');
+                acceptButtonInSectionHobbies.classList.add('account__accept-btn_active');
+                document.getElementById('account-redact-btn-section-hobbies').removeEventListener('click', handleClickSectionHobbiesBtn);
+            } else {
+                console.log('it is not edit button in hobbies section');            
+            }
+        }
+        document.getElementById('account-redact-btn-section-hobbies').addEventListener('click', handleClickSectionHobbiesBtn);
+    });
+
+    React.useEffect(() => {
+        function handleClickSectionNewsBtn(evt) {
+            const hasClass = evt.target.classList.contains('account__redact-btn_section-news');
+            console.log(hasClass);
+            if (hasClass) {
+                console.log('click on edit button in news section');
+                document.getElementById('news-account-section-input').disabled = false;
+                const acceptButtonInSectionNews = document.getElementById('account-accept-btn-section-news');
+                acceptButtonInSectionNews.classList.add('account__accept-btn_active');
+                document.getElementById('account-redact-btn-section-news').removeEventListener('click', handleClickSectionNewsBtn);
+            } else {
+                console.log('it is not edit button in news section');            
+            }
+        }
+        document.getElementById('account-redact-btn-section-news').addEventListener('click', handleClickSectionNewsBtn);
+    });
 
     return (
         <section className="account">
@@ -200,13 +286,14 @@ function Account(props) {
                             When your text will be written, please click *checkmark*. Also you can click *delete* 
                             and remove all what you have written here, but I hope it's unnecessary.
                             If you want to write more, please click *plus* ->"
+                            disabled={true}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" id="account-redact-btn-section-life" className="account__redact-btn account__redact-btn_section-life"></button>
+                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-life" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
                         </div>
@@ -228,13 +315,14 @@ function Account(props) {
                             //value={""}
                             placeholder="University? Faculty? Degrees? An additional education?
                             If you want to write more, please click *plus* ->"
+                            disabled={true}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" id="account-redact-btn-section-education" className="account__redact-btn account__redact-btn_section-education"></button>
+                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-education" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
                         </div>
@@ -257,13 +345,14 @@ function Account(props) {
                             placeholder="Please describe places of your past jobs and your duties.
                             You can use one block for one work.
                             If you want to write more, please click *plus* ->"
+                            disabled={true}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" id="account-redact-btn-section-career" className="account__redact-btn account__redact-btn_section-career"></button>
+                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-career" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
                         </div>
@@ -286,13 +375,14 @@ function Account(props) {
                             placeholder="Please describe uour skills. Which computer programs can you operate?
                             What programming languages do you know? Foreign languages?
                             If you want to write more, please click *plus* ->"
+                            disabled={true}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" id="account-redact-btn-section-competences" className="account__redact-btn account__redact-btn_section-competences"></button>
+                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-competences" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
                         </div>
@@ -315,13 +405,14 @@ function Account(props) {
                             placeholder="What do you like to do in your spare time? For example:
                             computer games, programming, painting, cooking, sewing and etc.
                             If you want to write more, please click *plus* ->"
+                            disabled={true}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" id="account-redact-btn-section-hobbies" className="account__redact-btn account__redact-btn_section-hobbies"></button>
+                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-hobbies" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
                         </div>
@@ -344,13 +435,14 @@ function Account(props) {
                             placeholder="Here you can add any interesting news in your field of interests.
                             For example: new invention, program and etc.
                             If you want to write more, please click *plus* ->"
+                            disabled={true}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" className="account__redact-btn"></button>
-                                <button type="submit" aria-label="accept data" className="account__accept-btn"></button>
+                                <button type="button" aria-label="redact data" id="account-redact-btn-section-news" className="account__redact-btn account__redact-btn_section-news"></button>
+                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-news" className="account__accept-btn"></button>
                             </div>
                             <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
                         </div>

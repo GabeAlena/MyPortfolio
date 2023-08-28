@@ -681,7 +681,6 @@
   background-position: center;
   background-color: inherit;
   background-size: 34px 34px;
-  cursor: pointer;
   background-color: rgb(222, 222, 222);
 }
 
@@ -701,12 +700,13 @@
   }
 }
 
-.account__accept-btn:hover {
-  opacity: 0.6;
+.account__accept-btn_active {
+  cursor: pointer;
+  background-color: #00FA9A;
 }
 
-.account__accept-btn_active {
-  background-color: #00FA9A;
+.account__accept-btn_active:hover {
+  opacity: 0.6;
 }
 
 .account__edit-picture {
@@ -888,6 +888,10 @@
   }
 }
 
+.account__delete-btn:hover {
+  opacity: 0.6;
+}
+
 .account__plus-btn {
   padding: 0;
   margin: 0;
@@ -918,6 +922,10 @@
     height: 38px;
     background-size: 26px 26px;
   }
+}
+
+.account__plus-btn:hover {
+  opacity: 0.6;
 }
 
 .account__btns_forms {
