@@ -1,0 +1,1 @@
+Well, I made a lot of work and just want to save this mess. Why? Because I want user to add profile photo from his computer. And now he just can add it as a link, because this is the only way I know, but I think it's not convenient.
