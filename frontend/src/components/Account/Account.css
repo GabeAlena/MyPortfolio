@@ -1,0 +1,1090 @@
+.account {
+  margin: 27px auto 155px;
+  padding: 0;
+  max-width: 1076px;
+}
+
+@media screen and (max-width: 1200px){
+  .account {
+    /*max-width: 980px;*/
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account {
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account {
+    margin-right: 25px;
+    margin-left: 25px;
+  }
+}
+
+.account__photo-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /*align-content: center;
+  align-items: center;
+  align-self: center;*/
+}
+
+@media screen and (max-width: 700px){
+  .account__photo-items {
+    flex-direction: row-reverse;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__photo-items {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.account__photos {
+  margin-right: 84px;
+}
+
+@media screen and (max-width: 1070px){
+  .account__photos {
+    margin-right: 64px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__photos {
+    margin-right: 44px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__photos {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__photos {
+    display: block;
+    margin-right: 0px;
+    margin-bottom: 30px;
+  }
+}
+
+.account__photos_another-view {
+    display: none;
+}
+
+@media screen and (max-width: 700px){
+  .account__photos_another-view {
+    display: block;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__photos_another-view {
+    display: none;
+  }
+}
+
+.account__photo {
+  width: 408px;
+  height: 536px;
+  border: 1px solid #000000;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1070px){
+  .account__photo {
+    width: 380px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__photo {
+    height: 478px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__photo {
+    width: 340px;
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__photo {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__photo {
+    width: 220px;
+    height: 270px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__photo {
+    width: 160px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__photo {
+    width: 220px;
+    height: 270px;
+  }
+}
+
+.account__photo:hover {
+  opacity: 0.4;
+}
+
+.account__photo_under {
+  width: 408px;
+  height: 538px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1070px){
+  .account__photo_under {
+    width: 380px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__photo_under {
+    height: 480px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__photo_under {
+    width: 340px;
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__photo_under {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__photo_under {
+    width: 220px;
+    height: 270px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__photo_under {
+    width: 160px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__photo_under {
+    width: 220px;
+    height: 270px;
+  }
+}
+
+.account__photo-text_under {
+  position: relative;
+  height: 538px;
+}
+
+@media screen and (max-width: 1070px){
+  .account__photo-text_under {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__photo-text_under {
+    height: 480px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__photo-text_under {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__photo-text_under {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__photo-text_under {
+    height: 270px;  
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__photo-text_under {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__photo-text_under {
+    height: 270px;
+  }
+}
+
+.account__photo_text {
+  margin-left: 100px;
+  width: 204px;
+  text-align: center;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #000000;
+  position: absolute;
+  top: 220px;
+}
+
+@media screen and (max-width: 1070px){
+  .account__photo_text {
+    margin-left: 88px;
+    top: 205px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__photo_text {
+    top: 195px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__photo_text {
+    margin-left: 68px;
+    top: 180px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__photo_text {
+    width: 180px;
+    font-size: 22px;
+    line-height: 26px;
+    margin-left: 60px;
+    top: 161px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__photo_text {
+    width: 120px;
+    font-size: 18px;
+    line-height: 20px;
+    margin-left: 35px;
+    top: 95px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__photo_text {
+    margin-left: 20px;
+    top: 70px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__photo_text {
+    width: 120px;
+    margin-left: 50px;
+    top: 110px;
+  }
+}
+
+.account__form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  height: 538px;
+  border-right: #d88444 2px solid;
+}
+
+@media screen and (max-width: 1070px){
+  .account__form {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__form {
+    height: 480px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__form {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__form {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__form {
+    height: 450px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__form {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .account__form {
+    height: 340px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__form {
+    height: 380px;
+  }
+}
+
+.account__items {
+  display: flex;
+  flex-direction: column;
+  margin-right: 28px;
+}
+
+@media screen and (max-width: 850px){
+  .account__items {
+    margin-right: 18px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__items {
+    margin-right: 0px;
+  }
+}
+
+.account__label {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #d88444;
+}
+
+@media screen and (max-width: 990px){
+  .account__label {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__label {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__label {
+    font-size: 16px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .account__label {
+    font-size: 14px;
+    line-height: 16px;  
+  }
+}
+
+.account__input {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  max-width: 500px;
+  width: calc(100vw - 410px - 84px - 56px - 28px - 40px - 40px);
+  height: 31px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1070px){
+  .account__input {
+    height: 25.5px;
+    width: calc(100vw - 382px - 64px - 56px - 28px - 40px - 40px);
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__input {
+    font-size: 16px;
+    line-height: 22px;
+    height: 25px;
+    width: calc(100vw - 382px - 44px - 56px - 28px - 40px - 40px);
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__input {
+    font-size: 14px;
+    line-height: 20px;
+    height: 23px;
+    width: calc(100vw - 342px - 44px - 56px - 18px - 40px - 40px);
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__input {
+    line-height: 19px;
+    height: 19px;
+    width: calc(100vw - 300px - 44px - 56px - 18px - 40px - 40px);
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__input {
+    font-size: 15px;
+    line-height: 20px;
+    height: 25px;
+    width: calc(100vw - 220px - 24px - 40px - 40px);
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__input {
+    height: 19px;
+    width: calc(100vw - 160px - 24px - 25px - 25px);
+  }
+}
+
+@media screen and (max-width: 480px){
+  .account__input {
+    font-size: 11px;
+    line-height: 14px;
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__input {
+    width: calc(100vw - 24px - 44px - 25px - 25px);
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+  }
+}
+
+.account__input::placeholder {
+  color: #e0e0e0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.account__input:focus::placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.account__error {
+  margin: 0;
+  padding: 0;
+  margin-top: 6px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+  text-decoration: none;
+  min-height: 10px;
+}
+
+@media screen and (max-width: 480px){
+  .account__error {
+    margin-top: 4px;
+  }
+}
+
+.account__error:last-of-type {
+  border-bottom: 2px solid #d88444;
+}
+
+.account__edit-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 700px){
+  .account__edit-items {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__edit-items {
+    display: flex;
+  }
+}
+
+.account__edit-items_another-view {
+   display: none;
+}
+
+@media screen and (max-width: 700px){
+  .account__edit-items_another-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__edit-items_another-view {
+    display: none;
+  }
+}
+
+.account__btns {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 990px){
+  .account__btns {
+    margin-top: 22px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__btns {
+    margin-top: 20px;
+    margin-left: 14px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__btns {
+    margin-top: 18px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__btns {
+    flex-direction: row;
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__btns {
+    flex-direction: column;
+    margin-top: 16px;
+    margin-left: 6px;
+  }
+}
+
+.account__redact-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/edit\ sign.webp);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 36px 36px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 850px){
+  .account__redact-btn {
+    width: 40px;
+    height: 40px;
+    background-size: 32px 32px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__redact-btn {
+    width: 38px;
+    height: 38px;
+    background-size: 30px 30px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__redact-btn {
+    width: 38px;
+    height: 38px;
+    background-size: 30px 30px;
+  }
+}
+
+.account__redact-btn:hover {
+  opacity: 0.6;
+}
+
+.account__accept-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/checkmark\ sign.png);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 34px 34px;
+  background-color: rgb(222, 222, 222);
+  display: none;
+}
+
+@media screen and (max-width: 850px){
+  .account__accept-btn {
+    width: 40px;
+    height: 40px;
+    background-size: 30px 30px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__accept-btn {
+    width: 38px;
+    height: 38px;
+    background-size: 28px 28px;
+  }
+}
+
+.account__accept-btn_active {
+  display: block;
+  cursor: pointer;
+  background-color: #00FA9A;
+}
+
+.account__accept-btn_active:hover {
+  opacity: 0.6;
+}
+
+.account__edit-picture {
+  width: 54px;
+  height: 200px;
+  transform: scale(-1,1);
+}
+
+@media screen and (max-width: 700px){
+  .account__edit-picture {
+    height: 40px;
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__edit-picture {
+    height: 38px;
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__edit-picture {
+    height: 200px;
+    width: 44px;
+  }
+}
+
+.account__forms {
+  margin-top: 55px;  
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 420px){
+  .account__forms {
+    flex-direction: column;
+  }
+}
+
+.account__section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+}
+
+.account__section_input {
+  margin: 0 auto;
+  padding: 14px 20px;
+  /*width: 984px;*/
+  max-width: 984px;
+  width: calc(100vw - 92px - 40px - 40px);
+  height: 214px;
+  min-height: 214px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+  text-overflow: ellipsis;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1070px){
+  .account__section_input {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__section_input {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__section_input {
+    font-size: 22px;
+    line-height: 28px;
+    width: calc(100vw - 80px - 40px - 40px);
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__section_input {
+    font-size: 20px;
+    line-height: 24px;
+    height: 190px;
+    min-height: 190px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__section_input {
+    font-size: 18px;
+    line-height: 22px;
+    height: 190px;
+    min-height: 190px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__section_input {
+    padding: 10px 12px;
+    height: 220px;
+    min-height: 220px;
+    width: calc(100vw - 76px - 25px - 25px);
+  }
+}
+
+@media screen and (max-width: 480px){
+  .account__section_input {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__section_input {
+    width: 100%;
+  }
+}
+
+.account__section_input::placeholder {
+  color: #e0e0e0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  align-content: center;
+}
+
+.account__section_input:focus::placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.account__redact-accept {
+  display: flex;
+  flex-direction: row;
+}
+
+.account__delete-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/delete\ sign.png);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 28px 28px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 850px){
+  .account__delete-btn {
+    width: 40px;
+    height: 40px;
+    background-size: 24px 24px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__delete-btn {
+    width: 38px;
+    height: 38px;
+    background-size: 22px 22px;
+  }
+}
+
+.account__delete-btn:hover {
+  opacity: 0.6;
+}
+
+.account__plus-btn {
+  padding: 0;
+  margin: 0;
+  background-image: url(../../images/add\ sign.png);
+  width: 46px;
+  height: 46px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  background-size: 30px 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 850px){
+  .account__plus-btn {
+    width: 40px;
+    height: 40px;
+    background-size: 28px 28px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__plus-btn {
+    width: 38px;
+    height: 38px;
+    background-size: 26px 26px;
+  }
+}
+
+.account__plus-btn:hover {
+  opacity: 0.6;
+}
+
+.account__btns_forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 990px){
+  .account__btns_forms {
+    margin-top: 22px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__btns_forms {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__btns_forms {
+    margin-top: 18px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .account__btns_forms {
+    margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__btns_forms {
+    flex-direction: row;
+    margin-top: 5px;
+  }
+}
+
+.account__photos-edit-items {
+  display: none;
+}
+
+@media screen and (max-width: 700px){
+  .account__photos-edit-items {
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__redact-accept-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.account__input-img {
+  display: flex;
+  flex-direction: row;
+}
+
+.account__input-img:last-of-type {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 480px){
+  .account__input-img:last-of-type {
+    margin-top: 6px;
+  }
+}
+
+.account__input_social {
+  width: 100%;
+}
+
+.account__img {
+  margin: 0;
+  padding-right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+@media screen and (max-width: 1170px){
+  .account__img {
+    height: 25.5px;
+    width: 25.5px;
+  }
+}
+
+@media screen and (max-width: 990px){
+  .account__img {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+@media screen and (max-width: 850px){
+  .account__img {
+    height: 23px;
+    width: 23px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .account__img {
+    height: 19px;
+    width: 19px;
+  }
+}
+
+@media screen and (max-width: 700px){
+  .account__img {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+@media screen and (max-width: 560px){
+  .account__img {
+    height: 19px;
+    width: 19px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .account__img {
+    height: 15px;
+    width: 15px;
+  }
+}
+
+@media screen and (max-width: 420px){
+  .account__img {
+    height: 20px;
+    width: 20px;
+  }
+}
