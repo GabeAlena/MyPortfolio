@@ -20,23 +20,23 @@ userRouter.get('/:userId', celebrate({
   }),
 }), getUser);
 
-userRouter.patch('/me', updateUser);
-/*userRouter.patch('/me', celebrate({
+userRouter.patch('/me', celebrate({
   body: Joi.object().keys({
     firstName: Joi.string().min(2).max(18),
     familyName: Joi.string().min(2).max(18),
     dateOfBirth: Joi.string().min(2).max(20),
     country: Joi.string().min(2).max(18),
     occupation: Joi.string().min(2).max(18),
-    phoneNumber: Joi.string().min(2).max(20),
-    socialMediaInst: Joi.string().url(),
+    phoneNumber: Joi.string().min(2).max(20)/*.pattern(/^\+\d{1,3}\d{9}$/)*/,
+    socialMediaInst: Joi.string(),
     socialMediaTeleg: Joi.string(),
+    //avatar: Joi.string().optional(),
   }),
-}), updateUser);*/
+}), updateUser);
 
 userRouter.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().pattern(/^https?:\/\/(www\.)?[a-zA-Z\0-9]+\.[\w\d\-._~:/?#[\]@!$&'()*+,;=]{2,}#?/),
+    avatar: Joi.string(),
   }),
 }), updateAvatarUser);
 //userRouter.patch('/me/avatar', updateAvatarUser);

@@ -17,6 +17,7 @@ class Api {
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
+            //credentials: 'include',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -29,6 +30,7 @@ class Api {
     editProfileData(data) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
+            //credentials: 'include',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -42,6 +44,7 @@ class Api {
                 phoneNumber: data.phoneNumber,
                 socialMediaInst: data.socialMediaInst,
                 socialMediaTeleg: data.socialMediaTeleg,
+                //avatar: data.avatar,
             })
         })
         .then(this._checkResponse)
@@ -51,6 +54,7 @@ class Api {
     patchAvatar(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
+            //credentials: 'include',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -62,73 +66,7 @@ class Api {
         .then(this._checkResponse)
     };
 
-
     //добавление/редактироваие данных о карьере, семье, новостях - ?
-
-
-    //загрузка карточек с сервера
-    getInitialCards() {
-        return fetch(`${this._baseUrl}/cards`, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(this._checkResponse)
-    };
-
-    //добавление новой карточки
-    postNewCard(name, link) {
-        return fetch(`${this._baseUrl}/cards`, {
-            method: 'POST',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name,
-                link
-            })
-        })
-        .then(this._checkResponse)
-    };
-
-    //отображение количества лайков карточки
-    getLikes() {
-        return fetch(`${this._baseUrl}/cards`, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(this._checkResponse)
-    };
-
-    //удаление карточки
-    deleteCard(id) {
-        return fetch(`${this._baseUrl}/cards/${id}`, {
-            method: 'DELETE',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(this._checkResponse)
-    };
-
-    //постановка и снятие лайка
-    changeLikeCardStatus(id, isLiked) {
-        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-            method: `${isLiked ? 'PUT' : 'DELETE'}`,
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(this._checkResponse)
-    };
 }
 
 export const api = new Api({

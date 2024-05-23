@@ -1,12 +1,15 @@
 import React from 'react';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 function EditAvatarPopup(props) {
     const avatarRef = useRef();
+    const [avatarPath, setAvatarPath] = useState('');
 
+    //console.log(avatarPath);
     useEffect(() => {
         if (props.isOpen) {
             avatarRef.current.value = '';
+            setAvatarPath('');
         }
     }, [props.isOpen]);
 
@@ -14,8 +17,30 @@ function EditAvatarPopup(props) {
         e.preventDefault();
 
         props.onUpdateAvatar({
-            avatar: avatarRef.current.value
+            //avatar: avatarRef.current.value
+            avatar: avatarPath
         });
+    };
+
+    function loadFile(event) {
+        const reader = new FileReader();
+        /*const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                setAvatarPath(e.target.result);
+            }
+            reader.readAsDataURL(file);
+        }*/
+        reader.onload = function() {
+            setAvatarPath(reader.result); // Сохраняем base64 в состояние
+            const output = document.getElementById('output');
+            const url = URL.createObjectURL(event.target.files[0]); // Создаем URL из данных файла
+            output.src = url; // Устанавливаем URL как src изображения
+            //console.log(url);
+        }
+        reader.readAsDataURL(event.target.files[0]);
     }
 
     return(
@@ -38,15 +63,17 @@ function EditAvatarPopup(props) {
                         <input
                             className="popup__input popup__input_type_avatar"
                             required
-                            type="url"
+                            type="file"
                             id="avatar-input"
                             placeholder="Avatar link" 
                             name="avatar"
                             ref={avatarRef}
+                            accept="image/*"
+                            onChange={loadFile}
                         />
                         <span className="avatar-input-error popup__input-error"></span>
                     </fieldset>
-                    <button type="submit" onSubmit={handleSubmit} className="popup__button">Update</button>
+                    <button type="submit" className="popup__button">Update</button>
                 </form>
             </div>
         </div>

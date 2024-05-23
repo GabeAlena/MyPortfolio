@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { ValidationForm } from '../../utils/validationForm';
-import NotFound from "../NotFound/NotFound";
+//import NotFound from "../NotFound/NotFound";
 import profilePhoto from "../../images/cat in clothes.jpeg"
 import noPhoto from "../../images/no photo.jpeg";
 import editPicture from "../../images/cat-stretching.jpeg";
@@ -13,6 +13,8 @@ import telegram from '../../images/telegram.jpeg';
 function Account(props) {
     const currentUser = useContext(CurrentUserContext);
     const { values, handleChange, isValid, setValues, errors } = ValidationForm();
+
+    //console.log(currentUser);
     
     function handleSubmit(e) {
         e.preventDefault();
@@ -21,7 +23,7 @@ function Account(props) {
 
     useEffect(() => {
         setValues(currentUser);
-    }, [currentUser]);
+    }, [setValues, currentUser]);
 
     useEffect(() => {
         function handleClickRedactBtnAccountForm(evt) {
@@ -193,7 +195,15 @@ function Account(props) {
                 <div className="account__logined-users">
                     <div className="account__photo-items">
                         <div className="account__photos">
-                            <img className="account__photo" /*src={profilePhoto}*/ src={currentUser.avatar}  alt="it's could be me" onClick={props.onEditAvatar}></img>
+                            <img 
+                                className="account__photo" 
+                                target="_blank" 
+                                id="output" 
+                                type="image/*" 
+                                src={props.avatarPath || currentUser.avatar || [profilePhoto]} 
+                                alt="it's could be me" 
+                                onClick={props.onEditAvatar}
+                            />
                             <div className="account__photo-text_under">
                                 <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                 <div className="account__photo_text">Click here to change the photo!</div>

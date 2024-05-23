@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useContext } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import portfolioPhoto from "../../images/alex.jpeg";
+//import portfolioPhoto from "../../images/alex.jpeg";
 import instagram from '../../images/instagram.png';
 import telegram from '../../images/telegram.jpeg';
 
@@ -12,6 +12,7 @@ import telegram from '../../images/telegram.jpeg';
 function Portfolio(props) {
     const location = useLocation();
     const currentUser = useContext(CurrentUserContext);
+    console.log(currentUser.avatar);
 
     return (
         <section className="portfolio">

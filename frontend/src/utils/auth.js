@@ -12,6 +12,7 @@ export const register = (data) => {
     console.log(data);
     return fetch(`${BASE_URL}/SignUp`, {
         method: 'POST',
+        //credentials: 'include',
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json"
@@ -31,6 +32,7 @@ export const authorization = (data) => {
     console.log(data);
     return fetch(`${BASE_URL}/SignIn`, {
         method: 'POST',
+        //credentials: 'include',
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json"
@@ -46,6 +48,7 @@ export const authorization = (data) => {
 export const checkToken = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
+        //credentials: 'include',
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json",

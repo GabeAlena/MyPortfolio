@@ -56,7 +56,7 @@ const userSchema = new mongoose.Schema({
     default: 'engineer',
   },
   phoneNumber: {
-    type: Number,
+    type: String,
     required: [false, 'Необязательное поле для заполнения'],
     minlength: [2, 'Минимальная длина 2 символа'],
     maxlength: [20, 'Максимальная длина 20 символов'],
@@ -66,25 +66,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
     /*minlength: [0, 'Минимальная длина 0 символов'],
-    maxlength: [40, 'Максимальная длина 40 символов'],*/
-    default: 'https://instagram.com',
+    maxlength: [40, 'Максимальная длина 40 символов'],
+    default: 'https://instagram.com',*/
   },
   socialMediaTeleg: {
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
     /*minlength: [0, 'Минимальная длина 0 символов'],
     maxlength: [40, 'Максимальная длина 40 символов'],*/
-    default: 'https://t.me/',
+    /*default: 'https://t.me/',*/
   },
   avatar: {
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
     default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
-    /*get: v => `${root}/${v}`,*/
-    /*validate: {
-      validator: validator.isURL,
-      message: 'Ссылка некорректна',
-    },*/
   },
 });
 

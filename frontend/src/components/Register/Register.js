@@ -36,7 +36,7 @@ function Register({ onRegister }) {
                             type="text"
                             minLength="2"
                             maxLength="40"
-                            value={values.firstName}
+                            value={values.firstName || ''}
                             onChange={handleChange}
                         />
                         <span className="register__error">{errors.firstName || ''}</span>
@@ -62,8 +62,8 @@ function Register({ onRegister }) {
                             type="email"
                             minLength="2"
                             maxLength="40"
-                            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"
-                            value={values.email}
+                            //pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"
+                            value={values.email || ''}
                             onChange={handleChange}
                         />
                         <span className="register__error">{errors.email || ''}</span>
@@ -76,7 +76,7 @@ function Register({ onRegister }) {
                             type="password"
                             minLength="5"
                             maxLength="10"
-                            value={values.password}
+                            value={values.password || ''}
                             onChange={handleChange}
                         />
                         <span className="register__error">{errors.password || ''}</span>
@@ -89,7 +89,7 @@ function Register({ onRegister }) {
                             type="password"
                             minLength="5"
                             maxLength="10"
-                            value={values.confirmPassword}
+                            value={values.confirmPassword || ''}
                             onChange={handleChange}
                         />
                         <span className="register__error">{errors.confirmPassword || ''}</span>

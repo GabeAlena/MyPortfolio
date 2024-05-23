@@ -74,6 +74,7 @@ function App() {
     // и позволяет выкидывать пользователя при невалидном токине
     useEffect(() => {
       const token = localStorage.getItem('token');
+      console.log(token);
       if (!token) {
         if (location.pathname === "/account") {
           console.log(token);
@@ -129,6 +130,7 @@ function App() {
         .then((res) => {
           if (res.token) { 
             localStorage.setItem('token', res.token);
+            console.log('token');
             setCurrentUser(res);
             setIsLoggedIn(true);
             setUserFirstName(res.firstName);

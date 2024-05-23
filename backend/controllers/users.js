@@ -12,7 +12,7 @@ const Unauthorized = require('../errors/Unauthorized');
 /* создание пользователя */
 module.exports.createUser = (req, res, next) => {
   const {
-    firstName, familyName, email, password, avatar, dateOfBirth, country, occupation, phoneNumber
+    firstName, familyName, email, password, avatar, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg
   } = req.body;
 
   User.findOne({ email })
@@ -51,9 +51,11 @@ module.exports.createUser = (req, res, next) => {
       });
     })
     .catch((err) => {
+      console.error('Error occurred while creating user:', err);
       if (err.name === 'ValidationError') {
-        return next(new ValidationError(`Данные некорректны ${err.message}`));
+        return next(new ValidationError(`Данные некорректны: ${err.message}`));
       }
+      // Обработка остальных ошибок
       return next(err);
     })
     .catch(next);
@@ -162,6 +164,8 @@ module.exports.getUser = (req, res, next) => {
 
 /* обновляет профиль */
 module.exports.updateUser = (req, res, next) => {
+  console.log('Request body:', req.body); // Add this line for debugging
+
   const { 
     firstName, 
     familyName, 
@@ -171,17 +175,19 @@ module.exports.updateUser = (req, res, next) => {
     phoneNumber, 
     socialMediaInst, 
     socialMediaTeleg,
+    //avatar,
   } = req.body;
   const userId = req.user._id;
 
   User.findByIdAndUpdate(
     userId, 
-    { firstName, familyName, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg }, 
+    { firstName, familyName, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg/*, avatar*/ }, 
     { new: true, runValidators: true })
     .then((user) => {
       if (!user) {
         throw new NotFound('Запрашиваемый пользователь не найден');
       }
+      console.log('User updated:', user); // Add this line for debugging
       console.log(userId);
       return res.send({
         firstName: user.firstName,
@@ -194,7 +200,7 @@ module.exports.updateUser = (req, res, next) => {
         socialMediaTeleg: user.socialMediaTeleg,
         email: user.email,
         _id: user._id,
-        avatar: user.avatar,
+        //avatar: user.avatar,
       });
     })
     .catch((err) => {
@@ -211,24 +217,31 @@ module.exports.updateAvatarUser = (req, res, next) => {
   const { avatar } = req.body;
   const userId = req.user._id;
 
-  User.findByIdAndUpdate(userId, { avatar }, { new: true, runValidators: true })
-    .then((user) => {
-      if (!user) {
-        throw new NotFound('Запрашиваемый пользователь не найден');
-      }
-      return res.send({
-        firstName: user.firstName,
-        familyName: user.familyName,
-        dateOfBirth: user.dateOfBirth,
-        country: user.country,
-        occupation: user.occupation,
-        phoneNumber: user.phoneNumber,
-        socialMediaInst: user.socialMediaInst,
-        socialMediaTeleg: user.socialMediaTeleg,
-        avatar: user.avatar,
-        _id: user._id,
-        email: user.email,
-      });
+  if (!avatar) {
+    return res.status(400).send({ message: 'No image provided' });
+  }
+
+  const avatarUrl = '../uploads/avatars/${file.filename}';
+
+  // Обновление пути к аватару в базе данных
+    User.findByIdAndUpdate(userId, { avatar: avatarUrl }, { new: true, runValidators: true })
+      .then((user) => {
+        if (!user) {
+          throw new NotFound('Запрашиваемый пользователь не найден');
+        }
+        return res.send({
+          firstName: user.firstName,
+          familyName: user.familyName,
+          dateOfBirth: user.dateOfBirth,
+          country: user.country,
+          occupation: user.occupation,
+          phoneNumber: user.phoneNumber,
+          socialMediaInst: user.socialMediaInst,
+          socialMediaTeleg: user.socialMediaTeleg,
+          avatar: user.avatar,
+          _id: user._id,
+          email: user.email,
+        });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

@@ -10,7 +10,7 @@ function Main() {
             <section className="about">
                 <About />
             </section>
-        </main>    
+        </main>
     )
 }
 

@@ -11,34 +11,70 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { serverError } = require('./errors/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { NotFound } = require('./errors/NotFound');
 
 const { PORT = 3002 } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/myportfoliodb', { useNewUrlParser: true, family: 4 });
+mongoose.connect('mongodb://localhost:27017/myportfoliodb', { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+  family: 4 
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch((err) => {
+  console.error('Error connecting to MongoDB:', err);
+});
 
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+/*app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));*/
+
 app.use(cors({
-  credentials: true
+  origin: [
+    'https://localhost:3000', // Разрешаем запросы с этого домена
+    'http://localhost:3000',
+    'https://localhost:3001',
+    'http://localhost:3001',
+    'https://localhost:3002',
+    'http://localhost:3002',
+    'https://web.postman.co',
+  ],
+  credentials: true,
 }));
 
 app.use(requestLogger);
 
+/*app.options('*', (req, res) => {
+  res.set('Access-Control-Allow-Origin', req.headers.origin);
+  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.set('Access-Control-Allow-Credentials', 'true');
+  res.status(200).send();
+});*/
+
 app.post('/SignUp', celebrate({
   body: Joi.object().keys({
-    firstName: Joi.string().min(2).max(18),
-    familyName: Joi.string().min(2).max(18),
-    avatar: Joi.string().pattern(/^https?:\/\/(www\.)?[a-zA-Z\0-9]+\.[\w\d\-._~:/?#[\]@!$&'()*+,;=]{2,}#?/),
+    firstName: Joi.string().min(2).max(18).optional(),
+    familyName: Joi.string().min(2).max(18).optional(),
+    avatar: Joi.string().optional(),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }).unknown(true),
-}), createUser);
+}/*, {
+  abortEarly: false,
+  allowUnknown: true,
+  maxBytes: 50 * 1024 * 1024,
+}*/), createUser);
 app.post('/SignIn', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
+    //email: Joi.string().required().email().pattern(new RegExp('^[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z]{2,}$')),
     password: Joi.string().required(),
   }).unknown(true),
 }), login);

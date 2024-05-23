@@ -29,8 +29,8 @@ function Login({ onLogin }) {
                             type="email"
                             minLength="2"
                             maxLength="40"
-                            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"
-                            value={values.email}                    
+                            //pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"
+                            value={values.email || ''}                    
                             placeholder="example@gmail.com"  
                             onChange={handleChange}         
                         />
@@ -43,7 +43,7 @@ function Login({ onLogin }) {
                             type="password"
                             minLength="5"
                             maxLength="10"
-                            value={values.password} 
+                            value={values.password || ''} 
                             placeholder="password"
                             onChange={handleChange}
                         />
