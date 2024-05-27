@@ -1,5 +1,7 @@
 const userRouter = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
+const multer = require('multer');
+const path = require('path');
 
 const {
   login,
@@ -30,15 +32,33 @@ userRouter.patch('/me', celebrate({
     phoneNumber: Joi.string().min(2).max(20)/*.pattern(/^\+\d{1,3}\d{9}$/)*/,
     socialMediaInst: Joi.string(),
     socialMediaTeleg: Joi.string(),
-    //avatar: Joi.string().optional(),
+    avatar: Joi.string(),
   }),
 }), updateUser);
 
-userRouter.patch('/me/avatar', celebrate({
+// Настройка хранилища для загрузки файлов
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    //путь относительно корня проекта
+    cb(null, path.join(__dirname, '../uploads/avatars'));
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${req.user._id}-${Date.now()}-${file.originalname}`);
+  }
+});
+
+const upload = multer({ storage });
+
+userRouter.patch('/me/avatar', upload.single('avatar'), celebrate({
   body: Joi.object().keys({
     avatar: Joi.string(),
   }),
 }), updateAvatarUser);
-//userRouter.patch('/me/avatar', updateAvatarUser);
+
+/*userRouter.patch('/me/avatar', celebrate({
+  body: Joi.object().keys({
+    avatar: Joi.string(),
+  }),
+}), updateAvatarUser);*/
 
 module.exports = userRouter;

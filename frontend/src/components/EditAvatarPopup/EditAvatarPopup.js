@@ -1,29 +1,43 @@
 import React from 'react';
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect/*, useState*/ } from 'react';
 
 function EditAvatarPopup(props) {
     const avatarRef = useRef();
-    const [avatarPath, setAvatarPath] = useState('');
+    //const [avatarPath, setAvatarPath] = useState('');
 
     //console.log(avatarPath);
     useEffect(() => {
         if (props.isOpen) {
             avatarRef.current.value = '';
-            setAvatarPath('');
+            //setAvatarPath('');
         }
     }, [props.isOpen]);
+
+    /*useEffect(() => {
+        if (props.currentUser && props.currentUser.avatar) {
+            const baseUrl = 'http://localhost:3003';
+            setAvatarPath(`${baseUrl}${props.currentUser.avatar}`);
+            console.log(avatarPath);
+        }
+    }, [props.currentUser]);*/
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        props.onUpdateAvatar({
+        const fileInput = avatarRef.current.files[0];
+        console.log(fileInput);
+        /*const formData = new FormData();
+        formData.append('avatar', fileInput);*/
+
+        props.onUpdateAvatar(fileInput);
+        //props.onUpdateAvatar({
             //avatar: avatarRef.current.value
-            avatar: avatarPath
-        });
+            //avatar: avatarPath
+        //});
     };
 
-    function loadFile(event) {
-        const reader = new FileReader();
+    //function loadFile(event) {
+        //const reader = new FileReader();
         /*const file = event.target.files[0];
 
         if (file) {
@@ -33,15 +47,16 @@ function EditAvatarPopup(props) {
             }
             reader.readAsDataURL(file);
         }*/
-        reader.onload = function() {
-            setAvatarPath(reader.result); // Сохраняем base64 в состояние
-            const output = document.getElementById('output');
-            const url = URL.createObjectURL(event.target.files[0]); // Создаем URL из данных файла
-            output.src = url; // Устанавливаем URL как src изображения
+        //reader.onload = function() {
+            //setAvatarPath(reader.result); // Сохраняем base64 в состояние
+            //const output = document.getElementById('output');
+            //output.src = reader.result;
+            //const url = URL.createObjectURL(event.target.files[0]); // Создаем URL из данных файла
+            //output.src = url; // Устанавливаем URL как src изображения
             //console.log(url);
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
+        //}
+        //reader.readAsDataURL(event.target.files[0]);
+    //}
 
     return(
         <div className={`popup popup_avatar ${props.isOpen ? 'popup_active' : ''}`}>
@@ -69,7 +84,7 @@ function EditAvatarPopup(props) {
                             name="avatar"
                             ref={avatarRef}
                             accept="image/*"
-                            onChange={loadFile}
+                            //onChange={loadFile}
                         />
                         <span className="avatar-input-error popup__input-error"></span>
                     </fieldset>

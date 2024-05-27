@@ -14,7 +14,8 @@ function Account(props) {
     const currentUser = useContext(CurrentUserContext);
     const { values, handleChange, isValid, setValues, errors } = ValidationForm();
 
-    //console.log(currentUser);
+    console.log(currentUser);
+    //console.log(avatarPath);
     
     function handleSubmit(e) {
         e.preventDefault();
@@ -200,7 +201,7 @@ function Account(props) {
                                 target="_blank" 
                                 id="output" 
                                 type="image/*" 
-                                src={props.avatarPath || currentUser.avatar || [profilePhoto]} 
+                                src={/*props.avatarPath || */currentUser.avatar || profilePhoto}
                                 alt="it's could be me" 
                                 onClick={props.onEditAvatar}
                             />
@@ -335,7 +336,7 @@ function Account(props) {
                             </div>
                             <div className="account__photos-edit-items">
                                 <div className="account__photos account__photos_another-view">
-                                    <img className="account__photo" src={profilePhoto} alt="it's could be me" onClick={props.onEditAvatar}></img>
+                                    <img className="account__photo" src={/*props.avatarPath || */currentUser.avatar || profilePhoto} alt="it's could be me" onClick={props.onEditAvatar}></img>
                                     <div className="account__photo-text_under">
                                         <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                         <div className="account__photo_text">Click here to change the photo!</div>

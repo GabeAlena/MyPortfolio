@@ -160,7 +160,30 @@ function App() {
         })
     };
 
-    function handleUpdateAvatar(data) {
+    function handleUpdateAvatar(avatarFile) {
+      const formData = new FormData();
+      formData.append('avatar', avatarFile);
+      console.log(formData);
+      console.log(avatarFile);
+      console.log(formData.get('avatar'));
+      console.log(formData);
+
+      api.patchAvatar(formData)
+        .then((newAvatar) => {
+          console.log(formData);
+          setCurrentUser(newAvatar);
+          console.log(newAvatar);
+        })
+        .catch((err) => {
+            console.log(err);
+            console.log(formData);
+        })
+        .finally(() => {
+          closeAllPopups();
+        })
+    };
+
+    /*function handleUpdateAvatar(data) {
       api.patchAvatar(data)
         .then((newAvatar) => {
           setCurrentUser(newAvatar);
@@ -171,7 +194,7 @@ function App() {
         .finally(() => {
           closeAllPopups();
         })
-  };
+    };*/
 
     function handleUserPhotoClick() {
       console.log('click on user photo');

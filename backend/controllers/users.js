@@ -175,13 +175,13 @@ module.exports.updateUser = (req, res, next) => {
     phoneNumber, 
     socialMediaInst, 
     socialMediaTeleg,
-    //avatar,
+    avatar,
   } = req.body;
   const userId = req.user._id;
 
   User.findByIdAndUpdate(
     userId, 
-    { firstName, familyName, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg/*, avatar*/ }, 
+    { firstName, familyName, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg, avatar }, 
     { new: true, runValidators: true })
     .then((user) => {
       if (!user) {
@@ -200,7 +200,7 @@ module.exports.updateUser = (req, res, next) => {
         socialMediaTeleg: user.socialMediaTeleg,
         email: user.email,
         _id: user._id,
-        //avatar: user.avatar,
+        avatar: user.avatar,
       });
     })
     .catch((err) => {
@@ -214,15 +214,23 @@ module.exports.updateUser = (req, res, next) => {
 
 /* обновляет аватар */
 module.exports.updateAvatarUser = (req, res, next) => {
-  const { avatar } = req.body;
+  console.log(`req.file:`, req.file);
+  //const { avatar } = req.body;
   const userId = req.user._id;
 
-  if (!avatar) {
+  /*if (!avatar) {
+    return res.status(400).send({ message: 'No image provided' });
+  }*/
+
+  if (!req.file) {
     return res.status(400).send({ message: 'No image provided' });
   }
 
-  const avatarUrl = '../uploads/avatars/${file.filename}';
-
+  // Использование относительного пути для хранения в базе данных
+  //const avatarUrl = path.join(__dirname, 'uploads/avatars/', req.file.filename);
+  const avatarUrl = `http://localhost:3002/uploads/avatars/${req.file.filename}`;
+  console.log(req.file.filename);
+  console.log(`avatarUrl:`, avatarUrl);
   // Обновление пути к аватару в базе данных
     User.findByIdAndUpdate(userId, { avatar: avatarUrl }, { new: true, runValidators: true })
       .then((user) => {

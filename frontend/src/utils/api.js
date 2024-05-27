@@ -51,10 +51,26 @@ class Api {
     };
 
     //обновление аватара пользователя
-    patchAvatar(data) {
+    patchAvatar(formData) {
+        console.log(formData.get('avatar'));
+        //const formData = new FormData();
+        //formData.append('avatar', data.avatar);
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            //credentials: 'include',
+            credentials: 'include',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`,
+                //'Content-Type': 'application/json'
+            },
+            body: formData
+        })
+        .then(this._checkResponse)
+    }
+    
+    /*patchAvatar(data) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            credentials: 'include',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -64,7 +80,7 @@ class Api {
             })
         })
         .then(this._checkResponse)
-    };
+    };*/
 
     //добавление/редактироваие данных о карьере, семье, новостях - ?
 }
