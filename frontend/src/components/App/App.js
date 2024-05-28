@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -284,7 +284,7 @@ function App() {
               />
             </ProtectedRoute>  
           }/>
-          <Route path="/portfolio" element={
+          <Route path="/portfolio/:userFamilyName" element={
             <Portfolio 
               isLoggedIn={isLoggedIn}
               onUserPhoto={handleUserPhotoClick}
@@ -292,7 +292,7 @@ function App() {
               familyName={userFamilyName}
             />
           }/>
-          <Route path="/news" element={
+          <Route path="/news/:userFamilyName" element={
             <News 
               isLoggedIn={isLoggedIn}
               onUserPhoto={handleUserPhotoClick}

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useLocation } from "react-router-dom";
-import portfolioPhoto from "../../images/alex.jpeg";
-import newsPhoto from "../../images/alex-news.JPG";
+import { useContext } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import profilePhoto from "../../images/cat in clothes.jpeg"
 
 function ImagePopup(props) {
-    const location = useLocation();
+    const currentUser = useContext(CurrentUserContext);
 
     return (
         <div className={`popup popup_modal ${props.isOpen && 'popup_active'}`}>
@@ -18,7 +18,7 @@ function ImagePopup(props) {
               </button>
               <img 
                  className="popup__image-modal" 
-                 src={location.pathname === '/portfolio' ? portfolioPhoto : newsPhoto} 
+                 src={currentUser.avatar || profilePhoto}
                  alt="Big user" 
               />
               <h2 className="popup__title-modal">Yes, it's my big photo.</h2>

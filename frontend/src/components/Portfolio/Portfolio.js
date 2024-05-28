@@ -17,13 +17,13 @@ function Portfolio(props) {
     return (
         <section className="portfolio">
             <div className="portfolio__page">
-                <Link to="/portfolio" className={`portfolio__page-about ${location.pathname === '/portfolio' ? 'portfolio__page-about_checked' : ''}`}>About Me</Link>
+                <Link to={`/portfolio/${currentUser.familyName}`} className={`portfolio__page-about ${location.pathname.includes('/portfolio') ? 'portfolio__page-about_checked' : ''}`}>About Me</Link>
                 <div className="portfolio__page-slash">/</div>
-                <Link to="/news" className={`portfolio__page-news ${location.pathname === '/news' ? 'portfolio__page-news_checked' : ''}`}> News</Link>
+                <Link to={`/news/${currentUser.familyName}`} className={`portfolio__page-news ${location.pathname.includes('/news') ? 'portfolio__page-news_checked' : ''}`}> News</Link>
             </div>
             <div className="portfolio__photo-info">
                 <div className="portfolio__laptop">
-                    <img className="portfolio__photo" src={/*props.avatarPath || */currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
+                    <img className="portfolio__photo" src={currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     <div className="portfolio__items">
                         <ul className="portfolio__main-info">
                             <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || '-'}</li>
@@ -125,12 +125,12 @@ function Portfolio(props) {
                             }
                             </li>
                         </ul>
-                        <img className="portfolio__photo" src={/*props.avatarPath || */currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
+                        <img className="portfolio__photo" src={currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     </div>
                 </div>
                 <div className="portfolio__small-screen">
                     <div className="portfolio__items">
-                        <img className="portfolio__photo" src={/*props.avatarPath || */currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
+                        <img className="portfolio__photo" src={currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                         <ul className="portfolio__main-info">
                             <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || '-'}</li>
                             <li className="portfolio__info"><strong>Family name: </strong>{currentUser.familyName || '-'}</li>

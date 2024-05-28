@@ -2,7 +2,6 @@ import { React, useContext } from 'react';
 import { Link, Routes, Route, useLocation, NavLink } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import headerLogo from '../../images/logo.png';
-import Navigation from '../Navigation/Navigation';
 
 function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
     const location = useLocation();
@@ -35,7 +34,7 @@ function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
                     </header>
                 </>
             }/>
-            {["portfolio", "news"].map((path, index) => 
+            {["portfolio/:userFamilyName", "news/:userFamilyName"].map((path, index) => 
                 <Route path={path} key={index} element={
                     <>
                         <header className="header">
@@ -43,7 +42,7 @@ function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
                                 <img  src={headerLogo} className="header__logo" alt="logo" />
                             </Link>
                             <div className="header__nav">
-                                <div className={`header__portfolio ${location.pathname === '/portfolio' ? 'header__portfolio_active' : ''} ${location.pathname === '/news' ? 'header__portfolio_active' : ''}`}>User profile: {currentUser.firstName}</div>
+                                <div className={`header__portfolio ${location.pathname.includes('/portfolio/') ? 'header__portfolio_active' : ''} ${location.pathname.includes('/news') ? 'header__portfolio_active' : ''}`}>User profile: {currentUser.firstName}</div>
                                 { isLoggedIn ?
                                     <>
                                         <NavLink to="/account" className="header__account">Account</NavLink>
@@ -70,7 +69,7 @@ function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
                             <img src={headerLogo} className="header__logo" alt="logo" />
                         </Link>    
                         <div className="header__nav">
-                            <NavLink to="/portfolio" className={`header__portfolio ${location.pathname === '/portfolio' ? 'header__portfolio_active' : ''}`}>Portfolio</NavLink>
+                            <NavLink to={`/portfolio/${currentUser.familyName}`} className={`header__portfolio ${location.pathname.includes('/portfolio/') ? 'header__portfolio_active' : ''}`}>Portfolio</NavLink>
                             <NavLink to="/account" className={`header__account ${location.pathname === '/account' ? 'header__account_active' : ''}`}>Account</NavLink>
                             <NavLink to="/" className="header__exit" onClick={onSignOut}>Exit</NavLink>
                         </div>
