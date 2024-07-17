@@ -39,6 +39,11 @@ userRouter.patch('/me', auth, celebrate({
     socialMediaTeleg: Joi.string().allow('', null),
     avatar: Joi.string(),
     life: Joi.string().allow('', null),
+    education: Joi.string().allow('', null),
+    career: Joi.string().allow('', null),
+    competences: Joi.string().allow('', null),
+    hobbies: Joi.string().allow('', null),
+    news: Joi.string().allow('', null),
   }),
 }), updateUser);
 

@@ -16,7 +16,12 @@ function Account(props) {
 
     const [isEditingGeneral, setIsEditingGeneral] = useState(false);
     const [isEditingLife, setIsEditingLife] = useState(false);
-    
+    const [isEditingEducation, setIsEditingEducation] = useState(false);
+    const [isEditingCareer, setIsEditingCareer] = useState(false);
+    const [isEditingCompetences, setIsEditingCompetences] = useState(false);
+    const [isEditingHobbies, setIsEditingHobbies] = useState(false);
+    const [isEditingNews, setIsEditingNews] = useState(false);
+
     useEffect(() => {
         setValues(currentUser);
     }, [setValues, currentUser]);
@@ -32,6 +37,11 @@ function Account(props) {
 
         if (section === 'general') setIsEditingGeneral(false);
         if (section === 'life') setIsEditingLife(false);
+        if (section === 'education') setIsEditingEducation(false);
+        if (section === 'career') setIsEditingCareer(false);
+        if (section === 'competences') setIsEditingCompetences(false);
+        if (section === 'hobbies') setIsEditingHobbies(false);
+        if (section === 'news') setIsEditingNews(false);
     };
 
     const handleReset = (section) => {
@@ -39,11 +49,27 @@ function Account(props) {
 
         if (section === 'general') setIsEditingGeneral(false);
         if (section === 'life') setIsEditingLife(false);
+        if (section === 'education') setIsEditingEducation(false);
+        if (section === 'career') setIsEditingCareer(false);
+        if (section === 'competences') setIsEditingCompetences(false);
+        if (section === 'hobbies') setIsEditingHobbies(false);
+        if (section === 'news') setIsEditingNews(false);
     };
 
     const enableEditing = (section) => {
         if (section === 'general') setIsEditingGeneral(true);
         if (section === 'life') setIsEditingLife(true);
+        if (section === 'education') setIsEditingEducation(true);
+        if (section === 'career') setIsEditingCareer(true);
+        if (section === 'competences') setIsEditingCompetences(true);
+        if (section === 'hobbies') setIsEditingHobbies(true);
+        if (section === 'news') setIsEditingNews(true);
+    };
+
+    const handleKeyDown = (e, section) => {
+        if (e.key === 'Enter') {
+            handleSubmit(e, section);
+        }
     };
 
     /*useEffect(() => {
@@ -126,7 +152,7 @@ function Account(props) {
         document.getElementById('account-redact-btn-section-life').addEventListener('click', handleClickSectionLifeBtn);
     });*/
 
-    useEffect(() => {
+    /*useEffect(() => {
         function handleClickSectionEducationBtn(evt) {
             const hasClass = evt.target.classList.contains('account__redact-btn_section-education');
             console.log(hasClass);
@@ -209,7 +235,7 @@ function Account(props) {
             }
         }
         document.getElementById('account-redact-btn-section-news').addEventListener('click', handleClickSectionNewsBtn);
-    });
+    });*/
 
     return (
         <section className="account">
@@ -230,7 +256,11 @@ function Account(props) {
                                 <div className="account__photo_text">Click here to change the photo!</div>
                             </div>
                         </div>
-                        <form className="account__form" onSubmit={(e) => handleSubmit(e, 'general')}>
+                        <form 
+                            className="account__form" 
+                            onSubmit={(e) => handleSubmit(e, 'general')}
+                            onKeyDown={(e) => handleKeyDown(e, 'general')}
+                        >
                             <div className="account__items">
                                 <label className="account__label">First name:</label>
                                 <input 
@@ -410,7 +440,11 @@ function Account(props) {
                             </div>
                         </form>    
                     </div>
-                <form className="account__forms" onSubmit={(e) => handleSubmit(e, 'life')}>
+                <form 
+                    className="account__forms" 
+                    onSubmit={(e) => handleSubmit(e, 'life')}
+                    onKeyDown={(e) => handleKeyDown(e, 'life')}
+                >
                     <div className="account__section">
                         <label className="account__label">Life:</label>
                         <textarea 
@@ -455,150 +489,236 @@ function Account(props) {
                     </div>     
                 </form>
 
-                <form className="account__forms" /*onSubmit={handleSubmit}*/>
+                <form 
+                    className="account__forms" 
+                    onSubmit={(e) => handleSubmit(e, 'education')}
+                    onKeyDown={(e) => handleKeyDown(e, 'education')}
+                >
                     <div className="account__section">
                         <label className="account__label">Education:</label>
                         <textarea 
                             className="account__section_input"
-                            required
                             id="education-account-section-input"
                             name="education" 
                             type="text"
-                            minLength="2"
-                            maxLength="400"
-                            //value={""}
+                            value={values.education || ''}
                             placeholder="University? Faculty? Degrees? An additional education?
                             If you want to write more, please click *plus* ->"
-                            disabled={true}
+                            disabled={!isEditingEducation}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" id="account-redact-btn-section-education" className="account__redact-btn account__redact-btn_section-education"></button>
-                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-education" className="account__accept-btn"></button>
+                                <button 
+                                    type="button" 
+                                    aria-label="redact data" 
+                                    id="account-redact-btn-section-education" 
+                                    className="account__redact-btn account__redact-btn_section-education"
+                                    onClick={() => enableEditing('education')}
+                                ></button>
+                                <button 
+                                    type="submit" 
+                                    aria-label="accept data" 
+                                    id="account-accept-btn-section-education" 
+                                    className={`account__accept-btn ${isEditingEducation ? 'account__accept-btn_active' : ''}`}
+                                ></button>
                             </div>
-                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
+                            <button 
+                                type="reset" 
+                                aria-label="delete data" 
+                                className="account__delete-btn"
+                                onClick={() => handleReset('education')}
+                            ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>   
                 </form>
 
-                <form className="account__forms" /*onSubmit={handleSubmit}*/>
+                <form 
+                    className="account__forms" 
+                    onSubmit={(e) => handleSubmit(e, 'career')}
+                    onKeyDown={(e) => handleKeyDown(e, 'career')}
+                >
                     <div className="account__section">
                         <label className="account__label">Career:</label>
                         <textarea 
                             className="account__section_input"
-                            required
                             id="career-account-section-input"
                             name="career" 
                             type="text"
-                            minLength="2"
-                            maxLength="400"
-                            //value={""}
+                            value={values.career || ''}
                             placeholder="Please describe places of your past jobs and your duties.
                             You can use one block for one work.
                             If you want to write more, please click *plus* ->"
-                            disabled={true}
-                        />
+                            disabled={!isEditingCareer}
+                            onChange={handleChange}                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" id="account-redact-btn-section-career" className="account__redact-btn account__redact-btn_section-career"></button>
-                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-career" className="account__accept-btn"></button>
+                                <button 
+                                    type="button" 
+                                    aria-label="redact data" 
+                                    id="account-redact-btn-section-career" 
+                                    className="account__redact-btn account__redact-btn_section-career"
+                                    onClick={() => enableEditing('career')}
+                                ></button>
+                                <button 
+                                    type="submit" 
+                                    aria-label="accept data" 
+                                    id="account-accept-btn-section-career" 
+                                    className={`account__accept-btn ${isEditingCareer ? 'account__accept-btn_active' : ''}`}
+                                ></button>
                             </div>
-                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
+                            <button 
+                                type="reset" 
+                                aria-label="delete data" 
+                                className="account__delete-btn"
+                                onClick={() => handleReset('career')}
+                            ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>      
                 </form>
 
-                <form className="account__forms" /*onSubmit={handleSubmit}*/>
+                <form 
+                    className="account__forms" 
+                    onSubmit={(e) => handleSubmit(e, 'competences')}
+                    onKeyDown={(e) => handleKeyDown(e, 'competences')}
+                >
                     <div className="account__section">
                         <label className="account__label">Competences:</label>
                         <textarea 
                             className="account__section_input"
-                            required
                             id="competences-account-section-input"
                             name="competences" 
                             type="text"
-                            minLength="2"
-                            maxLength="400"
-                            //value={""}
+                            value={values.competences || ''}
                             placeholder="Please describe uour skills. Which computer programs can you operate?
                             What programming languages do you know? Foreign languages?
                             If you want to write more, please click *plus* ->"
-                            disabled={true}
-                        />
+                            disabled={!isEditingCompetences}
+                            onChange={handleChange}                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" id="account-redact-btn-section-competences" className="account__redact-btn account__redact-btn_section-competences"></button>
-                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-competences" className="account__accept-btn"></button>
+                                <button 
+                                    type="button" 
+                                    aria-label="redact data" 
+                                    id="account-redact-btn-section-competences" 
+                                    className="account__redact-btn account__redact-btn_section-competences"
+                                    onClick={() => enableEditing('competences')}
+                                ></button>
+                                <button 
+                                    type="submit" 
+                                    aria-label="accept data" 
+                                    id="account-accept-btn-section-competences" 
+                                    className={`account__accept-btn ${isEditingCompetences ? 'account__accept-btn_active' : ''}`}
+                                ></button>
                             </div>
-                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
+                            <button 
+                                type="reset" 
+                                aria-label="delete data" 
+                                className="account__delete-btn"
+                                onClick={() => handleReset('competences')}
+                            ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>      
                 </form>
 
-                <form className="account__forms" /*onSubmit={handleSubmit}*/>
+                <form 
+                    className="account__forms" 
+                    onSubmit={(e) => handleSubmit(e, 'hobbies')}
+                    onKeyDown={(e) => handleKeyDown(e, 'hobbies')}
+                >
                     <div className="account__section">
                         <label className="account__label">Hobbies:</label>
                         <textarea 
                             className="account__section_input"
-                            required
                             id="hobbies-account-section-input"
                             name="hobbies" 
                             type="text"
-                            minLength="2"
-                            maxLength="400"
-                            //value={""}
+                            value={values.hobbies || ''}
                             placeholder="What do you like to do in your spare time? For example:
                             computer games, programming, painting, cooking, sewing and etc.
                             If you want to write more, please click *plus* ->"
-                            disabled={true}
-                        />
+                            disabled={!isEditingHobbies}
+                            onChange={handleChange}                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" id="account-redact-btn-section-hobbies" className="account__redact-btn account__redact-btn_section-hobbies"></button>
-                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-hobbies" className="account__accept-btn"></button>
+                                <button 
+                                    type="button" 
+                                    aria-label="redact data" 
+                                    id="account-redact-btn-section-hobbies" 
+                                    className="account__redact-btn account__redact-btn_section-hobbies"
+                                    onClick={() => enableEditing('hobbies')}
+                                ></button>
+                                <button 
+                                    type="submit" 
+                                    aria-label="accept data" 
+                                    id="account-accept-btn-section-hobbies" 
+                                    className={`account__accept-btn ${isEditingHobbies ? 'account__accept-btn_active' : ''}`}
+                                ></button>
                             </div>
-                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
+                            <button 
+                                type="reset" 
+                                aria-label="delete data" 
+                                className="account__delete-btn"
+                                onClick={() => handleReset('hobbies')}
+                            ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>        
                 </form>
 
-                <form className="account__forms" /*onSubmit={handleSubmit}*/>
+                <form 
+                    className="account__forms" 
+                    onSubmit={(e) => handleSubmit(e, 'news')}
+                    onKeyDown={(e) => handleKeyDown(e, 'news')}
+                >
                     <div className="account__section">
                         <label className="account__label">News:</label>
                         <textarea 
                             className="account__section_input"
-                            required
                             id="news-account-section-input"
                             name="news"
                             type="text"
-                            minLength="2"
-                            maxLength="400"
-                            //value={""}
+                            value={values.news || ''}
                             placeholder="Here you can add any interesting news in your field of interests.
                             For example: new invention, program and etc.
                             If you want to write more, please click *plus* ->"
-                            disabled={true}
-                        />
+                            disabled={!isEditingNews}
+                            onChange={handleChange}                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" id="account-redact-btn-section-news" className="account__redact-btn account__redact-btn_section-news"></button>
-                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-news" className="account__accept-btn"></button>
+                                <button 
+                                    type="button" 
+                                    aria-label="redact data" 
+                                    id="account-redact-btn-section-news" 
+                                    className="account__redact-btn account__redact-btn_section-news"
+                                    onClick={() => enableEditing('news')}
+                                ></button>
+                                <button 
+                                    type="submit" 
+                                    aria-label="accept data" 
+                                    id="account-accept-btn-section-news" 
+                                    className={`account__accept-btn ${isEditingNews ? 'account__accept-btn_active' : ''}`}
+                                ></button>
                             </div>
-                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
+                            <button 
+                                type="reset" 
+                                aria-label="delete data" 
+                                className="account__delete-btn"
+                                onClick={() => handleReset('news')}
+                            ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>     

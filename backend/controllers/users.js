@@ -12,7 +12,23 @@ const Unauthorized = require('../errors/Unauthorized');
 /* создание пользователя */
 module.exports.createUser = (req, res, next) => {
   const {
-    firstName, familyName, email, password, avatar, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg, life
+    firstName, 
+    familyName, 
+    email, 
+    password, 
+    avatar, 
+    dateOfBirth, 
+    country, 
+    occupation, 
+    phoneNumber, 
+    socialMediaInst, 
+    socialMediaTeleg, 
+    life,
+    education,
+    career,
+    competences,
+    hobbies,
+    news,
   } = req.body;
 
   User.findOne({ email })
@@ -35,6 +51,11 @@ module.exports.createUser = (req, res, next) => {
       socialMediaInst,
       socialMediaTeleg,
       life,
+      education,
+      career,
+      competences,
+      hobbies,
+      news,
     }))
     .then((user) => {
       res.status(201).send({
@@ -50,6 +71,11 @@ module.exports.createUser = (req, res, next) => {
         socialMediaInst: user.socialMediaInst,
         socialMediaTeleg: user.socialMediaTeleg,
         life: user.life,
+        education: user.education,
+        career: user.career,
+        competences: user.competences,
+        hobbies: user.hobbies,
+        news: user.news,
       });
     })
     .catch((err) => {
@@ -89,6 +115,11 @@ module.exports.login = (req, res, next) => {
         socialMediaInst: user.socialMediaInst,
         socialMediaTeleg: user.socialMediaTeleg,
         life: user.life,
+        education: user.education,
+        career: user.career,
+        competences: user.competences,
+        hobbies: user.hobbies,
+        news: user.news,
       });
     })
 
@@ -119,6 +150,11 @@ module.exports.returnUser = (req, res, next) => {
         _id: user._id,
         avatar: user.avatar,
         life: user.life,
+        education: user.education,
+        career: user.career,
+        competences: user.competences,
+        hobbies: user.hobbies,
+        news: user.news,
       });
     })
     .catch((err) => {
@@ -156,6 +192,11 @@ module.exports.getUser = (req, res, next) => {
         _id: user.id,
         avatar: user.avatar,
         life: user.life,
+        education: user.education,
+        career: user.career,
+        competences: user.competences,
+        hobbies: user.hobbies,
+        news: user.news,
       });
     })
     .catch((err) => {
@@ -187,6 +228,11 @@ module.exports.getUserById = (req, res, next) => {
         _id: user.id,
         avatar: user.avatar,
         life: user.life,
+        education: user.education,
+        career: user.career,
+        competences: user.competences,
+        hobbies: user.hobbies,
+        news: user.news,
       });
     })
     .catch((err) => {
@@ -214,6 +260,11 @@ module.exports.updateUser = (req, res, next) => {
     socialMediaTeleg,
     avatar,
     life,
+    education,
+    career,
+    competences,
+    hobbies,
+    news,
   } = req.body;
 
   // Ensure req.user is defined before accessing its properties
@@ -225,7 +276,23 @@ module.exports.updateUser = (req, res, next) => {
 
   User.findByIdAndUpdate(
     userId, 
-    { firstName, familyName, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg, avatar, life }, 
+    { 
+      firstName, 
+      familyName, 
+      dateOfBirth, 
+      country, 
+      occupation, 
+      phoneNumber, 
+      socialMediaInst, 
+      socialMediaTeleg, 
+      avatar, 
+      life,
+      education,
+      career,
+      competences,
+      hobbies,
+      news,
+    }, 
     { new: true, runValidators: true })
     .then((user) => {
       if (!user) {
@@ -246,6 +313,11 @@ module.exports.updateUser = (req, res, next) => {
         _id: user._id,
         avatar: user.avatar,
         life: user.life,
+        education: user.education,
+        career: user.career,
+        competences: user.competences,
+        hobbies: user.hobbies,
+        news: user.news,
       });
     })
     .catch((err) => {
@@ -287,6 +359,11 @@ module.exports.updateAvatarUser = (req, res, next) => {
           socialMediaTeleg: user.socialMediaTeleg,
           avatar: user.avatar,
           life: user.life,
+          education: user.education,
+          career: user.career,
+          competences: user.competences,
+          hobbies: user.hobbies,
+          news: user.news,
           _id: user._id,
           email: user.email,
         });
@@ -298,63 +375,4 @@ module.exports.updateAvatarUser = (req, res, next) => {
       }
       next(err);
     });
-
-/* обновляет life пользовтаеля */
-/*module.exports.updateUserLife = (req, res, next) => {
-  console.log('Request body:', req.body); // Add this line for debugging
-  console.log('Authenticated user:', req.user); // Debugging line
-
-  const { 
-    firstName, 
-    familyName, 
-    dateOfBirth, 
-    country, 
-    occupation, 
-    phoneNumber, 
-    socialMediaInst, 
-    socialMediaTeleg,
-    avatar,
-    life,
-  } = req.body;
-
-  // Ensure req.user is defined before accessing its properties
-  if (!req.user || !req.user._id) {
-    return res.status(401).send({ error: 'User is not authenticated' });
-  }
-
-  const userId = req.user._id;
-
-  User.findByIdAndUpdate(
-    userId, 
-    { firstName, familyName, dateOfBirth, country, occupation, phoneNumber, socialMediaInst, socialMediaTeleg, avatar, life }, 
-    { new: true, runValidators: true })
-    .then((user) => {
-      if (!user) {
-        throw new NotFound('Запрашиваемый пользователь не найден');
-      }
-      console.log('User updated:', user); // Add this line for debugging
-      console.log('User ID:', userId); // Debugging line
-      return res.send({
-        firstName: user.firstName,
-        familyName: user.familyName,
-        dateOfBirth: user.dateOfBirth,
-        country: user.country,
-        occupation: user.occupation,
-        phoneNumber: user.phoneNumber,
-        socialMediaInst: user.socialMediaInst,
-        socialMediaTeleg: user.socialMediaTeleg,
-        email: user.email,
-        _id: user._id,
-        avatar: user.avatar,
-        life: user.life,
-      });
-    })
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new ValidationError(`Данные некорректны ${err.message}`));
-        return;
-      }
-      next(err);
-    });
-  };*/
 };

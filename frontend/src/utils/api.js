@@ -74,6 +74,11 @@ class Api {
                 socialMediaTeleg: data.socialMediaTeleg,
                 avatar: data.avatar,
                 life: data.life,
+                education: data.education,
+                career: data.career,
+                competences: data.competences,
+                hobbies: data.hobbies,
+                news: data.news,
             })
         })
         .then(this._checkResponse)

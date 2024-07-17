@@ -298,28 +298,25 @@ function Portfolio(props) {
                 <div className="portfolio__section" id="education">
                     <h3 className="portfolio__label">Education:</h3>
                     <div className="portfolio__section_data">
-                        I graduated from the Aerospace Faculty of the Perm National Reserch
-                        Polytechnic University (PNRPU) and got the Diploma of Specialist. 
-                        My specialty was rocket and space technology. I was a postgraduate for
-                        three years, but I never graduated.
+                        {currentUser.education || userProfile.education || ''}
                     </div>
                 </div>
                 <div className="portfolio__section" id="career">
                     <h3 className="portfolio__label">Career:</h3>
                     <div className="portfolio__section_data">
-                        Here might be my career, sorry...
+                        {currentUser.career || userProfile.career || ''}
                     </div>
                 </div>
                 <div className="portfolio__section" id="competences">
                     <h3 className="portfolio__label">Competences:</h3>
                     <div className="portfolio__section_data">
-                        MS Office, ANSYS, Python...
+                        {currentUser.competences || userProfile.competences || ''}
                     </div>
                 </div>
                 <div className="portfolio__section" id="hobbies">
                     <h3 className="portfolio__label">Hobbies:</h3>
                     <div className="portfolio__section_data">
-                        I love playing video games in my spare time.
+                        {currentUser.hobbies || userProfile.hobbies || ''}
                     </div>
                 </div>
             </div>

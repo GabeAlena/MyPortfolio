@@ -73,7 +73,27 @@ const userSchema = new mongoose.Schema({
   life: {
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
-  }
+  },
+  education: {
+    type: String,
+    required: [false, 'Необязательное поле для заполнения'],
+  },
+  career: {
+    type: String,
+    required: [false, 'Необязательное поле для заполнения'],
+  },
+  competences: {
+    type: String,
+    required: [false, 'Необязательное поле для заполнения'],
+  },
+  hobbies: {
+    type: String,
+    required: [false, 'Необязательное поле для заполнения'],
+  },
+  news: {
+    type: String,
+    required: [false, 'Необязательное поле для заполнения'],
+  },
 });
 
 userSchema.statics.findUserByCredentials = function (email, password) {
