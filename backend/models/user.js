@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
 const mongoose = require('mongoose');
-//const root = '';
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -58,29 +57,23 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
-    minlength: [2, 'Минимальная длина 2 символа'],
-    maxlength: [20, 'Максимальная длина 20 символов'],
-    default: '+79876543210',
   },
   socialMediaInst: {
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
-    /*minlength: [0, 'Минимальная длина 0 символов'],
-    maxlength: [40, 'Максимальная длина 40 символов'],
-    default: 'https://instagram.com',*/
   },
   socialMediaTeleg: {
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
-    /*minlength: [0, 'Минимальная длина 0 символов'],
-    maxlength: [40, 'Максимальная длина 40 символов'],*/
-    /*default: 'https://t.me/',*/
   },
   avatar: {
     type: String,
     required: [false, 'Необязательное поле для заполнения'],
-    /*default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',*/
   },
+  life: {
+    type: String,
+    required: [false, 'Необязательное поле для заполнения'],
+  }
 });
 
 userSchema.statics.findUserByCredentials = function (email, password) {

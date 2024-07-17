@@ -1,11 +1,35 @@
-import { React, useContext } from 'react';
-import { Link, Routes, Route, useLocation, NavLink } from "react-router-dom";
+import { React, useContext, useState, useEffect } from 'react';
+import { Link, Routes, Route, useLocation, NavLink, useParams } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import headerLogo from '../../images/logo.png';
+import { api } from "../../utils/api";
 
-function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
+function Header({ isLoggedIn, handleOpenMenu, onSignOut, userId }) {
     const location = useLocation();
     const currentUser = useContext(CurrentUserContext);
+    const [userProfile, setUserProfile] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            if (userId && (!currentUser || currentUser._id !== userId)) {
+                try {
+                    const userData = await api.getUserById(userId);
+                    setUserProfile(userData);
+                } catch (error) {
+                    console.error('Error fetching user profile:', error);
+                } finally {
+                    setIsLoading(false);
+                }
+            } else {
+                setIsLoading(false);
+            }
+        };    
+
+        fetchUserProfile();
+    }, [userId, currentUser]);
+
+    const profileData = userProfile || currentUser;
 
     return (
         <Routes>
@@ -34,7 +58,7 @@ function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
                     </header>
                 </>
             }/>
-            {["portfolio/:userFamilyName", "news/:userFamilyName"].map((path, index) => 
+            {["/portfolio/:userId", "/news/:userId"].map((path, index) => 
                 <Route path={path} key={index} element={
                     <>
                         <header className="header">
@@ -42,7 +66,9 @@ function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
                                 <img  src={headerLogo} className="header__logo" alt="logo" />
                             </Link>
                             <div className="header__nav">
-                                <div className={`header__portfolio ${location.pathname.includes('/portfolio/') ? 'header__portfolio_active' : ''} ${location.pathname.includes('/news') ? 'header__portfolio_active' : ''}`}>User profile: {currentUser.firstName}</div>
+                                <div className={`header__portfolio ${location.pathname.includes('/portfolio') ? 'header__portfolio_active' : ''} ${location.pathname.includes('/news') ? 'header__portfolio_active' : ''}`}>
+                                    User profile: {profileData.firstName || 'Loading...'} {profileData.familyName}
+                                </div>
                                 { isLoggedIn ?
                                     <>
                                         <NavLink to="/account" className="header__account">Account</NavLink>
@@ -69,7 +95,7 @@ function Header({ isLoggedIn, handleOpenMenu, onSignOut }) {
                             <img src={headerLogo} className="header__logo" alt="logo" />
                         </Link>    
                         <div className="header__nav">
-                            <NavLink to={`/portfolio/${currentUser.familyName}`} className={`header__portfolio ${location.pathname.includes('/portfolio/') ? 'header__portfolio_active' : ''}`}>Portfolio</NavLink>
+                            <NavLink to={`/portfolio/${currentUser._id}`} className={`header__portfolio_signed ${location.pathname.includes('/portfolio') ? 'header__portfolio_active' : ''}`}>Portfolio</NavLink>
                             <NavLink to="/account" className={`header__account ${location.pathname === '/account' ? 'header__account_active' : ''}`}>Account</NavLink>
                             <NavLink to="/" className="header__exit" onClick={onSignOut}>Exit</NavLink>
                         </div>

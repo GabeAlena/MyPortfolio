@@ -23,6 +23,10 @@
 
 @import url(./components/NotFound/NotFound.css);
 
+@import url(./components/Loading/Loading.css);
+
+@import url(./components/NotFoundUser/NotFoundUser.css);
+
 @import url(./components/Account/Account.css);
 
 @import url(./components/Portfolio/Portfolio.css);

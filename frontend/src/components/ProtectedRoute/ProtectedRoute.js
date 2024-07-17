@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 
 const ProtectedRoute = ({ isLoggedIn, children }) => {
-  console.log('try in protectedroute');
+  //console.log('try in protectedroute');
   return (isLoggedIn ? children : <Navigate to="/" replace />)
 
   //this is not working at all

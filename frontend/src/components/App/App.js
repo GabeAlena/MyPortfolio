@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, Router, useNavigate, useLocation, useParams } from "react-router-dom";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -23,11 +23,10 @@ function App() {
     const location = useLocation();
     const [currentUser, setCurrentUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [userFirstName, setUserFirstName] = useState('');
-    const [userFamilyName, setUserFamilyName] = useState('');
     const [sidebar, setSidebar] = useState(false);
     const [userPhoto, setUserPhoto] = useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+    const [userId, setUserId] = useState(null);
 
     const isOpen = isEditAvatarPopupOpen || userPhoto;
 
@@ -43,15 +42,13 @@ function App() {
             if (res) {
               setCurrentUser(res);
               setIsLoggedIn(true);
-              setUserFirstName(res.firstName);
-              setUserFamilyName(res.familyName);
               //navigate('/');
               console.log(res);
               console.log('data in checkToken');
             }
           })
           .catch((err) => {
-            console.log(err);
+            console.log('Error during token check:', err.message); // Add this line for debugging
             //handleSignOut();
           })
       }
@@ -65,8 +62,6 @@ function App() {
       const token = localStorage.getItem('token');
       if (token/* || isLoggedIn*/) {
         setIsLoggedIn(true);
-        console.log(token);
-        console.log(isLoggedIn);
       }
     }, [isLoggedIn]);
 
@@ -74,7 +69,6 @@ function App() {
     // и позволяет выкидывать пользователя при невалидном токине
     useEffect(() => {
       const token = localStorage.getItem('token');
-      console.log(token);
       if (!token) {
         if (location.pathname === "/account") {
           console.log(token);
@@ -94,8 +88,6 @@ function App() {
             if (res) {
               setCurrentUser(res);
               setIsLoggedIn(true);
-              console.log(isLoggedIn);
-              console.log(res);
             }
           })
           .catch((err) => console.log(err));
@@ -103,8 +95,6 @@ function App() {
     };
 
     function handleSignOut() {
-      console.log(currentUser);
-      console.log(isLoggedIn);
       console.log('you exit');
       setCurrentUser({});
       setIsLoggedIn(false);
@@ -130,11 +120,8 @@ function App() {
         .then((res) => {
           if (res.token) { 
             localStorage.setItem('token', res.token);
-            console.log('token');
             setCurrentUser(res);
             setIsLoggedIn(true);
-            setUserFirstName(res.firstName);
-            setUserFamilyName(res.familyName);
             navigate('/account');
             console.log(res);
           }   
@@ -163,20 +150,13 @@ function App() {
     function handleUpdateAvatar(avatarFile) {
       const formData = new FormData();
       formData.append('avatar', avatarFile);
-      console.log(formData);
-      console.log(avatarFile);
-      console.log(formData.get('avatar'));
-      console.log(formData);
 
       api.patchAvatar(formData)
         .then((newAvatar) => {
-          console.log(formData);
           setCurrentUser(newAvatar);
-          console.log(newAvatar);
         })
         .catch((err) => {
             console.log(err);
-            console.log(formData);
         })
         .finally(() => {
           closeAllPopups();
@@ -244,9 +224,9 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>            
         <Header
           isLoggedIn={isLoggedIn}
-          firstName={userFirstName}
           handleOpenMenu={handleOpenMenu}
           onSignOut={handleSignOut}
+          userId={userId}
         />
 
         <NavigationSidebar 
@@ -254,6 +234,7 @@ function App() {
           sidebar={sidebar}
           handleOpenMenu={handleOpenMenu}
           onSignOut={handleSignOut}
+          userId={userId}
         />
 
         <Routes>
@@ -279,25 +260,21 @@ function App() {
               <Account
                 onEditAvatar={handleEditAvatarClick}
                 onUpdateUser={handleUpdateUser} 
-                firstName={userFirstName}
-                familyName={userFamilyName}
               />
             </ProtectedRoute>  
           }/>
-          <Route path="/portfolio/:userFamilyName" element={
+          <Route path="/portfolio/:userId" element={
             <Portfolio 
               isLoggedIn={isLoggedIn}
               onUserPhoto={handleUserPhotoClick}
-              firstName={userFirstName}
-              familyName={userFamilyName}
+              setUserId={setUserId}
             />
           }/>
-          <Route path="/news/:userFamilyName" element={
+          <Route path="/news/:userId" element={
             <News 
               isLoggedIn={isLoggedIn}
               onUserPhoto={handleUserPhotoClick}
-              firstName={userFirstName}
-              familyName={userFamilyName}
+              setUserId={setUserId}
             />
           }/>
         </Routes>
@@ -307,6 +284,7 @@ function App() {
         <ImagePopup 
           isOpen={userPhoto}
           onClose={closeAllPopups}
+          userId={userId}
         />
 
         <EditAvatarPopup

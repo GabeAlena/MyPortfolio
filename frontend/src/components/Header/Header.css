@@ -171,7 +171,30 @@
   cursor: pointer;
 }
 
+.header__portfolio_signed {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px){
+  .header__portfolio {
+    width: 150px;
+  }
+}
+
 .header__portfolio:hover {
+  opacity: 0.7;
+}
+
+.header__portfolio_signed:hover {
   opacity: 0.7;
 }
 
@@ -182,6 +205,10 @@
 }
 
 .header__portfolio_active:hover {
+  opacity: 1;
+}
+
+.header__portfolio_signed:hover {
   opacity: 1;
 }
 

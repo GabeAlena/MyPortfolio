@@ -1,37 +1,79 @@
 import profilePhoto from "../../images/cat in clothes.jpeg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-//import portfolioPhoto from "../../images/alex.jpeg";
 import instagram from '../../images/instagram.png';
 import telegram from '../../images/telegram.jpeg';
+import { api } from "../../utils/api";
+import Loading from "../Loading/Loading";
+import NotFoundUser from "../NotFoundUser/NotFoundUser";
 
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
 function Portfolio(props) {
     const location = useLocation();
     const currentUser = useContext(CurrentUserContext);
-    console.log(currentUser.avatar);
+    const { userId: userIdFromParams } = useParams();
+    const [userProfile, setUserProfile] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const userId = props.userId || userIdFromParams;
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                let userData;
+                if (currentUser && userId === currentUser._id) {
+                    userData = await api.getUserInfo();
+                } else {
+                    userData = await api.getUserById(userId);
+                }
+                setUserProfile(userData);
+            } catch(err) {
+                console.error(err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchUserProfile();
+    }, [userId, currentUser]);
+
+    useEffect(() => {
+        props.setUserId(userId);
+    }, [userId, props]);
+
+    if (isLoading) {
+        return (
+            <Loading />
+        )
+    }
+
+    if (!userProfile) {
+        return (
+            <NotFoundUser />
+        )
+    }
 
     return (
         <section className="portfolio">
             <div className="portfolio__page">
-                <Link to={`/portfolio/${currentUser.familyName}`} className={`portfolio__page-about ${location.pathname.includes('/portfolio') ? 'portfolio__page-about_checked' : ''}`}>About Me</Link>
+                <Link to={`/portfolio/${userId}`} className={`portfolio__page-about ${location.pathname.includes('/portfolio') ? 'portfolio__page-about_checked' : ''}`}>About Me</Link>
                 <div className="portfolio__page-slash">/</div>
-                <Link to={`/news/${currentUser.familyName}`} className={`portfolio__page-news ${location.pathname.includes('/news') ? 'portfolio__page-news_checked' : ''}`}> News</Link>
+                <Link to={`/news/${userId}`} className={`portfolio__page-news ${location.pathname.includes('/news') ? 'portfolio__page-news_checked' : ''}`}> News</Link>
             </div>
             <div className="portfolio__photo-info">
                 <div className="portfolio__laptop">
-                    <img className="portfolio__photo" src={currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
+                    <img className="portfolio__photo" src={currentUser.avatar  || userProfile.avatar|| profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     <div className="portfolio__items">
                         <ul className="portfolio__main-info">
-                            <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || '-'}</li>
-                            <li className="portfolio__info"><strong>Family name: </strong>{currentUser.familyName || '-'}</li>
-                            <li className="portfolio__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || '-'}</li>
-                            <li className="portfolio__info"><strong>Country: </strong>{currentUser.country || '-'}</li>
-                            <li className="portfolio__info"><strong>Occupation: </strong>{currentUser.occupation || '-'}</li>
-                            <li className="portfolio__info"><strong>Mob: </strong>{currentUser.phoneNumber || '-'}</li>
+                            <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || userProfile.firstName || '-'}</li>
+                            <li className="portfolio__info"><strong>Family name: </strong>{currentUser.familyName || userProfile.familyName || '-'}</li>
+                            <li className="portfolio__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || userProfile.dateOfBirth || '-'}</li>
+                            <li className="portfolio__info"><strong>Country: </strong>{currentUser.country || userProfile.country || '-'}</li>
+                            <li className="portfolio__info"><strong>Occupation: </strong>{currentUser.occupation || userProfile.occupation || '-'}</li>
+                            <li className="portfolio__info"><strong>Mob: </strong>{currentUser.phoneNumber || userProfile.phoneNumber  || '-'}</li>
                             <li className="portfolio__info"><strong>Social media: </strong>
                             { currentUser.socialMediaInst === '' && currentUser.socialMediaTeleg !== '' ?
                                 <> 
@@ -39,12 +81,24 @@ function Portfolio(props) {
                                         <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst === '' && userProfile.socialMediaTeleg !== '' ?
+                            <> 
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>    
                             : currentUser.socialMediaTeleg === '' && currentUser.socialMediaInst !== '' ?
                                 <>
                                     <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
                                         <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaTeleg === '' && userProfile.socialMediaInst !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                            </>                                
                             : currentUser.socialMediaInst !== '' && currentUser.socialMediaTeleg !== '' ?
                                 <>
                                     <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
@@ -54,6 +108,15 @@ function Portfolio(props) {
                                         <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst !== '' && userProfile.socialMediaTeleg !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>                                
                             : 
                                 <>
                                     -
@@ -62,7 +125,7 @@ function Portfolio(props) {
                             </li>
                         </ul>
                         <p className="portfolio__welcoming">
-                            Hi! Welcome to my page. My name is {currentUser.firstName || '?'} {currentUser.familyName || '?'}. Here you can read info about me:
+                            Hi! Welcome to my page. My name is {currentUser.firstName || userProfile.firstName || '?'} {currentUser.familyName || userProfile.familyName || '?'}. Here you can read info about me:
                         </p>
                         <ul className="portfolio__categories">
                             <li className="portfolio__category"><HashLink to="#life">life,</HashLink></li>
@@ -77,7 +140,7 @@ function Portfolio(props) {
                 <div className="portfolio__tablet">
                     <div className="portfolio__items portfolio__items_tablet">
                         <p className="portfolio__welcoming">
-                            Hi! Welcome to my page. My name is {currentUser.firstName} {currentUser.familyName}. Here you can read info about me:
+                            Hi! Welcome to my page. My name is {currentUser.firstName || userProfile.firstName} {currentUser.familyName || userProfile.familyName}. Here you can read info about me:
                         </p>
                         <ul className="portfolio__categories">
                             <li className="portfolio__category"><HashLink to="#life">life,</HashLink></li>
@@ -90,12 +153,12 @@ function Portfolio(props) {
                     </div>
                     <div className="portfolio__items">
                         <ul className="portfolio__main-info">
-                            <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || '-'}</li>
-                            <li className="portfolio__info"><strong>Family name: </strong>{currentUser.familyName || '-'}</li>
-                            <li className="portfolio__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || '-'}</li>
-                            <li className="portfolio__info"><strong>Country: </strong>{currentUser.country || '-'}</li>
-                            <li className="portfolio__info"><strong>Occupation: </strong>{currentUser.occupation || '-'}</li>
-                            <li className="portfolio__info"><strong>Mob: </strong>{currentUser.phoneNumber || '-'}</li>
+                            <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || userProfile.firstName || '-'}</li>
+                            <li className="portfolio__info"><strong>Family name: </strong>{currentUser.familyName || userProfile.familyName || '-'}</li>
+                            <li className="portfolio__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || userProfile.dateOfBirth || '-'}</li>
+                            <li className="portfolio__info"><strong>Country: </strong>{currentUser.country || userProfile.country || '-'}</li>
+                            <li className="portfolio__info"><strong>Occupation: </strong>{currentUser.occupation || userProfile.occupation || '-'}</li>
+                            <li className="portfolio__info"><strong>Mob: </strong>{currentUser.phoneNumber || userProfile.phoneNumber || '-'}</li>
                             <li className="portfolio__info"><strong>Social media: </strong>
                             { currentUser.socialMediaInst === '' && currentUser.socialMediaTeleg !== '' ?
                                 <> 
@@ -103,12 +166,24 @@ function Portfolio(props) {
                                         <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst === '' && userProfile.socialMediaTeleg !== '' ?
+                            <> 
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>    
                             : currentUser.socialMediaTeleg === '' && currentUser.socialMediaInst !== '' ?
                                 <>
                                     <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
                                         <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaTeleg === '' && userProfile.socialMediaInst !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                            </>                                
                             : currentUser.socialMediaInst !== '' && currentUser.socialMediaTeleg !== '' ?
                                 <>
                                     <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
@@ -118,6 +193,15 @@ function Portfolio(props) {
                                         <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst !== '' && userProfile.socialMediaTeleg !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>                                
                             : 
                                 <>
                                     -
@@ -125,19 +209,19 @@ function Portfolio(props) {
                             }
                             </li>
                         </ul>
-                        <img className="portfolio__photo" src={currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
+                        <img className="portfolio__photo" src={currentUser.avatar || userProfile.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     </div>
                 </div>
                 <div className="portfolio__small-screen">
                     <div className="portfolio__items">
-                        <img className="portfolio__photo" src={currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
+                        <img className="portfolio__photo" src={currentUser.avatar || userProfile.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                         <ul className="portfolio__main-info">
-                            <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || '-'}</li>
-                            <li className="portfolio__info"><strong>Family name: </strong>{currentUser.familyName || '-'}</li>
-                            <li className="portfolio__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || '-'}</li>
-                            <li className="portfolio__info"><strong>Country: </strong>{currentUser.country || '-'}</li>
-                            <li className="portfolio__info"><strong>Occupation: </strong>{currentUser.occupation || '-'}</li>
-                            <li className="portfolio__info"><strong>Mob: </strong>{currentUser.phoneNumber || '-'}</li>
+                            <li className="portfolio__info"><strong>First name: </strong>{currentUser.firstName || userProfile.firstName || '-'}</li>
+                            <li className="portfolio__info"><strong>Family name: </strong>{currentUser.familyName || userProfile.familyName || '-'}</li>
+                            <li className="portfolio__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || userProfile.dateOfBirth || '-'}</li>
+                            <li className="portfolio__info"><strong>Country: </strong>{currentUser.country || userProfile.country || '-'}</li>
+                            <li className="portfolio__info"><strong>Occupation: </strong>{currentUser.occupation || userProfile.occupation || '-'}</li>
+                            <li className="portfolio__info"><strong>Mob: </strong>{currentUser.phoneNumber || userProfile.phoneNumber || '-'}</li>
                             <li className="portfolio__info"><strong>Social media: </strong>
                             { currentUser.socialMediaInst === '' && currentUser.socialMediaTeleg !== '' ?
                                 <> 
@@ -145,12 +229,24 @@ function Portfolio(props) {
                                         <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst === '' && userProfile.socialMediaTeleg !== '' ?
+                            <> 
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>    
                             : currentUser.socialMediaTeleg === '' && currentUser.socialMediaInst !== '' ?
                                 <>
                                     <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
                                         <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaTeleg === '' && userProfile.socialMediaInst !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                            </>                                
                             : currentUser.socialMediaInst !== '' && currentUser.socialMediaTeleg !== '' ?
                                 <>
                                     <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
@@ -160,6 +256,15 @@ function Portfolio(props) {
                                         <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst !== '' && userProfile.socialMediaTeleg !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>                                
                             : 
                                 <>
                                     -
@@ -170,7 +275,7 @@ function Portfolio(props) {
                     </div>
                     <div className="portfolio__items portfolio__items_small-screen">
                         <p className="portfolio__welcoming">
-                            Hi! Welcome to my page. My name is {currentUser.firstName} {currentUser.familyName}. Here you can read info about me:
+                            Hi! Welcome to my page. My name is {currentUser.firstName || userProfile.firstName} {currentUser.familyName || userProfile.familyName}. Here you can read info about me:
                         </p>
                         <ul className="portfolio__categories">
                             <li className="portfolio__category"><HashLink to="#life">life,</HashLink></li>
@@ -187,9 +292,7 @@ function Portfolio(props) {
                 <div className="portfolio__section" id="life">
                     <h3 className="portfolio__label">Life:</h3>
                     <div className="portfolio__section_data">
-                        I was born in Russia in the Perm region. And now I live in Perm.
-                        Married. Love animals. 
-                    
+                        {currentUser.life || userProfile.life || ''}
                     </div>
                 </div>  
                 <div className="portfolio__section" id="education">

@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { ValidationForm } from '../../utils/validationForm';
 //import NotFound from "../NotFound/NotFound";
@@ -14,19 +14,39 @@ function Account(props) {
     const currentUser = useContext(CurrentUserContext);
     const { values, handleChange, isValid, setValues, errors } = ValidationForm();
 
-    console.log(currentUser);
-    //console.log(avatarPath);
+    const [isEditingGeneral, setIsEditingGeneral] = useState(false);
+    const [isEditingLife, setIsEditingLife] = useState(false);
     
-    function handleSubmit(e) {
-        e.preventDefault();
-        props.onUpdateUser(values);
-    }
-
     useEffect(() => {
         setValues(currentUser);
     }, [setValues, currentUser]);
 
-    useEffect(() => {
+    const handleSubmit = (e, section) => {
+        e.preventDefault();
+        if (!isValid) {
+            console.log("Form contains errors. Please correct them before submitting.");
+            return;
+        }
+        const updatedData = { ...values };
+        props.onUpdateUser(updatedData);
+
+        if (section === 'general') setIsEditingGeneral(false);
+        if (section === 'life') setIsEditingLife(false);
+    };
+
+    const handleReset = (section) => {
+        setValues(currentUser);
+
+        if (section === 'general') setIsEditingGeneral(false);
+        if (section === 'life') setIsEditingLife(false);
+    };
+
+    const enableEditing = (section) => {
+        if (section === 'general') setIsEditingGeneral(true);
+        if (section === 'life') setIsEditingLife(true);
+    };
+
+    /*useEffect(() => {
         function handleClickRedactBtnAccountForm(evt) {
             const hasClass = evt.target.classList.contains('account__redact-btn_about');
             console.log(hasClass);
@@ -87,9 +107,9 @@ function Account(props) {
         }
         document.getElementById('main-view-account-accept-btn').addEventListener('click', handleClickAcceptBtnAccountForm);
         document.getElementById('turned-view-account-accept-btn').addEventListener('click', handleClickAcceptBtnAccountForm);
-    });
+    });*/
 
-    useEffect(() => {
+    /*useEffect(() => {
         function handleClickSectionLifeBtn(evt) {
             const hasClass = evt.target.classList.contains('account__redact-btn_section-life');
             console.log(hasClass);
@@ -104,7 +124,7 @@ function Account(props) {
             }
         }
         document.getElementById('account-redact-btn-section-life').addEventListener('click', handleClickSectionLifeBtn);
-    });
+    });*/
 
     useEffect(() => {
         function handleClickSectionEducationBtn(evt) {
@@ -201,7 +221,7 @@ function Account(props) {
                                 target="_blank" 
                                 id="output" 
                                 type="image/*" 
-                                src={/*props.avatarPath || */currentUser.avatar || profilePhoto}
+                                src={currentUser.avatar || profilePhoto}
                                 alt="it's could be me" 
                                 onClick={props.onEditAvatar}
                             />
@@ -210,7 +230,7 @@ function Account(props) {
                                 <div className="account__photo_text">Click here to change the photo!</div>
                             </div>
                         </div>
-                        <form className="account__form" onSubmit={handleSubmit}>
+                        <form className="account__form" onSubmit={(e) => handleSubmit(e, 'general')}>
                             <div className="account__items">
                                 <label className="account__label">First name:</label>
                                 <input 
@@ -223,7 +243,7 @@ function Account(props) {
                                     maxLength="18"
                                     value={values.firstName || ''}
                                     placeholder="e.g.: Aleksandr"
-                                    disabled={true}
+                                    disabled={!isEditingGeneral}
                                     onChange={handleChange}
                                 />
                                 <span className="account__error">{errors.firstName || ''}</span>
@@ -238,7 +258,7 @@ function Account(props) {
                                     maxLength="18"
                                     value={values.familyName || ''}
                                     placeholder="e.g.: Bazhukov"
-                                    disabled={true}
+                                    disabled={!isEditingGeneral}
                                     onChange={handleChange}
                                 />
                                 <span className="account__error">{errors.familyName || ''}</span>
@@ -253,7 +273,7 @@ function Account(props) {
                                     maxLength="20"
                                     value={values.dateOfBirth || ''}
                                     placeholder="e.g.: 23 June 1993"
-                                    disabled={true}
+                                    disabled={!isEditingGeneral}
                                     onChange={handleChange}
                                 />
                                 <span className="account__error">{errors.dateOfBirth || ''}</span>
@@ -268,7 +288,7 @@ function Account(props) {
                                     maxLength="18"
                                     value={values.country || ''}
                                     placeholder="e.g.: Russia"
-                                    disabled={true}
+                                    disabled={!isEditingGeneral}
                                     onChange={handleChange}
                                 />
                                 <span className="account__error">{errors.country || ''}</span>
@@ -283,7 +303,7 @@ function Account(props) {
                                     maxLength="18"
                                     value={values.occupation || ''}
                                     placeholder="e.g.: Engineer"
-                                    disabled={true}
+                                    disabled={!isEditingGeneral}
                                     onChange={handleChange}
                                 />
                                 <span className="account__error">{errors.occupation || ''}</span>
@@ -293,11 +313,9 @@ function Account(props) {
                                     id="phone-number-account-input" 
                                     name="phoneNumber" 
                                     type="tel"
-                                    minLength="2"
-                                    maxLength="20"
                                     value={values.phoneNumber || ''}
                                     placeholder="e.g.: +79876543210"
-                                    disabled={true}
+                                    disabled={!isEditingGeneral}
                                     onChange={handleChange}
                                 />
                                 <span className="account__error">{errors.phoneNumber || ''}</span>
@@ -309,11 +327,9 @@ function Account(props) {
                                         id="social-media-inst-account-input" 
                                         name="socialMediaInst" 
                                         type="text"
-                                        minLength="0"
-                                        maxLength="40"
                                         value={values.socialMediaInst || ''}
                                         placeholder="https://..."
-                                        disabled={true}
+                                        disabled={!isEditingGeneral}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -324,11 +340,9 @@ function Account(props) {
                                         id="social-media-teleg-account-input" 
                                         name="socialMediaTeleg" 
                                         type="text"
-                                        minLength="0"
-                                        maxLength="40"
                                         value={values.socialMediaTeleg || ''}
                                         placeholder="https://..."
-                                        disabled={true}
+                                        disabled={!isEditingGeneral}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -336,7 +350,7 @@ function Account(props) {
                             </div>
                             <div className="account__photos-edit-items">
                                 <div className="account__photos account__photos_another-view">
-                                    <img className="account__photo" src={/*props.avatarPath || */currentUser.avatar || profilePhoto} alt="it's could be me" onClick={props.onEditAvatar}></img>
+                                    <img className="account__photo" src={currentUser.avatar || profilePhoto} alt="it's could be me" onClick={props.onEditAvatar}></img>
                                     <div className="account__photo-text_under">
                                         <img className="account__photo_under" src={noPhoto} alt="no"></img>
                                         <div className="account__photo_text">Click here to change the photo!</div>
@@ -344,12 +358,18 @@ function Account(props) {
                                 </div>
                                 <div className="account__edit-items account__edit-items_another-view">
                                     <div className="account__btns">
-                                        <button type="button" aria-label="redact data" id="turned-view-account-redact-btn" className="account__redact-btn account__redact-btn_about"></button>
                                         <button 
-                                            type="submit" 
+                                            type="button" 
+                                            aria-label="redact data" 
+                                            id="turned-view-account-redact-btn" 
+                                            className="account__redact-btn account__redact-btn_about"
+                                            onClick={() => enableEditing('general')}
+                                        ></button>
+                                        <button 
+                                            type="submit"
                                             aria-label="accept data"
                                             id="turned-view-account-accept-btn"
-                                            className="account__accept-btn account__accept-btn_about"
+                                            className={`account__accept-btn account__accept-btn_about ${isEditingGeneral ? 'account__accept-btn_active' : ''}`}
                                         ></button>
                                     </div>    
                                     <img className="account__edit-picture" src={editPictureTurned} alt="here might be a turned cat"></img>
@@ -357,15 +377,20 @@ function Account(props) {
                             </div>
                             <div className="account__edit-items">
                                 <div className="account__btns">
-                                    <button type="button" aria-label="redact data" id="main-view-account-redact-btn" className="account__redact-btn account__redact-btn_about"></button>
-                                    
+                                    <button 
+                                        type="button" 
+                                        aria-label="redact data" 
+                                        id="main-view-account-redact-btn" 
+                                        className="account__redact-btn account__redact-btn_about"
+                                        onClick={() => enableEditing('general')}
+                                    ></button>
                                     <button 
                                         type="submit"
                                         name="acceptButton"
                                         aria-label="accept data" 
                                         id="main-view-account-accept-btn" 
                                         //className="account__accept-btn account__accept-btn_about account__accept-btn_active"
-                                        className={
+                                        /*className={
                                             !isValid || (
                                                 values.firstName === currentUser.firstName && 
                                                 values.familyName === currentUser.familyName &&
@@ -377,39 +402,54 @@ function Account(props) {
                                                 values.socialMediaTeleg === currentUser.socialMediaTeleg)
                                                     ? 'account__accept-btn account__accept-btn_about'
                                                     : 'account__accept-btn account__accept-btn_about account__accept-btn_active'
-                                        }
+                                        }*/
+                                        className={`account__accept-btn account__accept-btn_about ${isEditingGeneral ? 'account__accept-btn_active' : ''}`}
                                     ></button>
                                 </div>    
                                 <img className="account__edit-picture" src={editPicture} alt="here might be a cat"></img>
                             </div>
                         </form>    
                     </div>
-                <form className="account__forms" /*onSubmit={handleSubmit}*/>
+                <form className="account__forms" onSubmit={(e) => handleSubmit(e, 'life')}>
                     <div className="account__section">
                         <label className="account__label">Life:</label>
                         <textarea 
                             className="account__section_input"
-                            required
                             id="life-account-section-input"
                             name="life" 
                             type="text"
-                            minLength="2"
-                            maxLength="400"
-                            //value={""}
+                            value={values.life || ''}
                             placeholder="Where you were born? Marriage? Kids? Your life in several sentences. 
                             When your text will be written, please click *checkmark*. Also you can click *delete* 
                             and remove all what you have written here, but I hope it's unnecessary.
                             If you want to write more, please click *plus* ->"
-                            disabled={true}
+                            disabled={!isEditingLife}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
                             <div className="account__redact-accept">
-                                <button type="button" aria-label="redact data" id="account-redact-btn-section-life" className="account__redact-btn account__redact-btn_section-life"></button>
-                                <button type="submit" aria-label="accept data" id="account-accept-btn-section-life" className="account__accept-btn"></button>
+                                <button 
+                                    type="button" 
+                                    aria-label="redact data" 
+                                    id="account-redact-btn-section-life" 
+                                    className="account__redact-btn account__redact-btn_section-life"
+                                    onClick={() => enableEditing('life')}
+                                ></button>
+                                <button 
+                                    type="submit" 
+                                    aria-label="accept data" 
+                                    id="account-accept-btn-section-life" 
+                                    className={`account__accept-btn ${isEditingLife ? 'account__accept-btn_active' : ''}`}
+                                ></button>
                             </div>
-                            <button type="reset" aria-label="delete data" className="account__delete-btn"></button>
+                            <button 
+                                type="reset" 
+                                aria-label="delete data" 
+                                className="account__delete-btn"
+                                onClick={() => handleReset('life')}
+                            ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
                     </div>     

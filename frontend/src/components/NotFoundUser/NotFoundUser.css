@@ -1,0 +1,102 @@
+.not-found-user {
+  margin: 0;
+  padding: 0;
+  height: calc(100vh - 60px - 60px);
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px){
+  .not-found-user {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: calc(100vh - 48px - 50px);
+  }
+}
+
+@media screen and (max-width: 320px){
+  .not-found-user {
+    height: calc(100vh - 38px - 38px);
+  }
+}
+
+@media screen and (max-height: 700px){
+  .not-found-user {
+    margin: auto 0;
+  }
+}
+
+.not-found-user__error-type {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 65px;
+  line-height: 75px;
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
+}
+
+@media screen and (max-width: 320px){
+  .not-found-user__error-type {
+    padding-bottom: 10px;
+    font-size: 50px;
+    line-height: 60px;
+  }
+}
+
+@media screen and (max-height: 700px){
+  .not-found-user__error-type {
+    font-size: 55px;
+    line-height: 65px;
+  }
+}
+
+.not-found-user__error-message {
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
+  max-width: 900px;
+}
+
+@media screen and (max-width: 930px){
+  .not-found-user__error-message {
+    font-size: 22px;
+    line-height: 26px;
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .not-found-user__error-message {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 320px){
+  .not-found-user__error-message {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 500px){
+  .not-found-user__error-message {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

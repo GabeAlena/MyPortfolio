@@ -15,7 +15,7 @@ function About() {
             </div>
             <div className="about__description_profile-link">
                 <p>&#128101; One of them you can see right</p>
-                <Link className="about__description_link" to="/portfolio">HERE.</Link>
+                <Link className="about__description_link" to="/portfolio/6654404f97959092e837fefb">HERE.</Link>
             </div>
             <div className="about__description_job">
                 &#128161; What else? Here you can see popular job search sites:

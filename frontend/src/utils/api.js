@@ -17,20 +17,48 @@ class Api {
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
-            //credentials: 'include',
+            credentials: 'include',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
             },
-    })
+        })
+        .then(this._checkResponse)
+        .then((data) => {
+            localStorage.setItem('userId', data._id);
+            return data;
+        });
+    }
+
+    //загрузка информации о пользователе по userId
+    getUserById(userId) {
+        console.log (userId);
+        return fetch(`${this._baseUrl}/users/portfolio/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'            
+            }
+        })
+        .then(this._checkResponse)
+    }
+
+        //загрузка информации о пользователе по userId
+    getUserByIdInNews(userId) {
+        return fetch(`${this._baseUrl}/users/news/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'            
+            }
+        })
         .then(this._checkResponse)
     }
 
     //редактирование профиля
     editProfileData(data) {
+        console.log(data);
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
-            //credentials: 'include',
+            credentials: 'include',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
@@ -44,7 +72,8 @@ class Api {
                 phoneNumber: data.phoneNumber,
                 socialMediaInst: data.socialMediaInst,
                 socialMediaTeleg: data.socialMediaTeleg,
-                //avatar: data.avatar,
+                avatar: data.avatar,
+                life: data.life,
             })
         })
         .then(this._checkResponse)

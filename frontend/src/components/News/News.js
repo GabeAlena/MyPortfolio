@@ -1,30 +1,69 @@
-/*import profilePhoto from "../../images/cat in clothes.jpeg";*/
-import { Link, useLocation } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
-import { useContext } from 'react';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import profilePhoto from "../../images/cat in clothes.jpeg";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import { useContext, useEffect, useState } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+//import portfolioPhoto from "../../images/alex.jpeg";
 import instagram from '../../images/instagram.png';
 import telegram from '../../images/telegram.jpeg';
+import { api } from "../../utils/api";
+import Loading from "../Loading/Loading";
+import NotFoundUser from "../NotFoundUser/NotFoundUser";
 
 /* Need to change the condition after the registration part cause like this - it's not ok*/
 function News(props) {
     const location = useLocation();
     const currentUser = useContext(CurrentUserContext);
+    const { userId: userIdFromParams } = useParams();
+    const [userProfile, setUserProfile] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const userId = props.userId || userIdFromParams;
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                let userData;
+                if (currentUser && userId === currentUser._id) {
+                    userData = await api.getUserInfo();
+                } else {
+                    userData = await api.getUserByIdInNews(userId);
+                }
+                setUserProfile(userData);
+            } catch (err) {
+                console.log(err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchUserProfile();
+    }, [userId, currentUser]);
+
+    if (isLoading) {
+        return (
+            <Loading />
+        )
+    }
+
+    if (!userProfile) {
+        return (
+            <NotFoundUser />
+        )
+    }
 
     return (
         <section className="news">
             <div className="news__page">
-                <Link to={`/portfolio/${currentUser.familyName}`} className={`news__page-about ${location.pathname.includes('/portfolio') ? 'news__page-about_checked' : ''}`}>About Me</Link>
+                <Link to={`/portfolio/${userId}`} className={`news__page-about ${location.pathname.includes('/portfolio') ? 'news__page-about_checked' : ''}`}>About Me</Link>
                 <div className="news__page-slash">/</div>
-                <Link to={`/news/${currentUser.familyName}`} className={`news__page-news ${location.pathname.includes('/news') ? 'news__page-news_checked' : ''}`}> News</Link>
+                <Link to={`/news/${userId}`} className={`news__page-news ${location.pathname.includes('/news') ? 'news__page-news_checked' : ''}`}> News</Link>
             </div>
             <div className="news__photo-info">
                 <div className="news__laptop">
-                    <img className="news__photo" src={currentUser.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
+                    <img className="news__photo" src={currentUser.avatar || userProfile.avatar || profilePhoto} alt="it's could be this guy" onClick={props.onUserPhoto}></img>
                     <div className="news__items">
                         <ul className="news__main-info">
-                            <li className="news__info"><strong>First name: </strong>{currentUser.firstName || '-'}</li>
+                            <li className="news__info"><strong>First name: </strong>{currentUser.firstName || userProfile.firstName || '-'}</li>
                             <li className="news__info"><strong>Family name: </strong>{currentUser.familyName || '-'}</li>
                             <li className="news__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || '-'}</li>
                             <li className="news__info"><strong>Country: </strong>{currentUser.country || '-'}</li>

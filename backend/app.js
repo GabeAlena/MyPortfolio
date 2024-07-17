@@ -9,7 +9,7 @@ const path = require('path');
 
 const userRouter = require('./routes/users');
 const { createUser, login } = require('./controllers/users');
-const auth = require('./middlewares/auth');
+//const auth = require('./middlewares/auth');
 const { serverError } = require('./errors/serverError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { NotFound } = require('./errors/NotFound');
@@ -69,22 +69,18 @@ app.post('/SignUp', celebrate({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }).unknown(true),
-}/*, {
-  abortEarly: false,
-  allowUnknown: true,
-  maxBytes: 50 * 1024 * 1024,
-}*/), createUser);
+}), createUser);
 app.post('/SignIn', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    //email: Joi.string().required().email().pattern(new RegExp('^[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z]{2,}$')),
     password: Joi.string().required(),
   }).unknown(true),
 }), login);
 
-app.use('/users', auth, userRouter);
+//app.use('/users', auth, userRouter);
+app.use('/users', userRouter);
 
-app.use('*', (req, res, next) => next(new NotFound('Запрашиваемая страница не найдена')));
+//app.use('*', (req, res, next) => next(new NotFound('Запрашиваемая страница не найдена')));
 
 app.use(errorLogger);
 
