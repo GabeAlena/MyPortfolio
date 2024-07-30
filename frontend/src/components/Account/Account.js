@@ -22,7 +22,7 @@ function Account(props) {
     const [isEditingHobbies, setIsEditingHobbies] = useState(false);
     const [isEditingNews, setIsEditingNews] = useState(false);
 
-    // Load values from localStorage
+    // Load values from localStorage and context
     useEffect(() => {
         const savedValues = {
             life: localStorage.getItem('lifeValue') || currentUser.life || '',
@@ -524,10 +524,10 @@ function Account(props) {
                             name="life" 
                             type="text"
                             value={values.life || ''}
-                            placeholder="Where you were born? Marriage? Kids? Your life in several sentences. 
+                            /*placeholder="Where you were born? Marriage? Kids? Your life in several sentences. 
                             When your text will be written, please click *checkmark*. Also you can click *delete* 
                             and remove all what you have written here, but I hope it's unnecessary.
-                            If you want to write more, please click *plus* ->"
+                            If you want to write more, please click *plus* ->"*/
                             disabled={!isEditingLife}
                             onChange={handleChange}
                         />
@@ -573,8 +573,8 @@ function Account(props) {
                             name="education" 
                             type="text"
                             value={values.education || ''}
-                            placeholder="University? Faculty? Degrees? An additional education?
-                            If you want to write more, please click *plus* ->"
+                            /*placeholder="University? Faculty? Degrees? An additional education?
+                            If you want to write more, please click *plus* ->"*/
                             disabled={!isEditingEducation}
                             onChange={handleChange}
                         />
@@ -620,11 +620,12 @@ function Account(props) {
                             name="career" 
                             type="text"
                             value={values.career || ''}
-                            placeholder="Please describe places of your past jobs and your duties.
+                            /*placeholder="Please describe places of your past jobs and your duties.
                             You can use one block for one work.
-                            If you want to write more, please click *plus* ->"
+                            If you want to write more, please click *plus* ->"*/
                             disabled={!isEditingCareer}
-                            onChange={handleChange}                        />
+                            onChange={handleChange}                       
+                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -667,11 +668,12 @@ function Account(props) {
                             name="competences" 
                             type="text"
                             value={values.competences || ''}
-                            placeholder="Please describe uour skills. Which computer programs can you operate?
+                            /*placeholder="Please describe uour skills. Which computer programs can you operate?
                             What programming languages do you know? Foreign languages?
-                            If you want to write more, please click *plus* ->"
+                            If you want to write more, please click *plus* ->"*/
                             disabled={!isEditingCompetences}
-                            onChange={handleChange}                        />
+                            onChange={handleChange}                        
+                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -714,11 +716,12 @@ function Account(props) {
                             name="hobbies" 
                             type="text"
                             value={values.hobbies || ''}
-                            placeholder="What do you like to do in your spare time? For example:
+                            /*placeholder="What do you like to do in your spare time? For example:
                             computer games, programming, painting, cooking, sewing and etc.
-                            If you want to write more, please click *plus* ->"
+                            If you want to write more, please click *plus* ->"*/
                             disabled={!isEditingHobbies}
-                            onChange={handleChange}                        />
+                            onChange={handleChange}                       
+                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -761,11 +764,12 @@ function Account(props) {
                             name="news"
                             type="text"
                             value={values.news || ''}
-                            placeholder="Here you can add any interesting news in your field of interests.
+                            /*placeholder="Here you can add any interesting news in your field of interests.
                             For example: new invention, program and etc.
-                            If you want to write more, please click *plus* ->"
+                            If you want to write more, please click *plus* ->"*/
                             disabled={!isEditingNews}
-                            onChange={handleChange}                        />
+                            onChange={handleChange}                        
+                        />
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">

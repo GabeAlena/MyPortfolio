@@ -2,3 +2,8 @@ Well, I made a lot of work and just want to save this mess. Why? Because I want 
 
 # Update from 17 July 2024
 Finally I made a posibility to add profile photo from user's computer thanks to ChatGPT. I'm really over the moon about this feature. Also I made some little changes on both my backend and frontend. Made a unique link for profile route. Oh, and made a picture, also because of ChatGPT, for profile route - when site is trying to get data from backend and person see this picture on the screen while waiting. It's a worm, pretty cool. And I do want to change all of my cat pictures to worms. Let's be honest, for reference, I made cat pictures by myself, my pictures are not exactly what I wanted to see on my site, they are not cool. And if ChatGPT can create me what I like and what I want to see on my site it's great. 
+
+# Update from 30 July 2024
+I've just wanted to give user a posibility to add as much inputs as he want to fill his profile. But I'm not sure if I need it right now. It's not nessesary at the moment. Well. I guess that the next step is to make a posibility to add photos or videos to news section. Actually, as my husband said, it's the main part of my site. So, this part have to be perfect. And I'm just beating around the bush with this feature. It's like if I make this, the game will be over. Actually no. But this feature is the main goal.
+
+P.S. I didn't made anything with my code, just wanted to save my present thoughts.
