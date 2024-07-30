@@ -3,60 +3,32 @@ import { useRef, useEffect/*, useState*/ } from 'react';
 
 function EditAvatarPopup(props) {
     const avatarRef = useRef();
-    //const [avatarPath, setAvatarPath] = useState('');
+    const fileChosenRef = useRef(null);
 
-    //console.log(avatarPath);
+    const handleFileChange = (event) => {
+        const fileName = event.target.files[0]?.name || 'No file chosen';
+        fileChosenRef.current.textContent = fileName;
+        if (fileName !== 'No file chosen') {
+            fileChosenRef.current.style.color = 'green';
+        } else {
+            fileChosenRef.current.style.color = 'red';
+        }
+    };
+
     useEffect(() => {
         if (props.isOpen) {
             avatarRef.current.value = '';
-            //setAvatarPath('');
         }
     }, [props.isOpen]);
-
-    /*useEffect(() => {
-        if (props.currentUser && props.currentUser.avatar) {
-            const baseUrl = 'http://localhost:3003';
-            setAvatarPath(`${baseUrl}${props.currentUser.avatar}`);
-            console.log(avatarPath);
-        }
-    }, [props.currentUser]);*/
 
     function handleSubmit(e) {
         e.preventDefault();
 
         const fileInput = avatarRef.current.files[0];
         console.log(fileInput);
-        /*const formData = new FormData();
-        formData.append('avatar', fileInput);*/
 
         props.onUpdateAvatar(fileInput);
-        //props.onUpdateAvatar({
-            //avatar: avatarRef.current.value
-            //avatar: avatarPath
-        //});
     };
-
-    //function loadFile(event) {
-        //const reader = new FileReader();
-        /*const file = event.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                setAvatarPath(e.target.result);
-            }
-            reader.readAsDataURL(file);
-        }*/
-        //reader.onload = function() {
-            //setAvatarPath(reader.result); // Сохраняем base64 в состояние
-            //const output = document.getElementById('output');
-            //output.src = reader.result;
-            //const url = URL.createObjectURL(event.target.files[0]); // Создаем URL из данных файла
-            //output.src = url; // Устанавливаем URL как src изображения
-            //console.log(url);
-        //}
-        //reader.readAsDataURL(event.target.files[0]);
-    //}
 
     return(
         <div className={`popup popup_avatar ${props.isOpen ? 'popup_active' : ''}`}>
@@ -84,8 +56,13 @@ function EditAvatarPopup(props) {
                             name="avatar"
                             ref={avatarRef}
                             accept="image/*"
-                            //onChange={loadFile}
+                            onChange={handleFileChange}
+                            style={{ display: 'none' }}
                         />
+                        <label htmlFor="avatar-input" className="popup__custom-file-upload">
+                            Select File
+                        </label>
+                        <span id="file-chosen" ref={fileChosenRef} className='popup__file-chosen'>No file chosen</span>
                         <span className="avatar-input-error popup__input-error"></span>
                     </fieldset>
                     <button type="submit" className="popup__button">Update</button>

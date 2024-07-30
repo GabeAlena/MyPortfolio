@@ -138,6 +138,12 @@
   border: 0;
   margin: 0;
   padding: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  /*color: #000000;*/
 }
 
 .popup__input {
@@ -158,4 +164,18 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.popup__custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup__file-chosen {
+  margin-left: 10px;
+  color: red;
 }

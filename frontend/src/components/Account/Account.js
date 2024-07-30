@@ -22,16 +22,77 @@ function Account(props) {
     const [isEditingHobbies, setIsEditingHobbies] = useState(false);
     const [isEditingNews, setIsEditingNews] = useState(false);
 
+    // Load values from localStorage
+    useEffect(() => {
+        const savedValues = {
+            life: localStorage.getItem('lifeValue') || currentUser.life || '',
+            education: localStorage.getItem('educationValue') || currentUser.education || '',
+            career: localStorage.getItem('careerValue') || currentUser.career || '',
+            competences: localStorage.getItem('competencesValue') || currentUser.competences || '',
+            hobbies: localStorage.getItem('hobbiesValue') || currentUser.hobbies || '',
+            news: localStorage.getItem('newsValue') || currentUser.news || ''
+        };
+
+        setValues(savedValues);
+    }, [setValues, currentUser]);
+
+    // Save values to localStorage on change
+    useEffect(() => {
+        if (values.life !== undefined) localStorage.setItem('lifeValue', values.life);
+    }, [values.life]);
+
+    useEffect(() => {
+        if (values.education !== undefined) localStorage.setItem('educationValue', values.education);
+    }, [values.education]);
+
+    useEffect(() => {
+        if (values.career !== undefined) localStorage.setItem('careerValue', values.career);
+    }, [values.career]);
+
+    useEffect(() => {
+        if (values.competences !== undefined) localStorage.setItem('competencesValue', values.competences);
+    }, [values.competences]);
+
+    useEffect(() => {
+        if (values.hobbies !== undefined) localStorage.setItem('hobbiesValue', values.hobbies);
+    }, [values.hobbies]);
+
+    useEffect(() => {
+        if (values.news !== undefined) localStorage.setItem('newsValue', values.news);
+    }, [values.news]);
+
+    // Load initial values from context
     useEffect(() => {
         setValues(currentUser);
     }, [setValues, currentUser]);
 
+    // Save life value to localStorage on change
+    /*useEffect(() => {
+        localStorage.setItem('lifeValue', values.life);
+    }, [values.life]);
+
+    useEffect(() => {
+        localStorage.setItem('educationValue', values.education);
+    }, [values.education]);
+
+    useEffect(() => {
+        localStorage.setItem('careerValue', values.career);
+    }, [values.career]);
+
+    useEffect(() => {
+        localStorage.setItem('competencesValue', values.competences);
+    }, [values.competences]);
+
+    useEffect(() => {
+        localStorage.setItem('hobbiesValue', values.hobbies);
+    }, [values.hobbies]);
+
+    useEffect(() => {
+        localStorage.setItem('newsValue', values.news);
+    }, [values.news]);*/
+
     const handleSubmit = (e, section) => {
         e.preventDefault();
-        if (!isValid) {
-            console.log("Form contains errors. Please correct them before submitting.");
-            return;
-        }
         const updatedData = { ...values };
         props.onUpdateUser(updatedData);
 
@@ -44,16 +105,29 @@ function Account(props) {
         if (section === 'news') setIsEditingNews(false);
     };
 
-    const handleReset = (section) => {
-        setValues(currentUser);
+    const handleReset = (fieldName, section) => {
+        if (['life', 'education', 'career', 'competences', 'hobbies', 'news'].includes(fieldName)) {
+            setValues(values => ({
+                ...values,
+                [fieldName]: ''
+            }));
 
-        if (section === 'general') setIsEditingGeneral(false);
-        if (section === 'life') setIsEditingLife(false);
-        if (section === 'education') setIsEditingEducation(false);
-        if (section === 'career') setIsEditingCareer(false);
-        if (section === 'competences') setIsEditingCompetences(false);
-        if (section === 'hobbies') setIsEditingHobbies(false);
-        if (section === 'news') setIsEditingNews(false);
+            localStorage.removeItem(`${fieldName}Value`);
+
+            const updatedUser = {
+                ...currentUser,
+                [fieldName]: ''
+            };
+
+            props.onUpdateUser(updatedUser);
+
+            if (section === 'life') setIsEditingLife(false);
+            if (section === 'education') setIsEditingEducation(false);
+            if (section === 'career') setIsEditingCareer(false);
+            if (section === 'competences') setIsEditingCompetences(false);
+            if (section === 'hobbies') setIsEditingHobbies(false);
+            if (section === 'news') setIsEditingNews(false);
+        }
     };
 
     const enableEditing = (section) => {
@@ -295,7 +369,6 @@ function Account(props) {
                                 <label className="account__label">Date of birth:</label>
                                 <input 
                                     className="account__input"
-                                    required
                                     id="date-of-birth-account-input" 
                                     name="dateOfBirth" 
                                     type="text"
@@ -310,7 +383,6 @@ function Account(props) {
                                 <label className="account__label">Country:</label>
                                 <input 
                                     className="account__input"
-                                    required
                                     id="country-account-input" 
                                     name="country" 
                                     type="text"
@@ -325,7 +397,6 @@ function Account(props) {
                                 <label className="account__label">Occupation:</label>
                                 <input 
                                     className="account__input"
-                                    required
                                     id="occupation-account-input" 
                                     name="occupation" 
                                     type="text"
@@ -479,10 +550,10 @@ function Account(props) {
                                 ></button>
                             </div>
                             <button 
-                                type="reset" 
+                                type="button" 
                                 aria-label="delete data" 
                                 className="account__delete-btn"
-                                onClick={() => handleReset('life')}
+                                onClick={() => handleReset('life', 'life')}
                             ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
@@ -526,10 +597,10 @@ function Account(props) {
                                 ></button>
                             </div>
                             <button 
-                                type="reset" 
+                                type="button" 
                                 aria-label="delete data" 
                                 className="account__delete-btn"
-                                onClick={() => handleReset('education')}
+                                onClick={() => handleReset('education', 'education')}
                             ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
@@ -573,10 +644,10 @@ function Account(props) {
                                 ></button>
                             </div>
                             <button 
-                                type="reset" 
+                                type="button" 
                                 aria-label="delete data" 
                                 className="account__delete-btn"
-                                onClick={() => handleReset('career')}
+                                onClick={() => handleReset('career', 'career')}
                             ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
@@ -620,10 +691,10 @@ function Account(props) {
                                 ></button>
                             </div>
                             <button 
-                                type="reset" 
+                                type="button" 
                                 aria-label="delete data" 
                                 className="account__delete-btn"
-                                onClick={() => handleReset('competences')}
+                                onClick={() => handleReset('competences', 'competences')}
                             ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
@@ -667,10 +738,10 @@ function Account(props) {
                                 ></button>
                             </div>
                             <button 
-                                type="reset" 
+                                type="button" 
                                 aria-label="delete data" 
                                 className="account__delete-btn"
-                                onClick={() => handleReset('hobbies')}
+                                onClick={() => handleReset('hobbies', 'hobbies')}
                             ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
@@ -714,10 +785,10 @@ function Account(props) {
                                 ></button>
                             </div>
                             <button 
-                                type="reset" 
+                                type="button" 
                                 aria-label="delete data" 
                                 className="account__delete-btn"
-                                onClick={() => handleReset('news')}
+                                onClick={() => handleReset('news', 'news')}
                             ></button>
                         </div>
                         <button type="button" aria-label="plus data" className="account__plus-btn"></button>
