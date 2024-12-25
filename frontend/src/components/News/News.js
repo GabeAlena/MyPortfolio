@@ -64,33 +64,54 @@ function News(props) {
                     <div className="news__items">
                         <ul className="news__main-info">
                             <li className="news__info"><strong>First name: </strong>{currentUser.firstName || userProfile.firstName || '-'}</li>
-                            <li className="news__info"><strong>Family name: </strong>{currentUser.familyName || '-'}</li>
-                            <li className="news__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || '-'}</li>
-                            <li className="news__info"><strong>Country: </strong>{currentUser.country || '-'}</li>
-                            <li className="news__info"><strong>Occupation: </strong>{currentUser.occupation || '-'}</li>
-                            <li className="news__info"><strong>Mob: </strong>{currentUser.phoneNumber || '-'}</li>
+                            <li className="news__info"><strong>Family name: </strong>{currentUser.familyName || userProfile.familyName || '-'}</li>
+                            <li className="news__info"><strong>Date of birth: </strong>{currentUser.dateOfBirth || userProfile.dateOfBirth || '-'}</li>
+                            <li className="news__info"><strong>Country: </strong>{currentUser.country || userProfile.country || '-'}</li>
+                            <li className="news__info"><strong>Occupation: </strong>{currentUser.occupation || userProfile.occupation || '-'}</li>
+                            <li className="news__info"><strong>Mob: </strong>{currentUser.phoneNumber || userProfile.phoneNumber || '-'}</li>
                             <li className="news__info"><strong>Social media: </strong>
                             { currentUser.socialMediaInst === '' && currentUser.socialMediaTeleg !== '' ?
                                 <> 
-                                    <a href={currentUser.socialMediaTeleg} target="blank" className="news__info-link">
-                                        <img className="news__info-link-img" src={telegram} alt="telegram link"></img>
+                                    <a href={currentUser.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                        <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst === '' && userProfile.socialMediaTeleg !== '' ?
+                            <> 
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>    
                             : currentUser.socialMediaTeleg === '' && currentUser.socialMediaInst !== '' ?
                                 <>
-                                    <a href={currentUser.socialMediaInst} target="blank" className="news__info-link">
-                                        <img className="news__info-link-img" src={instagram} alt="instagram link"></img>
+                                    <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
+                                        <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaTeleg === '' && userProfile.socialMediaInst !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                            </>                                
                             : currentUser.socialMediaInst !== '' && currentUser.socialMediaTeleg !== '' ?
                                 <>
-                                    <a href={currentUser.socialMediaInst} target="blank" className="news__info-link">
-                                        <img className="news__info-link-img" src={instagram} alt="instagram link"></img>
+                                    <a href={currentUser.socialMediaInst} target="blank" className="portfolio__info-link">
+                                        <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
                                     </a>
-                                    <a href={currentUser.socialMediaTeleg} target="blank" className="news__info-link">
-                                        <img className="news__info-link-img" src={telegram} alt="telegram link"></img>
+                                    <a href={currentUser.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                        <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
                                     </a>
                                 </>
+                            : userProfile.socialMediaInst !== '' && userProfile.socialMediaTeleg !== '' ?
+                            <>
+                                <a href={userProfile.socialMediaInst} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={instagram} alt="instagram link"></img>
+                                </a>
+                                <a href={userProfile.socialMediaTeleg} target="blank" className="portfolio__info-link">
+                                    <img className="portfolio__info-link-img" src={telegram} alt="telegram link"></img>
+                                </a>
+                            </>                                
                             : 
                                 <>
                                     -
@@ -214,7 +235,6 @@ function News(props) {
                     <h4 className="news__section-note">
                         {currentUser.news || userProfile.news || ''}
                     </h4>
-                    <iframe className="news__section_video" width="700" height="525" src="https://www.youtube.com/embed/HaI1RgSVpYQ" title="Meeting Key Automotive Challenges with Simulation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                 </div>
             </div>
         </section> 

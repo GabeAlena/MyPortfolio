@@ -4,8 +4,10 @@ import { ValidationForm } from '../../utils/validationForm';
 //import NotFound from "../NotFound/NotFound";
 import profilePhoto from "../../images/cat in clothes.jpeg"
 import noPhoto from "../../images/no photo.jpeg";
-import editPicture from "../../images/cat-stretching.jpeg";
-import editPictureTurned from "../../images/cat-stretching-turned.jpeg";
+//import editPicture from "../../images/cat-stretching.jpeg";
+import editPicture from "../../images/worm.jpeg";
+//import editPictureTurned from "../../images/cat-stretching-turned.jpeg";
+import editPictureTurned from "../../images/worm-turned.jpeg";
 import instagram from '../../images/instagram.png';
 import telegram from '../../images/telegram.jpeg';
 
@@ -66,31 +68,6 @@ function Account(props) {
         setValues(currentUser);
     }, [setValues, currentUser]);
 
-    // Save life value to localStorage on change
-    /*useEffect(() => {
-        localStorage.setItem('lifeValue', values.life);
-    }, [values.life]);
-
-    useEffect(() => {
-        localStorage.setItem('educationValue', values.education);
-    }, [values.education]);
-
-    useEffect(() => {
-        localStorage.setItem('careerValue', values.career);
-    }, [values.career]);
-
-    useEffect(() => {
-        localStorage.setItem('competencesValue', values.competences);
-    }, [values.competences]);
-
-    useEffect(() => {
-        localStorage.setItem('hobbiesValue', values.hobbies);
-    }, [values.hobbies]);
-
-    useEffect(() => {
-        localStorage.setItem('newsValue', values.news);
-    }, [values.news]);*/
-
     const handleSubmit = (e, section) => {
         e.preventDefault();
         const updatedData = { ...values };
@@ -138,6 +115,10 @@ function Account(props) {
         if (section === 'competences') setIsEditingCompetences(true);
         if (section === 'hobbies') setIsEditingHobbies(true);
         if (section === 'news') setIsEditingNews(true);
+    };
+
+    const handleDoubleClick = (section) => {
+        enableEditing(section);
     };
 
     const handleKeyDown = (e, section) => {
@@ -516,21 +497,26 @@ function Account(props) {
                     onSubmit={(e) => handleSubmit(e, 'life')}
                     onKeyDown={(e) => handleKeyDown(e, 'life')}
                 >
-                    <div className="account__section">
+                    <div className="account__section" /*onDoubleClick={() => handleDoubleClick('life')}*/>
                         <label className="account__label">Life:</label>
-                        <textarea 
-                            className="account__section_input"
-                            id="life-account-section-input"
-                            name="life" 
-                            type="text"
-                            value={values.life || ''}
-                            /*placeholder="Where you were born? Marriage? Kids? Your life in several sentences. 
-                            When your text will be written, please click *checkmark*. Also you can click *delete* 
-                            and remove all what you have written here, but I hope it's unnecessary.
-                            If you want to write more, please click *plus* ->"*/
-                            disabled={!isEditingLife}
-                            onChange={handleChange}
-                        />
+                        {isEditingLife ? (
+                            <textarea 
+                                className="account__section_input"
+                                id="life-account-section-input"
+                                name="life" 
+                                type="text"
+                                value={values.life || ''}
+                                /*placeholder="Where you were born? Marriage? Kids? Your life in several sentences. 
+                                When your text will be written, please click *checkmark*. Also you can click *delete* 
+                                and remove all what you have written here, but I hope it's unnecessary.
+                                If you want to write more, please click *plus* ->"*/
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <div className="account__section_input" onDoubleClick={() => handleDoubleClick('life')}>
+                                {values.life || ''}
+                            </div>
+                        )}
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -543,7 +529,7 @@ function Account(props) {
                                     onClick={() => enableEditing('life')}
                                 ></button>
                                 <button 
-                                    type="submit" 
+                                    type="submit"
                                     aria-label="accept data" 
                                     id="account-accept-btn-section-life" 
                                     className={`account__accept-btn ${isEditingLife ? 'account__accept-btn_active' : ''}`}
@@ -567,17 +553,22 @@ function Account(props) {
                 >
                     <div className="account__section">
                         <label className="account__label">Education:</label>
-                        <textarea 
-                            className="account__section_input"
-                            id="education-account-section-input"
-                            name="education" 
-                            type="text"
-                            value={values.education || ''}
-                            /*placeholder="University? Faculty? Degrees? An additional education?
-                            If you want to write more, please click *plus* ->"*/
-                            disabled={!isEditingEducation}
-                            onChange={handleChange}
-                        />
+                        {isEditingEducation ? (
+                            <textarea 
+                                className="account__section_input"
+                                id="education-account-section-input"
+                                name="education" 
+                                type="text"
+                                value={values.education || ''}
+                                /*placeholder="University? Faculty? Degrees? An additional education?
+                                If you want to write more, please click *plus* ->"*/
+                                onChange={handleChange}
+                            />
+                        ) : (
+                            <div className="account__section_input" onDoubleClick={() => handleDoubleClick('education')}>
+                                {values.education || ''}
+                            </div>
+                        )}
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -614,18 +605,23 @@ function Account(props) {
                 >
                     <div className="account__section">
                         <label className="account__label">Career:</label>
-                        <textarea 
-                            className="account__section_input"
-                            id="career-account-section-input"
-                            name="career" 
-                            type="text"
-                            value={values.career || ''}
-                            /*placeholder="Please describe places of your past jobs and your duties.
-                            You can use one block for one work.
-                            If you want to write more, please click *plus* ->"*/
-                            disabled={!isEditingCareer}
-                            onChange={handleChange}                       
-                        />
+                        {isEditingCareer ? (
+                            <textarea 
+                                className="account__section_input"
+                                id="career-account-section-input"
+                                name="career" 
+                                type="text"
+                                value={values.career || ''}
+                                /*placeholder="Please describe places of your past jobs and your duties.
+                                You can use one block for one work.
+                                If you want to write more, please click *plus* ->"*/
+                                onChange={handleChange}                       
+                            />
+                        ) : (
+                            <div className="account__section_input" onDoubleClick={() => handleDoubleClick('career')}>
+                                {values.career || ''}
+                            </div>
+                        )}
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -662,18 +658,23 @@ function Account(props) {
                 >
                     <div className="account__section">
                         <label className="account__label">Competences:</label>
-                        <textarea 
-                            className="account__section_input"
-                            id="competences-account-section-input"
-                            name="competences" 
-                            type="text"
-                            value={values.competences || ''}
-                            /*placeholder="Please describe uour skills. Which computer programs can you operate?
-                            What programming languages do you know? Foreign languages?
-                            If you want to write more, please click *plus* ->"*/
-                            disabled={!isEditingCompetences}
-                            onChange={handleChange}                        
-                        />
+                        {isEditingCompetences ? (
+                            <textarea 
+                                className="account__section_input"
+                                id="competences-account-section-input"
+                                name="competences" 
+                                type="text"
+                                value={values.competences || ''}
+                                /*placeholder="Please describe uour skills. Which computer programs can you operate?
+                                What programming languages do you know? Foreign languages?
+                                If you want to write more, please click *plus* ->"*/
+                                onChange={handleChange}                        
+                            />
+                        ) : (
+                            <div className="account__section_input" onDoubleClick={() => handleDoubleClick('competences')}>
+                                {values.competences || ''}
+                            </div>
+                        )}
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -710,18 +711,23 @@ function Account(props) {
                 >
                     <div className="account__section">
                         <label className="account__label">Hobbies:</label>
-                        <textarea 
-                            className="account__section_input"
-                            id="hobbies-account-section-input"
-                            name="hobbies" 
-                            type="text"
-                            value={values.hobbies || ''}
-                            /*placeholder="What do you like to do in your spare time? For example:
-                            computer games, programming, painting, cooking, sewing and etc.
-                            If you want to write more, please click *plus* ->"*/
-                            disabled={!isEditingHobbies}
-                            onChange={handleChange}                       
-                        />
+                        {isEditingHobbies ? (
+                            <textarea 
+                                className="account__section_input"
+                                id="hobbies-account-section-input"
+                                name="hobbies" 
+                                type="text"
+                                value={values.hobbies || ''}
+                                /*placeholder="What do you like to do in your spare time? For example:
+                                computer games, programming, painting, cooking, sewing and etc.
+                                If you want to write more, please click *plus* ->"*/
+                                onChange={handleChange}                       
+                            />
+                        ) : (
+                            <div className="account__section_input" onDoubleClick={() => handleDoubleClick('hobbies')}>
+                                {values.hobbies || ''}
+                            </div>
+                        )}
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">
@@ -758,18 +764,23 @@ function Account(props) {
                 >
                     <div className="account__section">
                         <label className="account__label">News:</label>
-                        <textarea 
-                            className="account__section_input"
-                            id="news-account-section-input"
-                            name="news"
-                            type="text"
-                            value={values.news || ''}
-                            /*placeholder="Here you can add any interesting news in your field of interests.
-                            For example: new invention, program and etc.
-                            If you want to write more, please click *plus* ->"*/
-                            disabled={!isEditingNews}
-                            onChange={handleChange}                        
-                        />
+                        {isEditingNews ? (
+                            <textarea 
+                                className="account__section_input"
+                                id="news-account-section-input"
+                                name="news"
+                                type="text"
+                                value={values.news || ''}
+                                /*placeholder="Here you can add any interesting news in your field of interests.
+                                For example: new invention, program and etc.
+                                If you want to write more, please click *plus* ->"*/
+                                onChange={handleChange}                        
+                            />
+                        ) : (
+                            <div className="account__section_input" onDoubleClick={() => handleDoubleClick('news')}>
+                                {values.news || ''}
+                            </div>
+                        )}
                     </div>
                     <div className="account__btns_forms">
                         <div className="account__redact-accept-delete">

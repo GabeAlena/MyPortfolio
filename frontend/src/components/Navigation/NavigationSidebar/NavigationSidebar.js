@@ -64,7 +64,7 @@ function NavigationSidebar({ handleOpenMenu, sidebar, isLoggedIn, onSignOut, use
                             <button className="navigation-sidebar__btn-exit" onClick={handleOpenMenu}></button>
                             <div className="navigation-sidebar__links-profile">
                                 <nav className="navigation-sidebar__links">
-                                    <NavLink to="/portfolio" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname.includes('/portfolio') ? 'navigation-sidebar__link_active' : ''}`}>Portfolio</NavLink>
+                                    <NavLink to={`/portfolio/${currentUser._id}`} onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname.includes('/portfolio') ? 'navigation-sidebar__link_active' : ''}`}>Portfolio</NavLink>
                                     <NavLink to="/account" onClick={handleOpenMenu} className={`navigation-sidebar__link ${location.pathname === '/account' ? 'navigation-sidebar__link_active' : ''}`}>Account</NavLink>
                                     <NavLink to="/SignIn" onMouseDown={onSignOut} onClick={handleOpenMenu} className="navigation-sidebar__link">Exit</NavLink>
                                 </nav> 

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import catMain from '../../../images/cat write with laptop.jpeg';
+//import mainPicture from '../../../images/cat write with laptop.jpeg';
+import mainPicture from '../../../images/worm-job2.jpeg';
 
 function About() {
     return (
         <section className="about__section">
             <div className="about__description-image">
-                <img className="about__image" src={catMain} alt='here you could see the working cat'></img>
+                <img className="about__image" src={mainPicture} alt='here you could see the working worm'></img>
                 <p className="about__description">
                     &#128161; What can you see? Here is a site-portfolio where you can post information about you,
                     your life, education, hobbies, career, various awards, any interesting news. Or you

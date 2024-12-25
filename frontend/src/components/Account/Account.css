@@ -642,7 +642,7 @@
 .account__redact-btn {
   padding: 0;
   margin: 0;
-  background-image: url(../../images/edit\ sign.webp);
+  background-image: url(../../images/edit-sign.webp);
   width: 46px;
   height: 46px;
   box-sizing: border-box;
@@ -728,14 +728,23 @@
 
 .account__edit-picture {
   width: 54px;
-  height: 200px;
-  transform: scale(-1,1);
+  height: 300px;
+  /*transform: scale(-1,1);*/
+}
+
+@media screen and (max-width: 768px){
+  .account__edit-picture {
+    width: 44px;
+    height: 250px;
+    padding-left: 10px;
+  }
 }
 
 @media screen and (max-width: 700px){
   .account__edit-picture {
-    height: 40px;
-    width: 100px;
+    height: 30px;
+    width: 120px;
+    padding-top: 10px;
   }
 }
 
@@ -743,13 +752,15 @@
   .account__edit-picture {
     height: 38px;
     width: 80px;
+    padding-top: 0;
   }
 }
 
 @media screen and (max-width: 420px){
   .account__edit-picture {
-    height: 200px;
+    height: 230px;
     width: 44px;
+    padding-left: 0;
   }
 }
 
@@ -788,7 +799,7 @@
   font-weight: 500;
   font-size: 30px;
   line-height: 36px;
-  text-align: center;
+  /*text-align: center;*/
   color: #000000;
   text-overflow: ellipsis;
   background-color: transparent;
@@ -913,7 +924,7 @@
 .account__plus-btn {
   padding: 0;
   margin: 0;
-  background-image: url(../../images/add\ sign.png);
+  background-image: url(../../images/add-sign.png);
   width: 46px;
   height: 46px;
   box-sizing: border-box;
@@ -924,6 +935,7 @@
   background-color: inherit;
   background-size: 30px 30px;
   cursor: pointer;
+  visibility: hidden;
 }
 
 @media screen and (max-width: 850px){

@@ -65,26 +65,37 @@
 }
 
 .register__picture {
-  width: 176px;
+  z-index: -1;
+  border: none;
+  /*width: 176px;
   height: 532px;
   margin-top: -110px;
   margin-left: -85px;
-  z-index: -1;
+  z-index: -1;*/
+  background-image: url(../../images/worm-register2.png);
 }
 
 @media screen and (max-width: 470px){
   .register__picture {
-    width: 170px;
+    /*width: 170px;
     height: 510px;
-    margin-left: -39px;
+    margin-left: -39px;*/
   }
 }
 
 @media screen and (max-width: 320px){
   .register__picture {
-    width: 150px;
-    height: 500px;
-    margin-left: -30px;
+    width: 100px;
+    height: 400px;
+    margin-top: -35px;
+    margin-right: -85px;
+    /*width: 120px;
+    height: 400px;
+    margin-left: -10px;
+    margin-top: -70px;*/
+    background-image: url(../../images/worn-register-turned.png);
+    background-size: contain;
+    background-position-x: -20px;
   }
 }
 
@@ -96,18 +107,19 @@
   border: none;
   box-sizing: border-box;
   max-width: 330px;
-  margin-left: -90px;
+  /*margin-left: -90px;*/
 }
 
 @media screen and (max-width: 470px){
   .register__form {
-    margin-left: -130px;
+    /*margin-left: -130px;*/
   }
 }
 
 @media screen and (max-width: 320px){
   .register__form {
-    margin-left: -120px;
+    margin-left: -15px;
+    /*margin-left: -120px;*/
     max-width: 250px;
   }
 }
@@ -315,8 +327,6 @@
 
 
 .login__in {
-  display: flex;
-  /*text-align: center;*/
   align-items: center;
   justify-content: center;
   /*min-width: 330px;*/
@@ -328,9 +338,15 @@
   }
 }
 
+@media screen and (max-width: 320px){
+  .login__in {
+    text-align: center;
+  }
+}
+
 .login__in p {
   padding: 0;
-  margin: 16px 6px 0 0;
+  margin: 0 0 0 0;
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -373,7 +389,7 @@
 
 @media screen and (max-width: 650px){
   .register__login-link {
-    margin: 14px 0 0;
+    margin: 10px 0 0;
     font-size: 14px;
     line-height: 20px;
   }

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ValidationForm } from '../../utils/validationForm';
 import noteBulb from '../../images/bulb.jpeg';
-import registerPicture from '../../images/cat register without eye.png';
+/*import registerPicture from '../../images/cat register without eye.png';*/
+/*import registerPicture from '../../images/worm-register2.png';*/
 
 function Register({ onRegister }) {
     const { values, handleChange, errors, isValid } = ValidationForm();
@@ -25,7 +26,7 @@ function Register({ onRegister }) {
             <div className="register">
                 <h1 className="register__signup">Register</h1>
                 <div className="register__form-picture">
-                    <img src={registerPicture} alt="it might be a cat" className="register__picture" />
+                    <img className="register__picture" />
                     <form className="register__form" onSubmit={handleSubmit}>
                         <input 
                             className={`register__input ${errors.firstName ? 'register__input_error' : ''}`}
